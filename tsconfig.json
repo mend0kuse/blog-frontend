@@ -5,7 +5,7 @@
     "module": "es6",
     // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "baseUrl": ".",
     "moduleResolution": "node",
