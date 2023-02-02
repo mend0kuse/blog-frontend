@@ -18,7 +18,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
 			filename: '[name].[hash].js',
 		},
 		module: {
-			rules: buildLoaders()
+			rules: buildLoaders(options)
 		},
 		resolve: buildResolves(),
 		plugins: buildPlugins(options),
