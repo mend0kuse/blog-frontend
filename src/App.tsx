@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
+import cn from './helpers/classNames/cn'
 import { AboutPageLazy } from './pages/about/AboutPage.lazy'
 import { MainPageLazy } from './pages/main/MainPage.lazy'
 import './styles/'
@@ -9,7 +10,7 @@ const App = () => {
 	const { theme, toggleTheme } = useTheme()
 
 	return (
-		<div className={`app ${theme}`}>
+		<div className={cn('app', { 'asd': true, 'zxc': 1 === 1, 'qwe': false }, 'any', theme)}>
 			<Link to='/about'>about</Link>
 			<Link to='/'>main</Link>
 			<button onClick={toggleTheme}>toggle theme</button>
