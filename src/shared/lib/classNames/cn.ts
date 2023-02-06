@@ -6,6 +6,6 @@ export default function cn(cls: string, mods?: Mods, ...additional: string[]) {
 		...Object.entries(mods)
 			.filter(([name, value]) => Boolean(value))
 			.map(([name]) => name),
-		...additional
+		...additional.filter(Boolean)
 	].join(' ')
 }
