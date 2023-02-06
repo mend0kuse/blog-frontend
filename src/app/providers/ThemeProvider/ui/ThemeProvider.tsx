@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react"
-import { defaultTheme, Theme, ThemeContext } from "shared/config/ThemeContext"
+import { defaultTheme, Theme, ThemeContext } from "shared/config/themes/ThemeContext"
 
 export const ThemeContextProvider: FC = ({ children }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme)
