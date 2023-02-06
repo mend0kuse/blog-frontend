@@ -5,12 +5,11 @@ import { useTheme } from 'shared/config/themes/useTheme'
 import { Navbar } from 'widgets/Navbar'
 
 const App = () => {
-	const { theme, toggleTheme } = useTheme()
+	const { theme } = useTheme()
 
 	return (
 		<div className={cn('app', {}, theme)}>
 			<Navbar />
-			<button onClick={toggleTheme}>toggle theme</button>
 			<AppRouter />
 		</div>
 	)
