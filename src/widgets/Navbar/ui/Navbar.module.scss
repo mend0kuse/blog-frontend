@@ -4,11 +4,11 @@
 	background: var(--inverted-bg-color);
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	padding: 20px;
 }
 
 .links {
 	display: flex;
+	margin-left: auto;
 	column-gap: 15px;
 }
