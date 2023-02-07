@@ -3,6 +3,7 @@ import './styles/'
 import { AppRouter } from 'app/providers/Router'
 import { useTheme } from 'shared/config/themes/useTheme'
 import { Navbar } from 'widgets/Navbar'
+import { Sidebar } from 'widgets/Sidebar'
 
 const App = () => {
 	const { theme } = useTheme()
@@ -10,7 +11,10 @@ const App = () => {
 	return (
 		<div className={cn('app', {}, theme)}>
 			<Navbar />
-			<AppRouter />
+			<div className='content'>
+				<Sidebar />
+				<AppRouter />
+			</div>
 		</div>
 	)
 }
