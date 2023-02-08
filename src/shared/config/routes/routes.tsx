@@ -6,4 +6,4 @@ export enum AppRoutes {
 export const RouterPaths: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.ABOUT]: '/about',
-}
+};
