@@ -1,8 +1,10 @@
-import { AboutPage } from 'pages/about'
-import { MainPage } from 'pages/main'
-import { FC, Suspense } from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { routeConfig } from '../config/routeConfig'
+import { AboutPage } from 'pages/about';
+import { MainPage } from 'pages/main';
+
+import { type FC, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { routeConfig } from '../config/routeConfig';
 
 export const AppRouter: FC = () => {
 	return (
@@ -13,5 +15,5 @@ export const AppRouter: FC = () => {
 				))}
 			</Routes>
 		</Suspense>
-	)
-}
+	);
+};

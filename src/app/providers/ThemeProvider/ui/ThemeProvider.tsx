@@ -1,15 +1,11 @@
-import { FC, useMemo, useState } from "react"
-import { defaultTheme, Theme, ThemeContext } from "shared/config/themes/ThemeContext"
+import { type Theme, ThemeContext, defaultTheme } from 'shared/config/themes/ThemeContext';
+
+import { type FC, useMemo, useState } from 'react';
 
 export const ThemeContextProvider: FC = ({ children }) => {
-	const [theme, setTheme] = useState<Theme>(defaultTheme)
+	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
+	const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);
 
-	const defaultProps = useMemo(() => ({ theme, setTheme }), [theme])
-
-	return (
-		<ThemeContext.Provider value={defaultProps}>
-			{children}
-		</ThemeContext.Provider>
-	)
-}
+	return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
+};
