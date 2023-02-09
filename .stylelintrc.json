@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-order-config-standard"
+  ],
+  "defaultSeverity": "warning",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "indentation": [
+      "tab"
+    ],
+    "color-hex-case": "upper",
+    "import-notation": "string",
+    "selector-class-pattern": null
+  }
+}
