@@ -4,15 +4,20 @@
 @import "./variables/globals";
 
 .app {
-	font: var(--font-m);
-	background-color: var(--bg-color);
-	color: var(--primary-color);
 	min-height: 100vh;
+
+	color: var(--primary-color);
+	background-color: var(--bg-color);
+
+	font: var(--font-m);
 }
-.content{
+
+.content {
 	display: flex;
 }
-.page-wrapper{
+
+.page-wrapper {
 	flex-grow: 1;
+
 	padding: 20px;
 }
