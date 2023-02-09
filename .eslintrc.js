@@ -8,6 +8,7 @@ module.exports = {
 		'standard-with-typescript',
 		'prettier',
 		'plugin:prettier/recommended',
+		'plugin:i18next/recommended',
 	],
 	overrides: [],
 	parserOptions: {
@@ -15,7 +16,7 @@ module.exports = {
 		sourceType: 'module',
 		project: ['./tsconfig.json'],
 	},
-	plugins: ['react', 'prettier'],
+	plugins: ['react', 'prettier', 'i18next'],
 	rules: {
 		'react/jsx-indent': 'off',
 		'react/react-in-jsx-scope': 'off',
@@ -25,5 +26,6 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-misused-promises': 'off',
 		'@typescript-eslint/no-floating-promises': 'off',
+		'i18next/no-literal-string': 2,
 	},
 };

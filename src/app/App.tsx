@@ -11,7 +11,6 @@ import './styles/';
 
 const App = () => {
 	const { theme } = useTheme();
-
 	return (
 		<div className={cn('app', {}, theme)}>
 			<Suspense fallback=''>
