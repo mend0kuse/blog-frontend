@@ -1,6 +1,6 @@
 type Mods = Record<string, string | boolean>;
 
-export default function cn(cls: string, mods?: Mods, ...additional: string[]) {
+export default function cn(cls: string, mods: Mods = {}, ...additional: string[]) {
 	return [
 		cls,
 		...Object.entries(mods)
