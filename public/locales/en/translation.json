@@ -1,6 +1,7 @@
 {
-	"Тест": "Test",
-	"Перевод": "Russian",
-	"Главная страница": "Main page",
-	"Страница не найдена": "Page not found"
+  "About us": "About us",
+  "Main": "Main",
+  "Main Page": "Main page",
+  "Page not found": "Page not found",
+  "Translate": "Russian"
 }

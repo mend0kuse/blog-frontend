@@ -16,6 +16,9 @@ i18n.use(Backend)
 		react: {
 			useSuspense: false, //   <---- this will do the magic
 		},
+		backend: {
+			loadPath: '/locales/{{lng}}/{{ns}}.json',
+		},
 	});
 
 export default i18n;

@@ -9,5 +9,5 @@ interface PageNotFoundProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const PageNotFound: FC<PageNotFoundProps> = () => {
 	const { t } = useTranslation();
-	return <div className={cn(styles.PageNotFound)}>{t('Страница не найдена')}</div>;
+	return <div className={cn(styles.PageNotFound)}>{t('Page not found')}</div>;
 };

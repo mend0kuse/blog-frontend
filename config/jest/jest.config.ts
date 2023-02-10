@@ -29,7 +29,16 @@ export default {
 	moduleDirectories: ['node_modules'],
 
 	// An array of file extensions your modules use
-	moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
+	moduleFileExtensions: [
+		'js',
+		'mjs',
+		'cjs',
+		'jsx',
+		'ts',
+		'tsx',
+		'json',
+		'node',
+	],
 
 	// The root directory that Jest should scan for tests and modules within
 	rootDir: '../../',
