@@ -6,4 +6,8 @@
 		"css",
 		"scss"
 	],
+	"i18n-ally.localesPaths": [
+		"public/locales",
+		"src/shared/config/i18n"
+	],
 }
