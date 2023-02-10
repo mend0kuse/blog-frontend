@@ -10,10 +10,14 @@ describe('cn', () => {
 
 	test('with additional classes and mods', () => {
 		const expected = 'asd hovered zxc fsd';
-		expect(cn('asd', { hovered: true, dis: false }, 'zxc fsd')).toBe(expected);
+		expect(cn('asd', { hovered: true, dis: false }, 'zxc fsd')).toBe(
+			expected,
+		);
 	});
 	test('with additional classes and mod undefined', () => {
 		const expected = 'asd hovered zxc fsd';
-		expect(cn('asd', { hovered: true, dis: false, gpt: undefined }, 'zxc fsd')).toBe(expected);
+		expect(
+			cn('asd', { hovered: true, dis: false, gpt: undefined }, 'zxc fsd'),
+		).toBe(expected);
 	});
 });

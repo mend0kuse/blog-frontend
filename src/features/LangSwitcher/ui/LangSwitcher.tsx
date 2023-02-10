@@ -16,9 +16,9 @@ export const LangSwitcher: FC = () => {
 		<Button
 			onClick={toggleLang}
 			theme={ThemeButton.CLEAR}
-			className={cn(styles.LangSwitcher, {})}
+			className={cn(styles.LangSwitcher)}
 		>
-			{t('Перевод')}
+			{t('Translate')}
 		</Button>
 	);
 };
