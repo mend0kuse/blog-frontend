@@ -6,7 +6,7 @@ import { type FC, type HTMLAttributes, useState } from 'react';
 
 import styles from './Sidebar.module.scss';
 
-interface SidebarProps extends HTMLAttributes<HTMLDivElement> {}
+interface SidebarProps extends HTMLAttributes<HTMLDivElement> { }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	const [collapsed, setCollapsed] = useState(false);
@@ -16,13 +16,16 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	};
 	return (
 		<aside
+			data-testid='Sidebar'
 			className={cn(
 				styles.Sidebar,
 				{ [styles.collapsed]: collapsed },
 				className,
 			)}
 		>
-			<button onClick={onToggle}>Toggle</button>
+			<button data-testid='Sidebar-toggle' onClick={onToggle}>
+				Toggle
+			</button>
 			<div className={styles.swithers}>
 				<ThemeSwitcher />
 				<LangSwitcher />
