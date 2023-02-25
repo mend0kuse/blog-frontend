@@ -9,10 +9,7 @@ export function buildPlugins({
 	paths,
 	isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-	return [
-		new BundleAnalyzerPlugin({
-			openAnalyzer: false,
-		}),
+	const plugins = [
 		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({
 			template: paths.html,
@@ -25,4 +22,14 @@ export function buildPlugins({
 			_IS_DEV_: JSON.stringify(isDev),
 		}),
 	];
+
+	if (isDev) {
+		plugins.push(
+			new BundleAnalyzerPlugin({
+				openAnalyzer: false,
+			}),
+		);
+	}
+
+	return plugins;
 }

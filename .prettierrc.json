@@ -15,5 +15,5 @@
 	"jsxSingleQuote": true,
 	"bracketSpacing": true,
 	"arrowParens": "always",
-	"endOfLine": "crlf"
+	"endOfLine": "auto"
 }
