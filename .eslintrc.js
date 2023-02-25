@@ -28,6 +28,7 @@ module.exports = {
 	rules: {
 		'react/jsx-indent': 'off',
 		'react/react-in-jsx-scope': 'off',
+		'prettier/prettier': 'warn',
 		'@typescript-eslint/consistent-type-assertions': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',

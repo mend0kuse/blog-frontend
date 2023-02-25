@@ -3,14 +3,15 @@ import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import cn from 'shared/lib/classNames/cn';
 
 import { type FC, type HTMLAttributes, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import styles from './Sidebar.module.scss';
 
-interface SidebarProps extends HTMLAttributes<HTMLDivElement> { }
+interface SidebarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	const [collapsed, setCollapsed] = useState(false);
-
+	const { t } = useTranslation();
 	const onToggle = () => {
 		setCollapsed((prev) => !prev);
 	};
@@ -24,7 +25,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 			)}
 		>
 			<button data-testid='Sidebar-toggle' onClick={onToggle}>
-				Toggle
+				{t('Toggle')}
 			</button>
 			<div className={styles.swithers}>
 				<ThemeSwitcher />

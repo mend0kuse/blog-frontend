@@ -1,6 +1,5 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { RouterDecorator } from '../../config/storybook-decorators/RouterDecorator';
 import { AppLink, AppLinkTheme } from './AppLink';
 
 export default {
