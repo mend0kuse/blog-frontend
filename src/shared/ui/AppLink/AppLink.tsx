@@ -3,7 +3,7 @@ import cn from 'shared/lib/classNames/cn';
 import { type FC } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
-import styles from './Applink.module.scss';
+import styles from './AppLink.module.scss';
 
 export enum AppLinkTheme {
 	PRIMARY = 'primary',
