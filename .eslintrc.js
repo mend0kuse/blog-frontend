@@ -9,6 +9,7 @@ module.exports = {
 		'prettier',
 		'plugin:prettier/recommended',
 		'plugin:i18next/recommended',
+		'plugin:storybook/recommended',
 	],
 	overrides: [
 		{
@@ -27,6 +28,7 @@ module.exports = {
 	rules: {
 		'react/jsx-indent': 'off',
 		'react/react-in-jsx-scope': 'off',
+		'@typescript-eslint/consistent-type-assertions': 'off',
 		'@typescript-eslint/prefer-nullish-coalescing': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
 		'@typescript-eslint/no-unused-vars': 'warn',
