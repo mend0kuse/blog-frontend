@@ -3,8 +3,9 @@
   "Main": "Главная",
   "Main Page": "Главная страница",
   "Page not found": "Страница не найдена",
-  "Translate": "English",
+  "Lang": "English",
   "Error happens": "Произошла ошибка",
   "Reload Page": "Обновить страницу",
-  "Toggle": "Переключить"
+  "Toggle": "Переключить",
+  "Short Lang": "EN"
 }

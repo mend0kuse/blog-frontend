@@ -10,17 +10,36 @@ export enum ThemeButton {
 	OUTLINE = 'outline',
 }
 
+export enum ButtonSize {
+	M = 'size_m',
+	L = 'size_l',
+	XL = 'size_xl',
+}
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	theme?: ThemeButton;
+	size?: ButtonSize;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
-	const { className, theme, children, ...otherProps } = props;
+	const {
+		className,
+		size = 'size_m',
+		theme,
+		children,
+		...otherProps
+	} = props;
+
 	return (
 		<button
 			{...otherProps}
-			data-testid='Button'
-			className={cn(styles.Button, {}, className, styles[theme])}
+			className={cn(
+				styles.Button,
+				{},
+				className,
+				styles[theme],
+				styles[size],
+			)}
 		>
 			{children}
 		</button>
