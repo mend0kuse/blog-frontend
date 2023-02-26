@@ -3,8 +3,9 @@
   "Main": "Main",
   "Main Page": "Main page",
   "Page not found": "Page not found",
-  "Translate": "Russian",
+  "Lang": "Russian",
   "Error happens": "An error has occurred",
   "Reload Page": "Reload page",
-  "Toggle": "Toggle"
+  "Toggle": "Toggle",
+  "Short Lang": "RU"
 }
