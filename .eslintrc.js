@@ -10,6 +10,7 @@ module.exports = {
 		'plugin:prettier/recommended',
 		'plugin:i18next/recommended',
 		'plugin:storybook/recommended',
+		'plugin:react-hooks/recommended',
 	],
 	overrides: [
 		{
@@ -26,6 +27,8 @@ module.exports = {
 	},
 	plugins: ['react', 'prettier', 'i18next'],
 	rules: {
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'error',
 		'react/jsx-indent': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'prettier/prettier': 'warn',
