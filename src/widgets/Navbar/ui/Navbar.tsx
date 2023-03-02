@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 export const Navbar: FC<NavbarProps> = (props) => {
 	const { className } = props;

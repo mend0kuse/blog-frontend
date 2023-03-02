@@ -5,7 +5,7 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
 import { type ButtonHTMLAttributes, type FC } from 'react';
 
-interface ThemeSwitcherProps extends ButtonHTMLAttributes<HTMLButtonElement> { }
+interface ThemeSwitcherProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
 	const { theme, toggleTheme } = useTheme();

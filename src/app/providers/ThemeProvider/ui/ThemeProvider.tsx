@@ -4,14 +4,15 @@ import {
 	defaultTheme,
 } from 'shared/config/themes/ThemeContext';
 
-import { type FC, useMemo, useState, useEffect } from 'react';
+import { type FC, useEffect, useMemo, useState } from 'react';
 
 export const ThemeContextProvider: FC = ({ children }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
 	useEffect(() => {
-		document.body.className = theme
-	}, [])
+		document.body.className = theme;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);
 
