@@ -6,6 +6,7 @@ import styles from './Button.module.scss';
 
 export enum ThemeButton {
 	CLEAR = 'clear',
+	CLEAR_INVERTED = 'clearInverted',
 	PRIMARY = 'primary',
 	OUTLINE = 'outline',
 }
