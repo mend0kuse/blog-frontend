@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from './Sidebar.module.scss';
 
-interface SidebarProps extends HTMLAttributes<HTMLDivElement> { }
+interface SidebarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	const { t } = useTranslation();
