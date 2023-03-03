@@ -2,6 +2,7 @@ import { withThemes } from 'storybook-addon-themes/react';
 
 import { addDecorator } from '@storybook/react';
 
+import { StoreDecorator } from '../../src/shared/config/storybook-decorators/ReduxDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook-decorators/RouterDecorator';
 import { StyleDecorator } from '../../src/shared/config/storybook-decorators/StyleDecorator';
 
@@ -22,6 +23,7 @@ export const parameters = {
 	},
 };
 
+addDecorator(StoreDecorator);
 addDecorator(withThemes);
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);

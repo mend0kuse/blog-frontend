@@ -27,6 +27,7 @@ module.exports = {
 	},
 	plugins: ['react', 'prettier', 'i18next'],
 	rules: {
+		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'error',
 		'react/jsx-indent': 'off',

@@ -6,8 +6,10 @@ import {
 	type ReactNode,
 	useCallback,
 	useEffect,
+	useState,
 } from 'react';
 
+import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -15,10 +17,17 @@ interface ModalProps {
 	open: boolean;
 	className?: string;
 	onClose: () => void;
+	lazy?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-	const { children, className, onClose, open } = props;
+	const { children, className, onClose, open, lazy } = props;
+
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		if (open) setIsMounted(true);
+	}, [open]);
 
 	const contentClickHandler = (e: MouseEvent) => {
 		e.stopPropagation();
@@ -40,18 +49,26 @@ export const Modal: FC<ModalProps> = (props) => {
 		};
 	}, [onEscDown]);
 
+	if (lazy && !isMounted) {
+		return null;
+	}
+
 	return (
-		<div className={cn(styles.Modal, { [styles.open]: open }, className)}>
-			<div className={styles.overlay} onClick={onClose}>
-				<div
-					className={styles.content}
-					onClick={(e) => {
-						contentClickHandler(e);
-					}}
-				>
-					{children}
+		<Portal>
+			<div
+				className={cn(styles.Modal, { [styles.open]: open }, className)}
+			>
+				<div className={styles.overlay} onClick={onClose}>
+					<div
+						className={styles.content}
+						onClick={(e) => {
+							contentClickHandler(e);
+						}}
+					>
+						{children}
+					</div>
 				</div>
 			</div>
-		</div>
+		</Portal>
 	);
 };
