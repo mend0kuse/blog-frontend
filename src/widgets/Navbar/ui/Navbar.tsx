@@ -1,3 +1,4 @@
+import { LoginModal } from 'features/AuthByUserName';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Modal } from 'shared/ui/Modal/Modal';
@@ -7,6 +8,7 @@ import {
 	type DetailedHTMLProps,
 	type FC,
 	type HTMLAttributes,
+	useCallback,
 	useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,16 +16,20 @@ import { useTranslation } from 'react-i18next';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
 export const Navbar: FC<NavbarProps> = (props) => {
 	const { className } = props;
 
 	const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-	const toggleAuthOpen = () => {
-		setIsAuthOpen((prev) => !prev);
-	};
+	const setAuthOpen = useCallback(() => {
+		setIsAuthOpen(true);
+	}, []);
+
+	const setAuthClose = useCallback(() => {
+		setIsAuthOpen(false);
+	}, []);
 
 	const { t } = useTranslation();
 
@@ -32,18 +38,12 @@ export const Navbar: FC<NavbarProps> = (props) => {
 			<div className={styles.buttons}>
 				<Button
 					theme={ThemeButton.CLEAR_INVERTED}
-					onClick={toggleAuthOpen}
+					onClick={setAuthOpen}
 				>
 					{t('Sign in')}
 				</Button>
 			</div>
-			<Portal>
-				<Modal open={isAuthOpen} onClose={toggleAuthOpen}>
-					{t(
-						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea',
-					)}
-				</Modal>
-			</Portal>
+			<LoginModal onClose={setAuthClose} open={isAuthOpen} />
 		</header>
 	);
 };
