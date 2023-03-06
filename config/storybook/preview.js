@@ -23,7 +23,7 @@ export const parameters = {
 	},
 };
 
-addDecorator(StoreDecorator);
 addDecorator(withThemes);
+addDecorator(StoreDecorator);
 addDecorator(StyleDecorator);
 addDecorator(RouterDecorator);

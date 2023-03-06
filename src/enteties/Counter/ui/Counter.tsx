@@ -1,9 +1,10 @@
+import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
 import { Button } from 'shared/ui/Button/Button';
 
 import { t } from 'i18next';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { getCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { counterActions } from '../model/slices/counterSlice';
@@ -11,7 +12,7 @@ import { counterActions } from '../model/slices/counterSlice';
 export const Counter: FC = () => {
 	const { t } = useTranslation();
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const value = useSelector(getCounterValue);
 

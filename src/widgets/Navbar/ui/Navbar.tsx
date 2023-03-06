@@ -1,8 +1,7 @@
+import { getUserAuthData, userActions } from 'enteties/User';
 import { LoginModal } from 'features/AuthByUserName';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { Modal } from 'shared/ui/Modal/Modal';
-import { Portal } from 'shared/ui/Portal/Portal';
 
 import {
 	type DetailedHTMLProps,
@@ -12,38 +11,47 @@ import {
 	useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Navbar.module.scss';
 
 interface NavbarProps
 	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
 
-export const Navbar: FC<NavbarProps> = (props) => {
-	const { className } = props;
+export const Navbar: FC<NavbarProps> = ({ className }) => {
+	const { t } = useTranslation();
 
-	const [isAuthOpen, setIsAuthOpen] = useState(false);
+	const dispatch = useDispatch();
+	const authData = useSelector(getUserAuthData);
+
+	const [isAuthFormOpen, setAuthFormOpen] = useState(false);
+
+	const onLogout = useCallback(() => {
+		dispatch(userActions.logout());
+		setAuthFormOpen(false);
+	}, [dispatch]);
 
 	const setAuthOpen = useCallback(() => {
-		setIsAuthOpen(true);
+		setAuthFormOpen(true);
 	}, []);
 
 	const setAuthClose = useCallback(() => {
-		setIsAuthOpen(false);
+		setAuthFormOpen(false);
 	}, []);
-
-	const { t } = useTranslation();
 
 	return (
 		<header className={cn(styles.Navbar, {}, className)}>
 			<div className={styles.buttons}>
 				<Button
 					theme={ThemeButton.CLEAR_INVERTED}
-					onClick={setAuthOpen}
+					onClick={authData ? onLogout : setAuthOpen}
 				>
-					{t('Sign in')}
+					{authData ? t('Log out') : t('Sign in')}
 				</Button>
 			</div>
-			<LoginModal onClose={setAuthClose} open={isAuthOpen} />
+			{!authData && (
+				<LoginModal onClose={setAuthClose} open={isAuthFormOpen} />
+			)}
 		</header>
 	);
 };

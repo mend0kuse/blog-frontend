@@ -1,4 +1,5 @@
 import { Modal } from 'shared/ui/Modal/Modal';
+import { Portal } from 'shared/ui/Portal/Portal';
 
 import { type FC } from 'react';
 
@@ -12,8 +13,10 @@ interface LoginModalProps {
 export const LoginModal: FC<LoginModalProps> = (props) => {
 	const { onClose, open } = props;
 	return (
-		<Modal onClose={onClose} open={open}>
-			<LoginForm />
-		</Modal>
+		<Portal>
+			<Modal onClose={onClose} open={open}>
+				<LoginForm />
+			</Modal>
+		</Portal>
 	);
 };

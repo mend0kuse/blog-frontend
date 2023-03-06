@@ -2,6 +2,12 @@
 	cursor: pointer;
 }
 
+.Button:disabled {
+	cursor: not-allowed;
+
+	opacity: 0.5;
+}
+
 .clear,
 .clearInverted {
 	margin: 0;

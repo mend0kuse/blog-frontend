@@ -8,5 +8,8 @@
   "Reload Page": "Обновить страницу",
   "Toggle": "Переключить",
   "Short Lang": "EN",
-  "Sign in": "Войти"
+  "Sign in": "Войти",
+  "Auth form": "Форма авторизации",
+  "Auth error": "Вы ввели что-то не так...",
+  "Log out": "Выйти"
 }
