@@ -8,5 +8,8 @@
   "Reload Page": "Reload page",
   "Toggle": "Toggle",
   "Short Lang": "RU",
-  "Sign in": "Sign in"
+  "Sign in": "Sign in",
+  "Auth form": "Auth Form",
+  "Auth error": "You entered something wrong...",
+  "Log out": "Sign out"
 }

@@ -1,0 +1,15 @@
+.Text {
+	color: var(--primary-color);
+
+	.title {
+		font: var(--font-l);
+	}
+
+	.paragraph {
+		font: var(--font-m);
+	}
+}
+
+.error.Text {
+	color: var(--red-dark);
+}

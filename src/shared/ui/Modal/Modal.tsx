@@ -9,7 +9,6 @@ import {
 	useState,
 } from 'react';
 
-import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
@@ -54,7 +53,6 @@ export const Modal: FC<ModalProps> = (props) => {
 	}
 
 	return (
-		<Portal>
 			<div
 				className={cn(styles.Modal, { [styles.open]: open }, className)}
 			>
@@ -69,6 +67,5 @@ export const Modal: FC<ModalProps> = (props) => {
 					</div>
 				</div>
 			</div>
-		</Portal>
 	);
 };
