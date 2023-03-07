@@ -6,10 +6,13 @@ import {
 	type ReactNode,
 	useCallback,
 	useEffect,
+	useRef,
 	useState,
 } from 'react';
 
 import styles from './Modal.module.scss';
+
+const ANIMATION_DELAY = 200;
 
 interface ModalProps {
 	children: ReactNode;
@@ -24,9 +27,30 @@ export const Modal: FC<ModalProps> = (props) => {
 
 	const [isMounted, setIsMounted] = useState(false);
 
+	const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+	const [mods, setMods] = useState<Record<string, boolean>>({
+		[styles.open]: false,
+		[styles.isClosing]: false,
+	});
+
 	useEffect(() => {
 		if (open) setIsMounted(true);
+
+		timerRef.current = setTimeout(() => {
+			setMods({ ...mods, [styles.open]: true });
+		}, ANIMATION_DELAY);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [open]);
+
+	const closeHandler = useCallback(() => {
+		setMods({ ...mods, [styles.isClosing]: true });
+		timerRef.current = setTimeout(() => {
+			onClose();
+			setMods({ ...mods, [styles.isClosing]: false });
+		}, ANIMATION_DELAY);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [onClose]);
 
 	const contentClickHandler = (e: MouseEvent) => {
 		e.stopPropagation();
@@ -42,30 +66,32 @@ export const Modal: FC<ModalProps> = (props) => {
 	);
 
 	useEffect(() => {
-		window.addEventListener('keydown', onEscDown);
+		if (open) {
+			window.addEventListener('keydown', onEscDown);
+		}
+
 		return () => {
+			clearTimeout(timerRef.current);
 			window.removeEventListener('keydown', onEscDown);
 		};
-	}, [onEscDown]);
+	}, [open, onEscDown]);
 
 	if (lazy && !isMounted) {
 		return null;
 	}
 
 	return (
-			<div
-				className={cn(styles.Modal, { [styles.open]: open }, className)}
-			>
-				<div className={styles.overlay} onClick={onClose}>
-					<div
-						className={styles.content}
-						onClick={(e) => {
-							contentClickHandler(e);
-						}}
-					>
-						{children}
-					</div>
+		<div className={cn(styles.Modal, mods, className)}>
+			<div className={styles.overlay} onClick={closeHandler}>
+				<div
+					className={styles.content}
+					onClick={(e) => {
+						contentClickHandler(e);
+					}}
+				>
+					{children}
 				</div>
 			</div>
+		</div>
 	);
 };

@@ -1,5 +1,5 @@
 import cn from 'shared/lib/classNames/cn';
-import { Button, ButtonSize, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
