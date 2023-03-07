@@ -49,7 +49,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 					{authData ? t('Log out') : t('Sign in')}
 				</Button>
 			</div>
-			{!authData && (
+			{isAuthFormOpen && (
 				<LoginModal onClose={setAuthClose} open={isAuthFormOpen} />
 			)}
 		</header>

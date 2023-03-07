@@ -1,6 +1,16 @@
-import { getLoginData } from 'features/AuthByUserName/model/selectors/getLoginData';
-import { loginActions } from 'features/AuthByUserName/model/slices/loginSlice';
+import { getLoginError } from 'features/AuthByUserName/model/selectors/getLoginError/getLoginError';
+import { getLoginLoading } from 'features/AuthByUserName/model/selectors/getLoginLoading/getLoginLoading';
+import { getLoginPassword } from 'features/AuthByUserName/model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginUsername } from 'features/AuthByUserName/model/selectors/getLoginUsername/getLoginUsername';
+import {
+	loginActions,
+	loginReducer,
+} from 'features/AuthByUserName/model/slices/loginSlice';
 import { loginByUserName } from 'features/AuthByUserName/services/loginByUserName/loginByUserName';
+import {
+	type ReducersList,
+	useDinamycModuleLoader,
+} from 'shared/hooks/useDinamycModuleLoader';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
@@ -12,10 +22,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './LoginForm.module.scss';
 
-export const LoginForm: FC = () => {
+const reducers: ReducersList = {
+	login: loginReducer,
+};
+
+const LoginForm: FC = () => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
-	const { password, username, isLoading, error } = useSelector(getLoginData);
+
+	const password = useSelector(getLoginPassword);
+	const username = useSelector(getLoginUsername);
+	const isLoading = useSelector(getLoginLoading);
+	const error = useSelector(getLoginError);
+
+	useDinamycModuleLoader(reducers);
 
 	const onPasswordChange = useCallback(
 		(value: string) => {
@@ -61,3 +81,5 @@ export const LoginForm: FC = () => {
 		</div>
 	);
 };
+
+export default LoginForm;

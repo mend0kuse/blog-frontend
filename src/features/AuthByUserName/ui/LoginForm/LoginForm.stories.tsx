@@ -1,6 +1,6 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { LoginForm } from './LoginForm';
+import LoginForm from './LoginForm';
 
 export default {
 	title: 'features/LoginForm',
