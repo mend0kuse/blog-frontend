@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 import { type User, userActions } from 'enteties/User';
 import { USER_KEY } from 'shared/lib/localStorage/localStorage';
 
@@ -15,7 +15,7 @@ export const loginByUserName = createAsyncThunk<
 	{ rejectValue: string }
 >('login/LoginByUserName', async (authData, thunkAPI) => {
 	try {
-		const response = await axios.post(
+		const response: AxiosResponse = await axios.post(
 			'http://localhost:8000/login',
 			authData,
 		);
