@@ -1,4 +1,5 @@
 import { type CounterSchema } from 'enteties/Counter';
+import { type ProfileSchema } from 'enteties/Profile';
 import { type UserSchema } from 'enteties/User';
 import { type LoginSchema } from 'features/AuthByUserName';
 
@@ -15,6 +16,7 @@ export interface StateSchema {
 	user: UserSchema;
 
 	// Async
+	profile?: ProfileSchema;
 	login?: LoginSchema;
 }
 

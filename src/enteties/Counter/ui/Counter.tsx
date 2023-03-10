@@ -1,4 +1,4 @@
-import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
+import { useAppDispatch } from 'app/providers/StoreProvider';
 import { Button } from 'shared/ui/Button/Button';
 
 import { t } from 'i18next';
