@@ -3,11 +3,9 @@ import { Theme } from 'shared/config/themes/ThemeContext';
 import { useTheme } from 'shared/config/themes/useTheme';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
-import { type ButtonHTMLAttributes, type FC } from 'react';
+import { type FC, memo } from 'react';
 
-interface ThemeSwitcherProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
+export const ThemeSwitcher: FC = memo(() => {
 	const { theme, toggleTheme } = useTheme();
 	return (
 		<Button theme={ThemeButton.CLEAR} onClick={toggleTheme}>
@@ -16,4 +14,6 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
 			/>
 		</Button>
 	);
-};
+});
+
+ThemeSwitcher.displayName = 'ThemeSwitcher';

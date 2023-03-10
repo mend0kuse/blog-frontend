@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 import { type User, userActions } from 'enteties/User';
-import { USER_KEY } from 'shared/lib/localStorage/localStorage';
+import { USER_KEY } from 'shared/const/localStorage';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 

@@ -1,0 +1,34 @@
+.hamburger {
+	display: flex;
+	flex-direction: column;
+
+	width: 35px;
+	padding: 5px;
+
+	border: 2px solid var(--inverted-primary-color);
+	background: none;
+	row-gap: 5px;
+
+	.line {
+		display: block;
+
+		width: 100%;
+		height: 3px;
+
+		transition: all 0.3s ease-in-out;
+
+		background-color: var(--inverted-primary-color);
+	}
+}
+
+.hamburger.is-active .line:nth-child(2) {
+	opacity: 0;
+}
+
+.hamburger.is-active .line:nth-child(1) {
+	transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-active .line:nth-child(3) {
+	transform: translateY(-8px) rotate(-45deg);
+}

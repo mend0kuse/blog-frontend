@@ -3,22 +3,13 @@ import { LoginModal } from 'features/AuthByUserName';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
-import {
-	type DetailedHTMLProps,
-	type FC,
-	type HTMLAttributes,
-	useCallback,
-	useState,
-} from 'react';
+import { type FC, memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import styles from './Navbar.module.scss';
 
-interface NavbarProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
-
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar: FC = memo(() => {
 	const { t } = useTranslation();
 
 	const dispatch = useDispatch();
@@ -40,7 +31,7 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 	}, []);
 
 	return (
-		<header className={cn(styles.Navbar, {}, className)}>
+		<header className={cn(styles.Navbar, {})}>
 			<div className={styles.buttons}>
 				<Button
 					theme={ThemeButton.CLEAR_INVERTED}
@@ -54,4 +45,6 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
 			)}
 		</header>
 	);
-};
+});
+
+Navbar.displayName = 'Navbar';

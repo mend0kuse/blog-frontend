@@ -29,6 +29,5 @@ export function createReduxStore(initialState?: StateSchema) {
 	return store;
 }
 
-const RootState = createReduxStore();
-type AppDispatch = typeof RootState.dispatch;
+type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
 export const useAppDispatch: () => AppDispatch = useDispatch;
