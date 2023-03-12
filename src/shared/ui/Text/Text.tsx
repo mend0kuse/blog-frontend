@@ -11,9 +11,9 @@ export enum ThemeText {
 
 interface TextProps {
 	className?: string;
-	text?: string;
+	text?: string | null;
 	theme?: ThemeText;
-	title?: string;
+	title?: string | null;
 }
 
 export const Text: FC<TextProps> = memo((props) => {

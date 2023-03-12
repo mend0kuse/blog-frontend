@@ -4,25 +4,15 @@ import { type FC, type InputHTMLAttributes, memo } from 'react';
 
 import styles from './Input.module.scss';
 
-type HtmlInput = Omit<
-	InputHTMLAttributes<HTMLInputElement>,
-	'value' | 'onChange'
->;
+type HtmlInput = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
 
 interface InputProps extends HtmlInput {
 	value: string;
-	onChange: (value: string) => void;
+	onChange?: (value: string) => void;
 }
 
 export const Input: FC<InputProps> = memo((props) => {
-	const {
-		value,
-		placeholder,
-		className,
-		type = 'text',
-		onChange,
-		...otherProps
-	} = props;
+	const { value, placeholder, className, type = 'text', onChange, ...otherProps } = props;
 
 	return (
 		<div className={styles.wrapper}>
@@ -32,7 +22,7 @@ export const Input: FC<InputProps> = memo((props) => {
 				value={value}
 				required
 				onChange={(e) => {
-					onChange(e.target.value);
+					onChange?.(e.target.value);
 				}}
 				{...otherProps}
 			/>

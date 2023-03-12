@@ -5,6 +5,7 @@
     "module": "esnext",
     // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
+    "strict": true,
     "jsx": "react-jsx",
     "allowJs": true,
     "baseUrl": ".",

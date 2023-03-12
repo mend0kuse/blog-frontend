@@ -5,7 +5,6 @@ import { type ReactNode } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter } from 'react-router-dom';
 
-import { type DeepPartial } from '@reduxjs/toolkit';
 import { render } from '@testing-library/react';
 
 export interface componentRenderOptions {
@@ -13,10 +12,7 @@ export interface componentRenderOptions {
 	initialState?: DeepPartial<StateSchema>;
 }
 
-export function componentRender(
-	component: ReactNode,
-	options: componentRenderOptions = {},
-) {
+export function componentRender(component: ReactNode, options: componentRenderOptions = {}) {
 	const { route = '/', initialState } = options;
 
 	return render(

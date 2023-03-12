@@ -43,16 +43,11 @@ export const Navbar: FC = memo(() => {
 	return (
 		<header className={cn(styles.Navbar, {})}>
 			<div className={styles.buttons}>
-				<Button
-					theme={ThemeButton.CLEAR_INVERTED}
-					onClick={authData ? onLogout : setAuthOpen}
-				>
+				<Button theme={ThemeButton.CLEAR_INVERTED} onClick={authData ? onLogout : setAuthOpen}>
 					{authData ? t('Log out') : t('Sign in')}
 				</Button>
 			</div>
-			{isAuthFormOpen && (
-				<LoginModal onClose={setAuthClose} open={isAuthFormOpen} />
-			)}
+			{isAuthFormOpen && <LoginModal onClose={setAuthClose} open={isAuthFormOpen} />}
 		</header>
 	);
 });

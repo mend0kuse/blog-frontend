@@ -3,6 +3,7 @@ import cn from 'shared/lib/classNames/cn';
 import {
 	type FC,
 	type MouseEvent,
+	type MutableRefObject,
 	type ReactNode,
 	useCallback,
 	useEffect,
@@ -27,7 +28,8 @@ export const Modal: FC<ModalProps> = (props) => {
 
 	const [isMounted, setIsMounted] = useState(false);
 
-	const timerRef = useRef<ReturnType<typeof setTimeout>>();
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+	const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
 	const [mods, setMods] = useState<Record<string, boolean>>({
 		[styles.open]: false,
