@@ -8,14 +8,14 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 render(
-	<BrowserRouter>
-		<ErrorBoundary>
+	<ErrorBoundary>
+		<BrowserRouter>
 			<StoreProvider>
 				<ThemeContextProvider>
 					<App />
 				</ThemeContextProvider>
 			</StoreProvider>
-		</ErrorBoundary>
-	</BrowserRouter>,
+		</BrowserRouter>
+	</ErrorBoundary>,
 	document.getElementById('root'),
 );

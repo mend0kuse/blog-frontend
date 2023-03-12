@@ -1,5 +1,6 @@
 import { counterReducer } from 'enteties/Counter';
 import { userReducer } from 'enteties/User';
+import { $api } from 'shared/api/api';
 
 import { useDispatch } from 'react-redux';
 
@@ -16,10 +17,18 @@ export function createReduxStore(initialState?: StateSchema) {
 
 	const reducerManager = createReducerManager(rootReducer);
 
-	const store = configureStore<StateSchema>({
+	const store = configureStore({
 		reducer: reducerManager.reduce,
 		devTools: _IS_DEV_,
 		preloadedState: initialState,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: {
+						api: $api,
+					},
+				},
+			}),
 	});
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment

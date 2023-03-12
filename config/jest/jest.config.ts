@@ -19,6 +19,7 @@ export default {
 	clearMocks: true,
 	globals: {
 		_IS_DEV_: true,
+		_API_: '',
 	},
 
 	// Indicates which provider should be used to instrument code for coverage

@@ -16,12 +16,6 @@ interface LoginModalProps {
 export const LoginModal: FC<LoginModalProps> = (props) => {
 	const { onClose, open } = props;
 
-	const authData = useSelector(getUserAuthData);
-
-	useEffect(() => {
-		if (authData) onClose();
-	}, [authData, onClose]);
-
 	return (
 		<Portal>
 			<Modal onClose={onClose} lazy open={open}>

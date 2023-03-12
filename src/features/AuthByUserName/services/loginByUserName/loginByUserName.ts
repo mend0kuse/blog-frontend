@@ -1,4 +1,5 @@
-import axios, { type AxiosResponse } from 'axios';
+import { type AsyncThunkConfig } from 'app/providers/StoreProvider';
+import { type AxiosResponse } from 'axios';
 import { type User, userActions } from 'enteties/User';
 import { USER_KEY } from 'shared/const/localStorage';
 
@@ -12,24 +13,26 @@ interface LoginByUserNameProps {
 export const loginByUserName = createAsyncThunk<
 	User,
 	LoginByUserNameProps,
-	{ rejectValue: string }
+	AsyncThunkConfig<string>
 >('login/LoginByUserName', async (authData, thunkAPI) => {
+	const {
+		extra: { api },
+		dispatch,
+		rejectWithValue,
+	} = thunkAPI;
+
 	try {
-		const response: AxiosResponse = await axios.post(
-			'http://localhost:8000/login',
-			authData,
-		);
+		const response: AxiosResponse = await api.post('/login', authData);
 
-		if (!response.data) {
-			throw new Error();
-		}
+		if (!response.data) throw new Error();
 
-		thunkAPI.dispatch(userActions.setAuthData(response.data));
+		dispatch(userActions.setAuthData(response.data));
+
 		localStorage.setItem(USER_KEY, JSON.stringify(response.data));
 
 		return response.data;
 	} catch (error) {
 		console.log(error);
-		return thunkAPI.rejectWithValue('Auth error');
+		return rejectWithValue('Auth error');
 	}
 });

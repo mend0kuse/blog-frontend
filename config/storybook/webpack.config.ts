@@ -35,6 +35,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 	config.plugins.push(
 		new DefinePlugin({
 			_IS_DEV_: true,
+			_API_: JSON.stringify('http://localhost:8000'),
 		}),
 	);
 
