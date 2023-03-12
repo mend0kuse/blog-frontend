@@ -7,8 +7,6 @@ export default {
 	component: PageLoader,
 } as ComponentMeta<typeof PageLoader>;
 
-const Template: ComponentStory<typeof PageLoader> = (args) => (
-	<PageLoader {...args} />
-);
+const Template: ComponentStory<typeof PageLoader> = (args) => <PageLoader {...args} />;
 
 export const PageLoad = Template.bind({});

@@ -7,8 +7,6 @@ export default {
 	component: PageNotFound,
 } as ComponentMeta<typeof PageNotFound>;
 
-const Template: ComponentStory<typeof PageNotFound> = (args) => (
-	<PageNotFound {...args} />
-);
+const Template: ComponentStory<typeof PageNotFound> = () => <PageNotFound />;
 
 export const Page = Template.bind({});

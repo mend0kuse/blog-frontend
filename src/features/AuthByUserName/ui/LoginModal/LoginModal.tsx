@@ -1,10 +1,8 @@
-import { getUserAuthData } from 'enteties/User';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Modal } from 'shared/ui/Modal/Modal';
 import { Portal } from 'shared/ui/Portal/Portal';
 
-import { type FC, Suspense, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { type FC, Suspense } from 'react';
 
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 

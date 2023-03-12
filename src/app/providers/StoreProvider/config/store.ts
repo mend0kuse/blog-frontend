@@ -4,7 +4,7 @@ import { $api } from 'shared/api/api';
 
 import { useDispatch } from 'react-redux';
 
-import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { type CombinedState, type Reducer, type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
 import { type StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
@@ -18,7 +18,7 @@ export function createReduxStore(initialState?: StateSchema) {
 	const reducerManager = createReducerManager(rootReducer);
 
 	const store = configureStore({
-		reducer: reducerManager.reduce,
+		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
 		devTools: _IS_DEV_,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>
@@ -39,4 +39,4 @@ export function createReduxStore(initialState?: StateSchema) {
 }
 
 type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>();

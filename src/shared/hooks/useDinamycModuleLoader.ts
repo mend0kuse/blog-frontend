@@ -10,27 +10,20 @@ export type ReducersList = {
 	[name in StateSchemaKey]?: Reducer;
 };
 
-type ReducersListEntry = [StateSchemaKey, Reducer];
-
-export const useDinamycModuleLoader = (
-	reducers: ReducersList,
-	removeAfterAnmount = true,
-) => {
+export const useDinamycModuleLoader = (reducers: ReducersList, removeAfterAnmount = true) => {
 	const dispatch = useDispatch();
 	const store = useStore() as ReduxStoreWithManager;
 
 	useEffect(() => {
-		Object.entries(reducers).forEach(
-			([key, reducer]: ReducersListEntry) => {
-				store.reducerManager.add(key, reducer);
-				dispatch({ type: `@init ${key}` });
-			},
-		);
+		Object.entries(reducers).forEach(([key, reducer]) => {
+			store.reducerManager.add(key as StateSchemaKey, reducer);
+			dispatch({ type: `@init ${key}` });
+		});
 
 		return () => {
 			if (removeAfterAnmount) {
-				Object.entries(reducers).forEach(([key]: ReducersListEntry) => {
-					store.reducerManager.remove(key);
+				Object.entries(reducers).forEach(([key]) => {
+					store.reducerManager.remove(key as StateSchemaKey);
 					dispatch({ type: `@destroy ${key}` });
 				});
 			}

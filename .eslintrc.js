@@ -40,6 +40,7 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-misused-promises': 'off',
 		'@typescript-eslint/no-floating-promises': 'off',
+		'@typescript-eslint/no-invalid-void-type': 'off',
 		'i18next/no-literal-string': [
 			'error',
 			{

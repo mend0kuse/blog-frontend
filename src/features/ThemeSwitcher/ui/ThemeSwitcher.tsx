@@ -9,9 +9,7 @@ export const ThemeSwitcher: FC = memo(() => {
 	const { theme, toggleTheme } = useTheme();
 	return (
 		<Button theme={ThemeButton.CLEAR} onClick={toggleTheme}>
-			<ThemeSwitcherIcon
-				fill={theme === Theme.LIGHT ? '#FFC700' : '#0115C6'}
-			/>
+			<ThemeSwitcherIcon fill={theme === Theme.LIGHT ? '#FFC700' : '#0115C6'} />
 		</Button>
 	);
 });
