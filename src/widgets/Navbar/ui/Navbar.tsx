@@ -3,16 +3,19 @@ import { LoginModal } from 'features/AuthByUserName';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 
-import { type FC, memo, useCallback, useState } from 'react';
+import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 
 export const Navbar: FC = memo(() => {
 	const { t } = useTranslation();
 
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
 	const authData = useSelector(getUserAuthData);
 
 	const [isAuthFormOpen, setAuthFormOpen] = useState(false);
@@ -29,6 +32,13 @@ export const Navbar: FC = memo(() => {
 	const setAuthClose = useCallback(() => {
 		setAuthFormOpen(false);
 	}, []);
+
+	useEffect(() => {
+		if (authData) {
+			setAuthFormOpen(false);
+			navigate('/profile');
+		}
+	}, [authData, setAuthFormOpen, navigate]);
 
 	return (
 		<header className={cn(styles.Navbar, {})}>

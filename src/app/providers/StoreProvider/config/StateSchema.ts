@@ -1,3 +1,4 @@
+import { type AxiosInstance } from 'axios';
 import { type CounterSchema } from 'enteties/Counter';
 import { type ProfileSchema } from 'enteties/Profile';
 import { type UserSchema } from 'enteties/User';
@@ -34,4 +35,13 @@ export interface ReducerManager {
 	) => CombinedState<StateSchema>;
 	add: (key: StateSchemaKey, reducer: Reducer) => void;
 	remove: (key: StateSchemaKey) => void;
+}
+
+export interface AsyncThunkExtra {
+	api: AxiosInstance;
+}
+
+export interface AsyncThunkConfig<T> {
+	extra: AsyncThunkExtra;
+	rejectValue: T;
 }
