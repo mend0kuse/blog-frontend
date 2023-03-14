@@ -23,6 +23,7 @@ export const profileSlice = createSlice({
 		cancelEdit(state) {
 			state.formData = state.data;
 			state.readonly = true;
+			state.validateError = undefined;
 		},
 		setFirstName(state, action: PayloadAction<Profile['first']>) {
 			state.formData = { ...state.formData, first: action.payload };
@@ -67,17 +68,18 @@ export const profileSlice = createSlice({
 			})
 			/* change profile */
 			.addCase(changeProfileData.pending, (state) => {
-				state.error = '';
+				state.validateError = undefined;
 				state.isLoading = true;
 			})
 			.addCase(changeProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
 				state.isLoading = false;
 				state.data = action.payload;
 				state.formData = action.payload;
+				state.validateError = undefined;
 			})
 			.addCase(changeProfileData.rejected, (state, action) => {
 				state.isLoading = false;
-				state.error = action.payload;
+				state.validateError = action.payload;
 			});
 	},
 });
