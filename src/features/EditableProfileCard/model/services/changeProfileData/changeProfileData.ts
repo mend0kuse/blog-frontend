@@ -6,8 +6,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getProfileFormData } from '../../selectors/getProfileFormData/getProfileFormData';
 import { profileActions } from '../../slice/profileSlice';
+import { ValidateProfileError } from './../../types/editableProfile';
+import { validateProfileData } from './../validateProfileData/validateProfileData';
 
-export const changeProfileData = createAsyncThunk<Profile, void, AsyncThunkConfig<string>>(
+export const changeProfileData = createAsyncThunk<Profile, void, AsyncThunkConfig<ValidateProfileError[]>>(
 	'profile/changeProfileData',
 	async (_, thunkAPI) => {
 		const {
@@ -20,6 +22,12 @@ export const changeProfileData = createAsyncThunk<Profile, void, AsyncThunkConfi
 		try {
 			const formData = getProfileFormData(getState());
 
+			const errors = validateProfileData(formData);
+
+			if (errors.length > 0) {
+				return rejectWithValue(errors);
+			}
+
 			const response: AxiosResponse = await api.put<Profile>('/profile', formData);
 
 			if (!response.data) throw new Error();
@@ -29,7 +37,7 @@ export const changeProfileData = createAsyncThunk<Profile, void, AsyncThunkConfi
 			return response.data;
 		} catch (error) {
 			console.log(error);
-			return rejectWithValue('Profile Error');
+			return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
 		}
 	},
 );

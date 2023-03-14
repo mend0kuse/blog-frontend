@@ -4,7 +4,7 @@ import { type Currency } from 'enteties/Currency';
 import { ProfileCard } from 'enteties/Profile';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { Text } from 'shared/ui/Text/Text';
+import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,8 +14,10 @@ import { getProfileError } from '../model/selectors/getProfileError/getProfileEr
 import { getProfileFormData } from '../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
 import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileValidateErrors } from '../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { changeProfileData } from '../model/services/changeProfileData/changeProfileData';
 import { profileActions } from '../model/slice/profileSlice';
+import { ValidateProfileError } from '../model/types/editableProfile';
 import styles from './EditableProfileCard.module.scss';
 
 interface EditableProfileCardProps {
@@ -31,6 +33,13 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 	const formData = useSelector(getProfileFormData);
 	const error = useSelector(getProfileError);
 	const readOnly = useSelector(getProfileReadonly);
+	const validateErrors = useSelector(getProfileValidateErrors);
+
+	const ValidateErrorsTranslated = {
+		[ValidateProfileError.INCORRECT_AGE]: t('Incorrect age'),
+		[ValidateProfileError.INCORRECT_USER_DATA]: t('Incorrect user data'),
+		[ValidateProfileError.SERVER_ERROR]: t('Server error'),
+	};
 
 	/* buttons handlers */
 	const onEdit = useCallback(() => {
@@ -114,6 +123,12 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 					</div>
 				)}
 			</div>
+
+			{validateErrors &&
+				validateErrors.length > 0 &&
+				validateErrors.map((err) => (
+					<Text key={err} theme={ThemeText.ERROR} text={ValidateErrorsTranslated[err]} />
+				))}
 
 			<ProfileCard
 				onChangeFirstName={onChangeFirstName}

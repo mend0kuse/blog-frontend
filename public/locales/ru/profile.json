@@ -8,5 +8,8 @@
   "Your surname": "Ваш фамилия",
   "Your age": "Ваш возраст",
   "Your username": "Ваш ник",
-  "Your avatar": "Ваш аватар"
+  "Your avatar": "Ваш аватар",
+  "Incorrect age": "Некорректный возраст",
+  "Incorrect user data": "Некорректное имя или фамилия",
+  "Server error": "Ошибка сервера"
 }
