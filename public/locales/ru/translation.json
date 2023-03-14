@@ -12,5 +12,7 @@
   "Auth form": "Форма авторизации",
   "Auth error": "Вы ввели что-то не так...",
   "Log out": "Выйти",
-  "Profile Page": "Профиль"
+  "Profile Page": "Профиль",
+  "Pick currency": "Укажите валюту",
+  "Pick country": "Укажите страну"
 }

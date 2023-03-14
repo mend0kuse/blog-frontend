@@ -6,14 +6,12 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 
 export const Navbar: FC = memo(() => {
 	const { t } = useTranslation();
 
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const authData = useSelector(getUserAuthData);
@@ -36,9 +34,8 @@ export const Navbar: FC = memo(() => {
 	useEffect(() => {
 		if (authData) {
 			setAuthFormOpen(false);
-			navigate('/profile');
 		}
-	}, [authData, setAuthFormOpen, navigate]);
+	}, [authData, setAuthFormOpen]);
 
 	return (
 		<header className={cn(styles.Navbar, {})}>

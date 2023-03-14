@@ -12,6 +12,7 @@
   "Auth form": "Auth Form",
   "Auth error": "You entered something wrong...",
   "Log out": "Sign out",
-  "Profile Page": "Profile"
-  
+  "Profile Page": "Profile",
+  "Pick currency": "Pick currency",
+  "Pick country": "Pick country"
 }

@@ -1,4 +1,12 @@
 {
   "Profile Page": "Profile",
-  "Edit": "Edit"
+  "Edit": "Edit",
+  "Profile Error": "Profile loading error",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Your name":"Your name",
+  "Your surname":"Your surname",
+  "Your age":"Your age",
+  "Your username":"Your username",
+  "Your avatar":"Your avatar"
 }
