@@ -26,10 +26,27 @@
 	color: var(--secondary-color);
 }
 
-.Input:focus ~ .label,
-.Input:not(:focus):valid ~ .label {
+.upper {
 	top: -50%;
 	left: 0;
 
 	font-size: 12px;
+}
+
+.editable {
+	animation: pulse 1s infinite linear;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.98);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(0.98);
+	}
 }

@@ -33,6 +33,12 @@ Outline.args = {
 	theme: ThemeButton.OUTLINE,
 };
 
+export const OUTLINE_ERR = Template.bind({});
+OUTLINE_ERR.args = {
+	children: 'text',
+	theme: ThemeButton.OUTLINE_ERR,
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
 	children: 'text',

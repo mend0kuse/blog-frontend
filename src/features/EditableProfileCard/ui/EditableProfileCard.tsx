@@ -1,0 +1,135 @@
+import { useAppDispatch } from 'app/providers/StoreProvider';
+import { type Country } from 'enteties/Country';
+import { type Currency } from 'enteties/Currency';
+import { ProfileCard } from 'enteties/Profile';
+import cn from 'shared/lib/classNames/cn';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Text } from 'shared/ui/Text/Text';
+
+import { type FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
+import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
+import { getProfileFormData } from '../model/selectors/getProfileFormData/getProfileFormData';
+import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
+import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
+import { changeProfileData } from '../model/services/changeProfileData/changeProfileData';
+import { profileActions } from '../model/slice/profileSlice';
+import styles from './EditableProfileCard.module.scss';
+
+interface EditableProfileCardProps {
+	className?: string;
+}
+
+export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ className }) => {
+	const { t } = useTranslation('profile');
+
+	const dispatch = useAppDispatch();
+
+	const isLoading = useSelector(getProfileLoading);
+	const formData = useSelector(getProfileFormData);
+	const error = useSelector(getProfileError);
+	const readOnly = useSelector(getProfileReadonly);
+
+	/* buttons handlers */
+	const onEdit = useCallback(() => {
+		dispatch(profileActions.setReadonly(false));
+	}, [dispatch]);
+
+	const onCancelEdit = useCallback(() => {
+		dispatch(profileActions.cancelEdit());
+	}, [dispatch]);
+
+	const onSaveEdit = useCallback(() => {
+		dispatch(changeProfileData());
+	}, [dispatch]);
+
+	/* Input handlers */
+	const onChangeFirstName = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setFirstName(value));
+		},
+		[dispatch],
+	);
+
+	const onChangeLastName = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setLastName(value));
+		},
+		[dispatch],
+	);
+
+	const onChangeAge = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setAge(Number(value)));
+		},
+		[dispatch],
+	);
+
+	const onChangeUsername = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setUsername(value));
+		},
+		[dispatch],
+	);
+
+	const onChangeAvatar = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setAvatar(value));
+		},
+		[dispatch],
+	);
+
+	const onChangeCurrency = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setCurrency(value as Currency));
+		},
+		[dispatch],
+	);
+
+	const onChangeCountry = useCallback(
+		(value: string) => {
+			dispatch(profileActions.setCountry(value as Country));
+		},
+		[dispatch],
+	);
+
+	return (
+		<div className={cn(styles.EditableProfileCard)}>
+			<div className={styles.header}>
+				<Text title={t('Profile Page')} />
+				{readOnly ? (
+					<Button theme={ThemeButton.OUTLINE} onClick={onEdit}>
+						{t('Edit')}
+					</Button>
+				) : (
+					<div className={styles.headerBtns}>
+						<Button theme={ThemeButton.OUTLINE_ERR} onClick={onCancelEdit}>
+							{t('Cancel')}
+						</Button>
+						<Button theme={ThemeButton.OUTLINE} onClick={onSaveEdit}>
+							{t('Save')}
+						</Button>
+					</div>
+				)}
+			</div>
+
+			<ProfileCard
+				onChangeFirstName={onChangeFirstName}
+				onChangeLastName={onChangeLastName}
+				onChangeAge={onChangeAge}
+				onChangeAvatar={onChangeAvatar}
+				onChangeUsername={onChangeUsername}
+				onChangeCurrency={onChangeCurrency}
+				onChangeCountry={onChangeCountry}
+				data={formData}
+				isLoading={isLoading}
+				error={error}
+				readOnly={readOnly}
+			/>
+		</div>
+	);
+});
+
+EditableProfileCard.displayName = 'EditableProfileCard';

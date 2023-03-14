@@ -44,3 +44,12 @@
 .size_l {
 	font: var(--font-l);
 }
+
+.outline_err {
+	padding: 10px;
+
+	color: var(--red-dark);
+
+	border: 1px solid var(--red-dark);
+	background: none;
+}

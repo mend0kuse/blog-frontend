@@ -1,6 +1,6 @@
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
-import { Text } from './Text';
+import { Text, ThemeText } from './Text';
 
 export default {
 	title: 'shared/Text',
@@ -13,6 +13,13 @@ export const Full = Template.bind({});
 Full.args = {
 	title: 'Asd asd asd',
 	text: 'Lorem ipsum dolor sit amet consectetur.',
+};
+
+export const FullErr = Template.bind({});
+Full.args = {
+	title: 'Asd asd asd',
+	text: 'Lorem ipsum dolor sit amet consectetur.',
+	theme: ThemeText.ERROR,
 };
 
 export const OnlyTitle = Template.bind({});

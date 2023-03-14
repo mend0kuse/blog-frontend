@@ -9,6 +9,7 @@ export enum ThemeButton {
 	CLEAR_INVERTED = 'clearInverted',
 	PRIMARY = 'primary',
 	OUTLINE = 'outline',
+	OUTLINE_ERR = 'outline_err',
 }
 
 export enum ButtonSize {
