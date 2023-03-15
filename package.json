@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --env port=3000",
+    "start": "webpack serve --env port=3000",
+    "dev": "concurrently \"npm start\" \"npm run back:server\"",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "back:server": "node ./json-server/index.js",
@@ -53,6 +54,7 @@
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "babel-loader": "^9.1.2",
     "babel-plugin-i18next-extract": "^0.9.0",
+    "concurrently": "^7.6.0",
     "css-loader": "^6.6.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",

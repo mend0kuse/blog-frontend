@@ -1,4 +1,7 @@
 {
+	"files.associations": {
+		"**/.fttemplates/**": "plaintext",
+	},
 	"stylelint.enable": true,
 	"css.validate": true,
 	"scss.validate": true,
