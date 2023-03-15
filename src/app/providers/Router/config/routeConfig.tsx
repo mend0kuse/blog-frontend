@@ -6,7 +6,11 @@ import { AppRoutes, RouterPaths } from 'shared/config/routes/routes';
 
 import { type RouteProps } from 'react-router-dom';
 
-export const routeConfig: Record<AppRoutes, RouteProps> = {
+export type AppRoutesProps = RouteProps & {
+	authOnly?: boolean;
+};
+
+export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 	[AppRoutes.MAIN]: {
 		path: RouterPaths[AppRoutes.MAIN],
 		element: <MainPage />,
@@ -22,5 +26,6 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.PROFILE]: {
 		path: RouterPaths[AppRoutes.PROFILE],
 		element: <ProfilePage />,
+		authOnly: true,
 	},
 };

@@ -3,6 +3,7 @@ import { userActions } from 'enteties/User';
 import cn from 'shared/lib/classNames/cn';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
+import { PageLoader } from 'widgets/PageLoader';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { Suspense, useEffect } from 'react';
