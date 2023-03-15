@@ -27,14 +27,10 @@ export const Input: FC<InputProps> = memo((props) => {
 		}
 	};
 
-	const mods: Mods = {
-		[styles.editable]: !readOnly,
-	};
-
 	return (
 		<div className={styles.wrapper}>
 			<input
-				className={cn(styles.Input, mods, className)}
+				className={cn(styles.Input, {}, className)}
 				type={type}
 				value={value}
 				readOnly={readOnly}

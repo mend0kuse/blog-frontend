@@ -26,3 +26,13 @@ Card.args = {
 		avatar: 'https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg',
 	},
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+	isLoading: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+	error: 'Auth Error',
+};
