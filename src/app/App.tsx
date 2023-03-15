@@ -1,5 +1,6 @@
 import { AppRouter } from 'app/providers/Router';
 import { userActions } from 'enteties/User';
+import { getUserInit } from 'enteties/User/model/selectors/getUserInit';
 import cn from 'shared/lib/classNames/cn';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
@@ -7,7 +8,7 @@ import { PageLoader } from 'widgets/PageLoader';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './styles/';
 
@@ -18,14 +19,18 @@ const App = () => {
 		dispath(userActions.initAuthData());
 	}, [dispath]);
 
+	const _init = useSelector(getUserInit);
+
 	return (
 		<div className={cn('app', {})}>
 			<Suspense fallback={<Loader />}>
 				<Navbar />
-				<div className='content'>
-					<Sidebar />
-					<AppRouter />
-				</div>
+				{_init && (
+					<div className='content'>
+						<Sidebar />
+						<AppRouter />
+					</div>
+				)}
 			</Suspense>
 		</div>
 	);
