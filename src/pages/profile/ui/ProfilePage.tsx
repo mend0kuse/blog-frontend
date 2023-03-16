@@ -14,7 +14,9 @@ const ProfilePage: FC = () => {
 	useDinamycModuleLoader(reducers);
 
 	useEffect(() => {
-		dispatch(fetchProfileData());
+		if (_PROJECT_ !== 'storybook') {
+			dispatch(fetchProfileData());
+		}
 	}, [dispatch]);
 
 	return <EditableProfileCard />;

@@ -10,4 +10,7 @@ export default {
 const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+	height: 200,
+	width: 200,
+};

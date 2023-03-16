@@ -1,3 +1,25 @@
 .article {
-	
+	display: flex;
+	flex-direction: column;
+}
+
+.blocksInner {
+	display: flex;
+	flex-direction: column;
+
+	margin-top: 20px;
+	row-gap: 20px;
+}
+
+.avatar {
+	align-self: center;
+}
+
+.views,
+.date {
+	display: flex;
+	align-items: center;
+
+	margin-top: 10px;
+	column-gap: 10px;
 }

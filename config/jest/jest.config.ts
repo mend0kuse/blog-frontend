@@ -20,6 +20,7 @@ export default {
 	globals: {
 		_IS_DEV_: true,
 		_API_: '',
+		_PROJECT_: 'jest',
 	},
 
 	// Indicates which provider should be used to instrument code for coverage

@@ -23,7 +23,8 @@ body {
 	overflow-y: auto;
 	flex-grow: 1;
 
-	height: calc(100vh - var(--navbar-height));
+	width: 100%;
 
+	height: calc(100vh - var(--navbar-height));
 	padding: 20px;
 }
