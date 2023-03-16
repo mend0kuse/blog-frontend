@@ -6,12 +6,10 @@ import { useTranslation } from 'react-i18next';
 const MainPage: FC = () => {
 	const { t } = useTranslation();
 	return (
-		<div className='page-wrapper'>
-			<>
-				{t('Main Page')}
-				<Counter />
-			</>
-		</div>
+		<>
+			{t('Main Page')}
+			<Counter />
+		</>
 	);
 };
 

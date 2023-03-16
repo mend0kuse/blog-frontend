@@ -17,11 +17,7 @@ const ProfilePage: FC = () => {
 		dispatch(fetchProfileData());
 	}, [dispatch]);
 
-	return (
-		<div className='page-wrapper'>
-			<EditableProfileCard />
-		</div>
-	);
+	return <EditableProfileCard />;
 };
 
 export default ProfilePage;

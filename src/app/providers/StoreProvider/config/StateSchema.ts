@@ -1,4 +1,5 @@
 import { type AxiosInstance } from 'axios';
+import { type ArticleSchema } from 'enteties/Article';
 import { type CounterSchema } from 'enteties/Counter';
 import { type UserSchema } from 'enteties/User';
 import { type LoginSchema } from 'features/AuthByUserName';
@@ -14,6 +15,7 @@ export interface StateSchema {
 	// Async
 	profile?: ProfileSchema;
 	login?: LoginSchema;
+	articleDetails?: ArticleSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

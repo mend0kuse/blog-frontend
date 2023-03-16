@@ -4,7 +4,6 @@ import { getUserInit } from 'enteties/User/model/selectors/getUserInit';
 import cn from 'shared/lib/classNames/cn';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Navbar } from 'widgets/Navbar';
-import { PageLoader } from 'widgets/PageLoader';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { Suspense, useEffect } from 'react';
@@ -28,7 +27,9 @@ const App = () => {
 				{_init && (
 					<div className='content'>
 						<Sidebar />
-						<AppRouter />
+						<div className='page-wrapper'>
+							<AppRouter />
+						</div>
 					</div>
 				)}
 			</Suspense>
