@@ -8,6 +8,8 @@ import { type ProfileSchema } from 'features/EditableProfileCard';
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
+import { type ArticleDetailsCommentsSchema } from './../../../../pages/articleDetails/model/types/articleDetails';
+
 export interface StateSchema {
 	counter: CounterSchema;
 	user: UserSchema;
@@ -16,6 +18,7 @@ export interface StateSchema {
 	profile?: ProfileSchema;
 	login?: LoginSchema;
 	articleDetails?: ArticleSchema;
+	articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

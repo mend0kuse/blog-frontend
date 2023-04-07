@@ -8,8 +8,8 @@ import styles from './Skeleton.module.scss';
 interface SkeletonProps {
 	className?: string;
 	borderRadius?: number | string;
-	width?: number;
-	height?: number;
+	width?: number | string;
+	height?: number | string;
 }
 
 export const Skeleton: FC<SkeletonProps> = (props) => {

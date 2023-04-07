@@ -91,6 +91,7 @@ export const ArticleDetails: FC<ArticleProps> = memo((props) => {
 			</div>
 
 			<div className={styles.blocksInner}>{data?.blocks.map(renderBlock)}</div>
+
 		</div>
 	);
 });
