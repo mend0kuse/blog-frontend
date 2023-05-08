@@ -9,35 +9,36 @@ import { profileActions } from '../../slice/profileSlice';
 import { ValidateProfileError } from './../../types/editableProfile';
 import { validateProfileData } from './../validateProfileData/validateProfileData';
 
-export const changeProfileData = createAsyncThunk<Profile, void, AsyncThunkConfig<ValidateProfileError[]>>(
-	'profile/changeProfileData',
-	async (_, thunkAPI) => {
-		const {
-			extra: { api },
-			rejectWithValue,
-			dispatch,
-			getState,
-		} = thunkAPI;
+export const changeProfileData = createAsyncThunk<
+	Profile,
+	string | undefined,
+	AsyncThunkConfig<ValidateProfileError[]>
+>('profile/changeProfileData', async (id = '', thunkAPI) => {
+	const {
+		extra: { api },
+		rejectWithValue,
+		dispatch,
+		getState,
+	} = thunkAPI;
 
-		try {
-			const formData = getProfileFormData(getState());
+	try {
+		const formData = getProfileFormData(getState());
 
-			const errors = validateProfileData(formData);
+		const errors = validateProfileData(formData);
 
-			if (errors.length > 0) {
-				return rejectWithValue(errors);
-			}
-
-			const response: AxiosResponse = await api.put<Profile>('/profile', formData);
-
-			if (!response.data) throw new Error();
-
-			dispatch(profileActions.setReadonly(true));
-
-			return response.data;
-		} catch (error) {
-			console.log(error);
-			return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
+		if (errors.length > 0) {
+			return rejectWithValue(errors);
 		}
-	},
-);
+
+		const response: AxiosResponse = await api.put<Profile>(`/profile/${id}`, formData);
+
+		if (!response.data) throw new Error();
+
+		dispatch(profileActions.setReadonly(true));
+
+		return response.data;
+	} catch (error) {
+		console.log(error);
+		return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
+	}
+});

@@ -1,8 +1,10 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
 import { EditableProfileCard, fetchProfileData, profileReducer } from 'features/EditableProfileCard';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
+import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 
-import { type FC, useEffect } from 'react';
+import { type FC } from 'react';
+import { useParams } from 'react-router-dom';
 
 const reducers: ReducersList = {
 	profile: profileReducer,
@@ -11,13 +13,13 @@ const reducers: ReducersList = {
 const ProfilePage: FC = () => {
 	const dispatch = useAppDispatch();
 
+	const { id } = useParams<{ id: string }>();
+
 	useDinamycModuleLoader(reducers);
 
-	useEffect(() => {
-		if (_PROJECT_ !== 'storybook') {
-			dispatch(fetchProfileData());
-		}
-	}, [dispatch]);
+	useInititalEffect(() => {
+		dispatch(fetchProfileData(id));
+	});
 
 	return <EditableProfileCard />;
 };

@@ -118,14 +118,28 @@
       "avatar": "https://cq.ru/storage/uploads/images/1526136/1.jpeg"
     }
   ],
-  "profile": {
-    "first": "Семён",
-    "lastname": "Васильев",
-    "age": 19,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Irkutsk",
-    "username": "admin",
-    "avatar": "https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg"
-  }
+  "profile":[
+    {
+      "id":"1",
+      "first": "Семён",
+      "lastname": "Васильев",
+      "age": 19,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Irkutsk",
+      "username": "admin",
+      "avatar": "https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg"
+    },
+    {
+      "id":"2",
+      "first": "zxc",
+      "lastname": "asd",
+      "age": 22,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Irkutsk",
+      "username": "sam",
+      "avatar": "https://cq.ru/storage/uploads/images/1526136/1.jpeg"
+    }
+  ] 
 }

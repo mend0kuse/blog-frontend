@@ -4,16 +4,16 @@ import { type Profile } from 'enteties/Profile';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, AsyncThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, string | undefined, AsyncThunkConfig<string>>(
 	'profile/getProfileData',
-	async (_, thunkAPI) => {
+	async (id = '', thunkAPI) => {
 		const {
 			extra: { api },
 			rejectWithValue,
 		} = thunkAPI;
 
 		try {
-			const response: AxiosResponse = await api.get<Profile>('/profile');
+			const response: AxiosResponse = await api.get<Profile>('/profile/' + id);
 
 			if (!response.data) throw new Error();
 			return response.data;

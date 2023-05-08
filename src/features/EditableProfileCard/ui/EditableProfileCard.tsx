@@ -2,6 +2,7 @@ import { useAppDispatch } from 'app/providers/StoreProvider';
 import { type Country } from 'enteties/Country';
 import { type Currency } from 'enteties/Currency';
 import { ProfileCard } from 'enteties/Profile';
+import { getUserAuthData } from 'enteties/User';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
@@ -9,6 +10,7 @@ import { Text, ThemeText } from 'shared/ui/Text/Text';
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { getProfileFormData } from '../model/selectors/getProfileFormData/getProfileFormData';
@@ -31,9 +33,15 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 
 	const isLoading = useSelector(getProfileLoading);
 	const formData = useSelector(getProfileFormData);
+	const authData = useSelector(getUserAuthData);
+
+	const canEdit = formData?.id === authData?.id;
+
 	const error = useSelector(getProfileError);
 	const readOnly = useSelector(getProfileReadonly);
 	const validateErrors = useSelector(getProfileValidateErrors);
+
+	const { id } = useParams<{ id: string }>();
 
 	const ValidateErrorsTranslated = {
 		[ValidateProfileError.INCORRECT_AGE]: t('Incorrect age'),
@@ -51,8 +59,8 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 	}, [dispatch]);
 
 	const onSaveEdit = useCallback(() => {
-		dispatch(changeProfileData());
-	}, [dispatch]);
+		dispatch(changeProfileData(id));
+	}, [dispatch, id]);
 
 	/* Input handlers */
 	const onChangeFirstName = useCallback(
@@ -108,19 +116,23 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 		<div className={cn(styles.EditableProfileCard)}>
 			<div className={styles.header}>
 				<Text title={t('Profile Page')} />
-				{readOnly ? (
-					<Button theme={ThemeButton.OUTLINE} onClick={onEdit}>
-						{t('Edit')}
-					</Button>
-				) : (
-					<div className={styles.headerBtns}>
-						<Button theme={ThemeButton.OUTLINE_ERR} onClick={onCancelEdit}>
-							{t('Cancel')}
-						</Button>
-						<Button theme={ThemeButton.OUTLINE} onClick={onSaveEdit}>
-							{t('Save')}
-						</Button>
-					</div>
+				{canEdit && (
+					<>
+						{readOnly ? (
+							<Button theme={ThemeButton.OUTLINE} onClick={onEdit}>
+								{t('Edit')}
+							</Button>
+						) : (
+							<div className={styles.headerBtns}>
+								<Button theme={ThemeButton.OUTLINE_ERR} onClick={onCancelEdit}>
+									{t('Cancel')}
+								</Button>
+								<Button theme={ThemeButton.OUTLINE} onClick={onSaveEdit}>
+									{t('Save')}
+								</Button>
+							</div>
+						)}
+					</>
 				)}
 			</div>
 

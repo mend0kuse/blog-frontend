@@ -1,10 +1,11 @@
 import { LangSwitcher } from 'features/LangSwitcher';
 import { ThemeSwitcher } from 'features/ThemeSwitcher';
 import cn from 'shared/lib/classNames/cn';
-import { SidebarItemsList } from 'widgets/Sidebar/model/items';
 
 import { type FC, type HTMLAttributes, memo, useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import { getSidebarItems } from '../../model/getSidebarItems';
 import { SidebarHamburger } from '../SidebarHamburger/SidebarHamburger';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import styles from './Sidebar.module.scss';
@@ -13,6 +14,8 @@ interface SidebarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 	const [collapsed, setCollapsed] = useState(false);
+
+	const items = useSelector(getSidebarItems);
 
 	const onToggle = useCallback(() => {
 		setCollapsed((prev) => !prev);
@@ -25,7 +28,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 
 			{/* Links */}
 			<nav className={styles.links}>
-				{SidebarItemsList.map((item) => (
+				{items.map((item) => (
 					<SidebarItem key={item.path} collapsed={collapsed} item={item} />
 				))}
 			</nav>

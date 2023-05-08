@@ -20,7 +20,7 @@ describe('fetchProfileData', () => {
 
 		asyncThunk.api.get.mockReturnValue(Promise.resolve({ data }));
 
-		const result = await asyncThunk.callThunk();
+		const result = await asyncThunk.callThunk('1');
 
 		expect(asyncThunk.dispatch).toHaveBeenCalledTimes(2);
 		expect(asyncThunk.api.get).toHaveBeenCalled();
@@ -33,11 +33,12 @@ describe('fetchProfileData', () => {
 
 		asyncThunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
 
-		const result = await asyncThunk.callThunk();
+		const result = await asyncThunk.callThunk('1');
 
 		expect(asyncThunk.dispatch).toHaveBeenCalledTimes(2);
 		expect(asyncThunk.api.get).toHaveBeenCalled();
 		expect(result.meta.requestStatus).toBe('rejected');
+
 		expect(result.payload).toBe('Profile Error');
 	});
 });
