@@ -10,10 +10,11 @@ interface InputProps extends HtmlInput {
 	value?: string | number;
 	placeholder?: string | null;
 	onChange?: (value: string) => void;
+	withoutUpper?: boolean;
 }
 
 export const Input: FC<InputProps> = memo((props) => {
-	const { value, placeholder, readOnly, className, type = 'text', onChange, ...otherProps } = props;
+	const { value, placeholder, readOnly, withoutUpper, className, type = 'text', onChange, ...otherProps } = props;
 
 	const [upper, setUpper] = useState(Boolean(value));
 
@@ -28,12 +29,13 @@ export const Input: FC<InputProps> = memo((props) => {
 	};
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={cn(styles.wrapper, { [styles.withoutUpper]: withoutUpper }, className)}>
 			<input
-				className={cn(styles.Input, {}, className)}
+				className={cn(styles.Input, {})}
 				type={type}
 				value={value}
 				readOnly={readOnly}
+				placeholder={withoutUpper && placeholder ? placeholder : ''}
 				onFocus={onUpper}
 				onBlur={onCancelUpper}
 				onChange={(e) => {
@@ -41,7 +43,7 @@ export const Input: FC<InputProps> = memo((props) => {
 				}}
 				{...otherProps}
 			/>
-			{placeholder && <span className={cn(styles.label, { [styles.upper]: upper })}>{placeholder}</span>}
+			{!withoutUpper && <span className={cn(styles.label, { [styles.upper]: upper })}>{placeholder}</span>}
 		</div>
 	);
 });

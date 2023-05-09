@@ -20,8 +20,6 @@ export const fetchCommentsByArticleId = createAsyncThunk<Comment[], string | und
 				},
 			});
 
-			console.log(response);
-
 			if (!response.data) throw new Error();
 			return response.data;
 		} catch (error) {

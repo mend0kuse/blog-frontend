@@ -2,13 +2,13 @@ import { type AxiosInstance } from 'axios';
 import { type ArticleSchema } from 'enteties/Article';
 import { type CounterSchema } from 'enteties/Counter';
 import { type UserSchema } from 'enteties/User';
+import { type AddNewCommentSchema } from 'features/AddNewComment';
 import { type LoginSchema } from 'features/AuthByUserName';
 import { type ProfileSchema } from 'features/EditableProfileCard';
+import { type ArticleDetailsCommentsSchema } from 'pages/articleDetails';
 
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
-
-import { type ArticleDetailsCommentsSchema } from './../../../../pages/articleDetails/model/types/articleDetails';
 
 export interface StateSchema {
 	counter: CounterSchema;
@@ -18,6 +18,7 @@ export interface StateSchema {
 	profile?: ProfileSchema;
 	login?: LoginSchema;
 	articleDetails?: ArticleSchema;
+	addNewComment?: AddNewCommentSchema;
 	articleDetailsComments?: ArticleDetailsCommentsSchema;
 }
 

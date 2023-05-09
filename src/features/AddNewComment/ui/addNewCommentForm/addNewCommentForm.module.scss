@@ -1,0 +1,13 @@
+.addNewCommentForm {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 20px;
+
+	border: 1px solid var(--primary-color);
+}
+
+.field {
+	flex-grow: 1;
+}

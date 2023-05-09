@@ -13,6 +13,10 @@
 	border-bottom: 1px solid var(--primary-color);
 	outline: none;
 	background: none;
+
+	&::placeholder {
+		color: inherit;
+	}
 }
 
 .label {
@@ -31,4 +35,10 @@
 	left: 0;
 
 	font-size: 12px;
+}
+
+.withoutUpper {
+	.Input {
+		border-bottom: none;
+	}
 }
