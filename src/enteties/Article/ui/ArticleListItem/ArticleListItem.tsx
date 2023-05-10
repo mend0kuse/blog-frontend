@@ -32,7 +32,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
 	if (view === ArticleView.TILE) {
 		return (
-			<div className={cn(styles.articleListItem, {}, className, styles.tile)}>
+			<div onClick={redirect} className={cn(styles.articleListItem, {}, className, styles.tile)}>
 				<div className={styles.imgBlock}>
 					<img src={article.img} className={styles.img} alt={article.title} />
 					<Text text={article.createdAt} className={styles.created} />

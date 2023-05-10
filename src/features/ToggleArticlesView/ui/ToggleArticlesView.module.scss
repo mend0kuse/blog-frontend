@@ -1,0 +1,13 @@
+.toggleArticlesView {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.icon {
+	transition: 0.2s linear all;
+}
+
+.selected {
+	fill: var(--secondary-color);
+}

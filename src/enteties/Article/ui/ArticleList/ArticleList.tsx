@@ -11,6 +11,7 @@ interface ArticleListProps {
 	className?: string;
 	articles?: Article[];
 	view?: ArticleView;
+	isLoading: boolean;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -19,11 +20,11 @@ const getSkeletons = (view: ArticleView) =>
 		.map((item, index) => <ArticleListItemSkeleton key={index} view={view} />);
 
 export const ArticleList: FC<ArticleListProps> = memo((props) => {
-	const { className, articles, view = ArticleView.TILE } = props;
+	const { className, isLoading, articles, view = ArticleView.TILE } = props;
 
-	// if (true) {
-	// 	return <div className={cn(styles.articleList, {}, className, styles[view])}>{getSkeletons(view)}</div>;
-	// }
+	if (isLoading) {
+		return <div className={cn(styles.articleList, {}, className, styles[view])}>{getSkeletons(view)}</div>;
+	}
 
 	return (
 		<div className={cn(styles.articleList, {}, className, styles[view])}>

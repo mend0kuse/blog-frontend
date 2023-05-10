@@ -6,6 +6,7 @@ import { type AddNewCommentSchema } from 'features/AddNewComment';
 import { type LoginSchema } from 'features/AuthByUserName';
 import { type ProfileSchema } from 'features/EditableProfileCard';
 import { type ArticleDetailsCommentsSchema } from 'pages/articleDetails';
+import { type ArticlesSchema } from 'pages/articles';
 
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
@@ -20,6 +21,7 @@ export interface StateSchema {
 	articleDetails?: ArticleSchema;
 	addNewComment?: AddNewCommentSchema;
 	articleDetailsComments?: ArticleDetailsCommentsSchema;
+	articles?: ArticlesSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
