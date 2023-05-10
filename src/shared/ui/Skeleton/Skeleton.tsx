@@ -1,7 +1,6 @@
 import cn from 'shared/lib/classNames/cn';
 
 import { type CSSProperties, type FC } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import styles from './Skeleton.module.scss';
 

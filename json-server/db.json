@@ -14,6 +14,7 @@
   "articles": [
     {
       "id": "1",
+      "userId": "1",
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
@@ -161,7 +162,7 @@
   "users": [
     {
       "id": "1",
-      "username": "admin",
+      "username": "Семён",
       "password": "123",
       "avatar": "https://i.pinimg.com/originals/a8/8b/b6/a88bb6c1cbeeafe541d381d6d15d23d1.jpg"
     },
@@ -182,7 +183,7 @@
       "country": "Russia",
       "city": "Irkutsk",
       "username": "admin",
-      "avatar": "https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg"
+      "avatar": "https://i.pinimg.com/originals/a8/8b/b6/a88bb6c1cbeeafe541d381d6d15d23d1.jpg"
     },
     {
       "id": "2",

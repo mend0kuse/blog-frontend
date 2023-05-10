@@ -5,12 +5,13 @@ import { AddNewCommentForm } from 'features/AddNewComment';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
+import { Button } from 'shared/ui/Button/Button';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { getArticleCommentsError, getArticleCommentsisLoading } from '../model/selectors/articleCommentsSelectors';
 import { articleDetailsCommentsReducer, getArticleComments } from '../model/slice/articleCommentsSlice';
@@ -28,8 +29,11 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	const { className } = props;
-	const { t } = useTranslation();
+
+	const { t } = useTranslation('article-details');
+
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const { id } = useParams<{ id: string }>();
 
@@ -51,12 +55,17 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		[dispatch],
 	);
 
+	const backToAllHandler = useCallback(() => {
+		navigate(`/articles`);
+	}, [navigate]);
+
 	if (!id) {
 		return <Text title={t('Article not found')} theme={ThemeText.ERROR} />;
 	}
 
 	return (
 		<div className={cn(styles.articleDetailsPage, {}, className)}>
+			<Button onClick={backToAllHandler}>{t('Back to all')}</Button>
 			<ArticleDetails id={id} />
 			<AddNewCommentForm onSend={sendComment} />
 			<CommentList error={error} isLoading={isLoading} comments={comments} />

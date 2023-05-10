@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getNewCommentText } from '../../model/selectors/addNewCommentSelectors';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slices/addNewCommentSlice';
-import styles from './AddNewCommentForm.module.scss';
+import styles from './addNewCommentForm.module.scss';
 
 const reducers: ReducersList = {
 	addNewComment: addNewCommentReducer,

@@ -16,6 +16,7 @@ export const LangSwitcher: FC<LangSwitcherProps> = memo(({ short }) => {
 	const toggleLang = async () => {
 		await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
 	};
+
 	return (
 		<Button onClick={toggleLang} theme={ThemeButton.CLEAR} className={cn(styles.LangSwitcher)}>
 			{short ? t('Short Lang') : t('Lang')}

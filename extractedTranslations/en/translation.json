@@ -4,6 +4,7 @@
   "About us": "",
   "Article not found": "",
   "Auth form": "",
+  "Back to all": "",
   "Cancel": "",
   "Comments": "",
   "Edit": "",
@@ -29,6 +30,7 @@
   "Pick country": "",
   "Pick currency": "",
   "Profile Page": "",
+  "Read More": "",
   "Reload Page": "",
   "S": "",
   "Save": "",
@@ -49,6 +51,13 @@
   "decr": "",
   "incr": "",
   "Форма авторизации": "",
+  "Читать далее": {
+    "": {
+      "": {
+        "": ""
+      }
+    }
+  },
   "Яз": "",
   "Язык": "",
   "я": ""
