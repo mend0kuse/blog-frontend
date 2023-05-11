@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 import {
 	getArticlesHasMore,
+	getArticlesInited,
 	getArticlesLoading,
 	getArticlesPage,
 	getArticlesView,
@@ -38,12 +39,15 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	const view = useSelector(getArticlesView);
 	const page = useSelector(getArticlesPage);
 	const hasMore = useSelector(getArticlesHasMore);
+	const inited = useSelector(getArticlesInited);
 
-	useDinamycModuleLoader(reducers);
+	useDinamycModuleLoader(reducers, false);
 
 	useInititalEffect(() => {
-		dispatch(articlesActions.init());
-		dispatch(fetchArticles(1));
+		if (!inited) {
+			dispatch(articlesActions.init());
+			dispatch(fetchArticles(1));
+		}
 	});
 
 	const viewClickHandler = (view: ArticleView) => {

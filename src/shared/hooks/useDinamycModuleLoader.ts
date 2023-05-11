@@ -15,9 +15,12 @@ export const useDinamycModuleLoader = (reducers: ReducersList, removeAfterAnmoun
 	const store = useStore() as ReduxStoreWithManager;
 
 	useEffect(() => {
+		const mounted = store.reducerManager.getReducerMap();
 		Object.entries(reducers).forEach(([key, reducer]) => {
-			store.reducerManager.add(key as StateSchemaKey, reducer);
-			dispatch({ type: `@init ${key}` });
+			if (!mounted[key as StateSchemaKey]) {
+				store.reducerManager.add(key as StateSchemaKey, reducer);
+				dispatch({ type: `@init ${key}` });
+			}
 		});
 
 		return () => {

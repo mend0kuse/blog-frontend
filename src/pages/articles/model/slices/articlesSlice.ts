@@ -22,6 +22,7 @@ const articlesSlice = createSlice({
 		limit: 3,
 		hasMore: false,
 		page: 1,
+		_inited: false,
 	}),
 	reducers: {
 		setView(state: ArticlesSchema, action: PayloadAction<ArticleView>) {
@@ -34,6 +35,7 @@ const articlesSlice = createSlice({
 		init(state: ArticlesSchema) {
 			state.view = (localStorage.getItem(ARTICLES_VIEW_KEY) as ArticleView) || ArticleView.TILE;
 			state.limit = state.view === ArticleView.TILE ? 9 : 3;
+			state._inited = true;
 		},
 	},
 	extraReducers(builder) {
