@@ -6,6 +6,7 @@ import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinam
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useCallback } from 'react';
@@ -64,12 +65,14 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	}
 
 	return (
-		<div className={cn(styles.articleDetailsPage, {}, className)}>
-			<Button onClick={backToAllHandler}>{t('Back to all')}</Button>
-			<ArticleDetails id={id} />
-			<AddNewCommentForm onSend={sendComment} />
-			<CommentList error={error} isLoading={isLoading} comments={comments} />
-		</div>
+		<Page>
+			<div className={cn(styles.articleDetailsPage, {}, className)}>
+				<Button onClick={backToAllHandler}>{t('Back to all')}</Button>
+				<ArticleDetails id={id} />
+				<AddNewCommentForm onSend={sendComment} />
+				<CommentList error={error} isLoading={isLoading} comments={comments} />
+			</div>
+		</Page>
 	);
 };
 

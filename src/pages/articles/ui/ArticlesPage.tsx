@@ -5,11 +5,17 @@ import { ToggleArticlesView } from 'features/ToggleArticlesView';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
+import { Page } from 'shared/ui/Page/Page';
 
-import { type FC, memo } from 'react';
+import { type FC, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getArticlesLoading, getArticlesView } from '../model/selectors/articlesSelectors';
+import {
+	getArticlesHasMore,
+	getArticlesLoading,
+	getArticlesPage,
+	getArticlesView,
+} from '../model/selectors/articlesSelectors';
 import { articlesActions, articlesReducer, getArticles } from '../model/slices/articlesSlice';
 import { fetchArticles } from '../services/fetchArticles';
 import styles from './ArticlesPage.module.scss';
@@ -30,23 +36,34 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	const articles = useSelector(getArticles.selectAll);
 	const isLoading = useSelector(getArticlesLoading);
 	const view = useSelector(getArticlesView);
+	const page = useSelector(getArticlesPage);
+	const hasMore = useSelector(getArticlesHasMore);
 
 	useDinamycModuleLoader(reducers);
 
 	useInititalEffect(() => {
-		dispatch(fetchArticles());
 		dispatch(articlesActions.init());
+		dispatch(fetchArticles(1));
 	});
 
 	const viewClickHandler = (view: ArticleView) => {
 		dispatch(articlesActions.setView(view));
 	};
 
+	const nextPageFetch = useCallback(() => {
+		if (!isLoading && hasMore) {
+			dispatch(articlesActions.setPage(page + 1));
+			dispatch(fetchArticles(page + 1));
+		}
+	}, [dispatch, hasMore, isLoading, page]);
+
 	return (
-		<div className={cn(styles.articlesPage, {}, className)}>
-			<ToggleArticlesView onClick={viewClickHandler} selected={view} />
-			<ArticleList articles={articles} view={view} isLoading={isLoading} />
-		</div>
+		<Page onScrollEnd={nextPageFetch}>
+			<div className={cn(styles.articlesPage, {}, className)}>
+				<ToggleArticlesView onClick={viewClickHandler} selected={view} />
+				<ArticleList articles={articles} view={view} isLoading={isLoading} />
+			</div>
+		</Page>
 	);
 };
 

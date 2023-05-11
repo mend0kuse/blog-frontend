@@ -4,18 +4,26 @@ import { type Article } from 'enteties/Article';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchArticles = createAsyncThunk<Article[], void, AsyncThunkConfig<string>>(
+import { getArticlesLimit } from '../model/selectors/articlesSelectors';
+
+export const fetchArticles = createAsyncThunk<Article[], number, AsyncThunkConfig<string>>(
 	'articles/fetchArticles',
-	async (_, thunkAPI) => {
+	async (page, thunkAPI) => {
 		const {
 			extra: { api },
 			rejectWithValue,
+			dispatch,
+			getState,
 		} = thunkAPI;
 
 		try {
+			const limit = getArticlesLimit(getState());
+
 			const response: AxiosResponse = await api.get<Article[]>('/articles', {
 				params: {
 					_expand: 'user',
+					_page: page,
+					_limit: limit,
 				},
 			});
 

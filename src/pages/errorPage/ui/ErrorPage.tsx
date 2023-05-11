@@ -1,4 +1,5 @@
 import { Button } from 'shared/ui/Button/Button';
+import { Page } from 'shared/ui/Page/Page';
 
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,9 +12,11 @@ export const ErrorPage: FC = () => {
 	};
 
 	return (
-		<div>
-			<p>{t('Error happens')}</p>
-			<Button onClick={reloadPage}>{t('Reload Page')}</Button>
-		</div>
+		<Page>
+			<div>
+				<p>{t('Error happens')}</p>
+				<Button onClick={reloadPage}>{t('Reload Page')}</Button>
+			</div>
+		</Page>
 	);
 };

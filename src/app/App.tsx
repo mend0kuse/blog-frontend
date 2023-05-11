@@ -27,9 +27,7 @@ const App = () => {
 				{_init && (
 					<div className='content'>
 						<Sidebar />
-						<div className='page-wrapper'>
-							<AppRouter />
-						</div>
+						<AppRouter />
 					</div>
 				)}
 			</Suspense>

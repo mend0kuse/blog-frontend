@@ -1,4 +1,5 @@
 import { Counter } from 'enteties/Counter';
+import { Page } from 'shared/ui/Page/Page';
 
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -6,10 +7,12 @@ import { useTranslation } from 'react-i18next';
 const MainPage: FC = () => {
 	const { t } = useTranslation();
 	return (
-		<>
-			{t('Main Page')}
-			<Counter />
-		</>
+		<Page>
+			<>
+				{t('Main Page')}
+				<Counter />
+			</>
+		</Page>
 	);
 };
 
