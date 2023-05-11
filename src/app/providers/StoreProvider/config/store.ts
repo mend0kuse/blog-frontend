@@ -1,5 +1,6 @@
 import { counterReducer } from 'enteties/Counter';
 import { userReducer } from 'enteties/User';
+import { savePageScrollReducer } from 'features/SavePageScroll';
 import { $api } from 'shared/api/api';
 
 import { useDispatch } from 'react-redux';
@@ -14,6 +15,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 		...asyncReducers,
 		counter: counterReducer,
 		user: userReducer,
+		pageScroll: savePageScrollReducer,
 	};
 
 	const reducerManager = createReducerManager(rootReducer);

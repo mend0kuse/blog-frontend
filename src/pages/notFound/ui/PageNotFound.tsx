@@ -1,5 +1,5 @@
 import cn from 'shared/lib/classNames/cn';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 
 import { type FC, type HTMLAttributes } from 'react';
 import { useTranslation } from 'react-i18next';

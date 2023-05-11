@@ -5,7 +5,7 @@ import { ToggleArticlesView } from 'features/ToggleArticlesView';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 
 import { type FC, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';

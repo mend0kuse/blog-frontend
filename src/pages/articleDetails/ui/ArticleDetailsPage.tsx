@@ -6,7 +6,7 @@ import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinam
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useCallback } from 'react';

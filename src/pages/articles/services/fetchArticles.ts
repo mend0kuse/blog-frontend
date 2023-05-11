@@ -12,7 +12,6 @@ export const fetchArticles = createAsyncThunk<Article[], number, AsyncThunkConfi
 		const {
 			extra: { api },
 			rejectWithValue,
-			dispatch,
 			getState,
 		} = thunkAPI;
 

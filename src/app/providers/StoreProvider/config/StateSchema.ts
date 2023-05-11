@@ -5,6 +5,7 @@ import { type UserSchema } from 'enteties/User';
 import { type AddNewCommentSchema } from 'features/AddNewComment';
 import { type LoginSchema } from 'features/AuthByUserName';
 import { type ProfileSchema } from 'features/EditableProfileCard';
+import { type SavePageScrollSchema } from 'features/SavePageScroll';
 import { type ArticleDetailsCommentsSchema } from 'pages/articleDetails';
 import { type ArticlesSchema } from 'pages/articles';
 
@@ -14,7 +15,7 @@ import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 export interface StateSchema {
 	counter: CounterSchema;
 	user: UserSchema;
-
+	pageScroll: SavePageScrollSchema;
 	// Async
 	profile?: ProfileSchema;
 	login?: LoginSchema;
