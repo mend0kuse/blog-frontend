@@ -1,6 +1,5 @@
 import { type StateSchema, useAppDispatch } from 'app/providers/StoreProvider';
-import { savePageScrollActions } from 'features/SavePageScroll';
-import { getPageScrollByPathname } from 'features/SavePageScroll/model/selectors/savePageScrollSelectors';
+import { getPageScrollByPathname, savePageScrollActions } from 'features/SavePageScroll';
 import { useInViewport } from 'shared/hooks/useInViewport';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import { useThrottle } from 'shared/hooks/useThrottle';

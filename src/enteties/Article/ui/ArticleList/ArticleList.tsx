@@ -1,7 +1,9 @@
 import { type Article, ArticleView } from 'enteties/Article/model/types/ArticleTypes';
 import cn from 'shared/lib/classNames/cn';
+import { Text } from 'shared/ui/Text/Text';
 
 import { type FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
@@ -22,14 +24,15 @@ const getSkeletons = (view: ArticleView) =>
 export const ArticleList: FC<ArticleListProps> = memo((props) => {
 	const { className, isLoading, articles, view = ArticleView.TILE } = props;
 
+	const { t } = useTranslation();
+
 	return (
 		<div className={cn(styles.articleList, {}, className, styles[view])}>
+			{!isLoading && articles?.length === 0 && <Text text={t('Articles not found')} />}
 			{articles?.map((article) => (
 				<ArticleListItem article={article} view={view} key={article.id} />
 			))}
-			{isLoading && (
-				<div className={cn(styles.articleList, {}, className, styles[view])}>{getSkeletons(view)}</div>
-			)}
+			{isLoading && getSkeletons(view)}
 		</div>
 	);
 });

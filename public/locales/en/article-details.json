@@ -1,5 +1,12 @@
 {
   "Article not found": "Article not found",
   "Article Fetch Error": "Article Fetch Error",
-  "Back to all": "Back to all"
+  "Back to all": "Back to all",
+  "asc": "Descending",
+  "desc": "Ascending",
+  "createdAt": "creation date",
+  "by title": "title",
+  "by views": "views",
+  "sort by": "Sort by",
+  "by": "by"
 }

@@ -1,29 +1,29 @@
 import cn from 'shared/lib/classNames/cn';
 
-import { type ChangeEvent, type FC, type SelectHTMLAttributes } from 'react';
+import { type ChangeEvent, type SelectHTMLAttributes } from 'react';
 import { useMemo } from 'react';
 
 import styles from './Select.module.scss';
 
 export type SelectHtmlProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'value' | 'onChange'>;
 
-export interface SelectOption {
-	value: string;
+export interface SelectOption<T> {
+	value: T;
 	content: string;
 }
 
-interface SelectProps extends SelectHtmlProps {
-	value?: string;
-	onChange?: (val: string) => void;
-	options?: SelectOption[];
+interface SelectProps<T> extends SelectHtmlProps {
+	value?: T;
+	onChange: (val: T) => void;
+	options: Array<SelectOption<T>>;
 	label?: string | null;
 }
 
-export const Select: FC<SelectProps> = (props) => {
+export const Select = <T extends string>(props: SelectProps<T>) => {
 	const { className, label, value, onChange, options, ...otherProps } = props;
 
 	const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-		onChange?.(e.target.value);
+		onChange?.(e.target.value as T);
 	};
 
 	const optionsList = useMemo(() => {

@@ -1,5 +1,5 @@
-import { CountrySelect } from 'enteties/Country';
-import { CurrencySelect } from 'enteties/Currency';
+import { type Country, CountrySelect } from 'enteties/Country';
+import { type Currency, CurrencySelect } from 'enteties/Currency';
 import cn, { type Mods } from 'shared/lib/classNames/cn';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Input } from 'shared/ui/Input/Input';
@@ -25,8 +25,8 @@ interface ProfileCardProps {
 	onChangeAge?: (val: string) => void;
 	onChangeUsername?: (val: string) => void;
 	onChangeAvatar?: (val: string) => void;
-	onChangeCurrency?: (val: string) => void;
-	onChangeCountry?: (val: string) => void;
+	onChangeCurrency: (val: Currency) => void;
+	onChangeCountry: (val: Country) => void;
 }
 
 export const ProfileCard: FC<ProfileCardProps> = (props) => {

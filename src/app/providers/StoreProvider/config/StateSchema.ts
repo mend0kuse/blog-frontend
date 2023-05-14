@@ -3,6 +3,9 @@ import { type ArticleSchema } from 'enteties/Article';
 import { type CounterSchema } from 'enteties/Counter';
 import { type UserSchema } from 'enteties/User';
 import { type AddNewCommentSchema } from 'features/AddNewComment';
+import { type ArticleCategoriesSchema } from 'features/ArticleCategories';
+import { type ArticleSortFieldSchema } from 'features/ArticleSortFields';
+import { type ArticlesSearchSchema } from 'features/ArticlesSearch';
 import { type LoginSchema } from 'features/AuthByUserName';
 import { type ProfileSchema } from 'features/EditableProfileCard';
 import { type SavePageScrollSchema } from 'features/SavePageScroll';
@@ -16,13 +19,18 @@ export interface StateSchema {
 	counter: CounterSchema;
 	user: UserSchema;
 	pageScroll: SavePageScrollSchema;
+
 	// Async
 	profile?: ProfileSchema;
 	login?: LoginSchema;
+	/* ARTICLES */
 	articleDetails?: ArticleSchema;
 	addNewComment?: AddNewCommentSchema;
 	articleDetailsComments?: ArticleDetailsCommentsSchema;
 	articles?: ArticlesSchema;
+	articleSort?: ArticleSortFieldSchema;
+	articlesSearch?: ArticlesSearchSchema;
+	articlesCategories?: ArticleCategoriesSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

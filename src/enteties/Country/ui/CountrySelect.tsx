@@ -7,11 +7,11 @@ import { Country } from '../types/Country';
 
 interface CountrySelectProps extends SelectHtmlProps {
 	className?: string;
-	value?: string;
-	onChange?: (val: string) => void;
+	value?: Country;
+	onChange: (val: Country) => void;
 }
 
-const options: SelectOption[] = [
+const options: Array<SelectOption<Country>> = [
 	{ value: Country.Armenia, content: Country.Armenia },
 	{ value: Country.Belarus, content: Country.Belarus },
 	{ value: Country.Kazakhstan, content: Country.Kazakhstan },
@@ -21,5 +21,5 @@ const options: SelectOption[] = [
 
 export const CountrySelect: FC<CountrySelectProps> = (props) => {
 	const { t } = useTranslation('');
-	return <Select options={options} label={t('Pick country')} {...props} />;
+	return <Select<Country> options={options} label={t('Pick country')} {...props} />;
 };

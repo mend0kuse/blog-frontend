@@ -7,11 +7,11 @@ import { Currency } from '../types/Currency';
 
 interface CurrencySelectProps extends SelectHtmlProps {
 	className?: string;
-	value?: string;
-	onChange?: (val: string) => void;
+	value?: Currency;
+	onChange: (val: Currency) => void;
 }
 
-const options: SelectOption[] = [
+const options: Array<SelectOption<Currency>> = [
 	{ value: Currency.EUR, content: Currency.EUR },
 	{ value: Currency.RUB, content: Currency.RUB },
 	{ value: Currency.USD, content: Currency.USD },
@@ -19,5 +19,5 @@ const options: SelectOption[] = [
 
 export const CurrencySelect: FC<CurrencySelectProps> = (props) => {
 	const { t } = useTranslation('');
-	return <Select options={options} label={t('Pick currency')} {...props} />;
+	return <Select<Currency> options={options} label={t('Pick currency')} {...props} />;
 };

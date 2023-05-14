@@ -2,7 +2,9 @@
   "": "",
   "A": "",
   "About us": "",
+  "All articles": "",
   "Article not found": "",
+  "Articles not found": "",
   "Auth form": "",
   "Back to all": "",
   "Cancel": "",
@@ -34,6 +36,7 @@
   "Reload Page": "",
   "S": "",
   "Save": "",
+  "Search": "",
   "Send": "",
   "Server error": "",
   "Short Lang": "",
@@ -48,8 +51,15 @@
   "Your name": "",
   "Your surname": "",
   "Your username": "",
+  "asc": "",
+  "by": "",
+  "by title": "",
+  "by views": "",
+  "createdAt": "",
   "decr": "",
+  "desc": "",
   "incr": "",
+  "sort by": "",
   "Форма авторизации": "",
   "Читать далее": {
     "": {
@@ -60,5 +70,6 @@
   },
   "Яз": "",
   "Язык": "",
+  "по убыванию": "",
   "я": ""
 }
