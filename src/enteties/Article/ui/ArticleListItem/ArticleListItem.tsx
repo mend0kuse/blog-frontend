@@ -3,57 +3,54 @@ import cn from 'shared/lib/classNames/cn';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Card } from 'shared/ui/Card/Card';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { SizeText, Text } from 'shared/ui/Text/Text';
 
-import { type FC, memo, useCallback } from 'react';
+import { type FC, type HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { AricleBlockType, type Article, type ArticleBlockText, ArticleView } from '../../model/types/ArticleTypes';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import styles from './ArticleListItem.module.scss';
-import { Card } from 'shared/ui/Card/Card';
 
 interface ArticleListItemProps {
 	className?: string;
 	article: Article;
 	view: ArticleView;
+	target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
-	const { className, article, view } = props;
+	const { className, article, view, target } = props;
 	const { t } = useTranslation();
-
-	const navigate = useNavigate();
-
-	const redirect = useCallback(() => {
-		navigate(`/articles/${article.id}`);
-	}, [article.id, navigate]);
 
 	if (view === ArticleView.TILE) {
 		return (
-			<Card onClick={redirect} className={cn(styles.articleListItem, {}, className, styles.tile)}>
-				<div className={styles.imgBlock}>
-					<img src={article.img} className={styles.img} alt={article.title} />
-					<Text text={article.createdAt} className={styles.created} />
-				</div>
-				<div className={styles.info}>
-					<Text className={styles.types} text={article.type.join(', ')} />
-					<div className={styles.views}>
-						<Text className={styles.viewsCount} text={article.views} />
-						<Icon SVG={EyeIcon} />
+			<AppLink to={`/articles/${article.id}`} target={target}>
+				<Card className={cn(styles.articleListItem, {}, className, styles.tile)}>
+					<div className={styles.imgBlock}>
+						<img src={article.img} className={styles.img} alt={article.title} />
+						<Text text={article.createdAt} className={styles.created} />
 					</div>
-				</div>
-				<Text text={article.title} className={styles.title} />
-			</Card>
+					<div className={styles.info}>
+						<Text className={styles.types} text={article.type.join(', ')} />
+						<div className={styles.views}>
+							<Text className={styles.viewsCount} text={article.views} />
+							<Icon SVG={EyeIcon} />
+						</div>
+					</div>
+					<Text text={article.title} className={styles.title} />
+				</Card>
+			</AppLink>
 		);
 	}
 
 	const textBlock = article.blocks.find((i) => i.type === AricleBlockType.TEXT) as ArticleBlockText;
 
 	return (
-		<div className={cn(styles.articleListItem, {}, className, styles.list)}>
+		<Card className={cn(styles.articleListItem, {}, className, styles.list)}>
 			<div className={styles.header}>
 				<AppLink to={`/profile/${article.user.id}`} className={styles.user}>
 					<Avatar size={50} src={article.user.avatar} alt={article.user.username} className={styles.avatar} />
@@ -72,15 +69,15 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 			{textBlock && <ArticleTextBlock block={textBlock} className={styles.text} />}
 
 			<div className={styles.footer}>
-				<Button onClick={redirect} theme={ThemeButton.OUTLINE}>
-					{t('Read More')}
-				</Button>
+				<AppLink target={target} to={`/articles/${article.id}`}>
+					<Button theme={ThemeButton.OUTLINE}>{t('Read More')}</Button>
+				</AppLink>
 				<div className={styles.views}>
 					<Text className={styles.viewsCount} text={article.views} />
 					<Icon SVG={EyeIcon} />
 				</div>
 			</div>
-		</div>
+		</Card>
 	);
 });
 

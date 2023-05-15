@@ -9,7 +9,7 @@ import { type ArticlesSearchSchema } from 'features/ArticlesSearch';
 import { type LoginSchema } from 'features/AuthByUserName';
 import { type ProfileSchema } from 'features/EditableProfileCard';
 import { type SavePageScrollSchema } from 'features/SavePageScroll';
-import { type ArticleDetailsCommentsSchema } from 'pages/articleDetails';
+import { type ArticleDetailsPageSchema } from 'pages/articleDetails';
 import { type ArticlesSchema } from 'pages/articles';
 
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
@@ -23,10 +23,11 @@ export interface StateSchema {
 	// Async
 	profile?: ProfileSchema;
 	login?: LoginSchema;
-	/* ARTICLES */
+	/* ARTICLE Details */
 	articleDetails?: ArticleSchema;
+	articleDetailsPage?: ArticleDetailsPageSchema;
 	addNewComment?: AddNewCommentSchema;
-	articleDetailsComments?: ArticleDetailsCommentsSchema;
+	/* ARTICLES */
 	articles?: ArticlesSchema;
 	articleSort?: ArticleSortFieldSchema;
 	articlesSearch?: ArticlesSearchSchema;
