@@ -10,7 +10,7 @@ import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
 import { Page } from 'widgets/Page/Page';
 
-import { type FC, memo, useCallback, useEffect } from 'react';
+import { type FC, memo, useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -51,6 +51,8 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	const search = useSelector(getArticlesSearchQ);
 	const category = useSelector(getChosenCategory);
 
+	const firstRender = useRef(true);
+
 	useInititalEffect(() => {
 		if (!inited) {
 			dispatch(articlesActions.init());
@@ -74,11 +76,17 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 
 	/* Observe filters change */
 	useEffect(() => {
+		if (firstRender.current) return;
+
 		dispatch(articlesActions.setPage(1));
 		fetchWithReplace();
 	}, [dispatch, fetchWithReplace, order, sortKey, category]);
 
 	useEffect(() => {
+		if (firstRender.current) {
+			firstRender.current = false;
+			return;
+		}
 		dispatch(articlesActions.setPage(1));
 		fetchDataWithDebounce();
 	}, [dispatch, fetchDataWithDebounce, search]);
