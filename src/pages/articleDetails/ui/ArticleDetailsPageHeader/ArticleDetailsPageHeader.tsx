@@ -27,10 +27,12 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	}, [navigate]);
 
 	const editArticleHandler = useCallback(() => {
-		const url = generatePath('/articles/:id/edit', {
-			id: article?.id,
-		});
-		navigate(url);
+		if (article?.id) {
+			const url = generatePath('/articles/:id/edit', {
+				id: article.id,
+			});
+			navigate(url);
+		}
 	}, [article?.id, navigate]);
 
 	return (
