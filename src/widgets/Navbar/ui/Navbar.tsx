@@ -6,6 +6,7 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
 
@@ -13,6 +14,7 @@ export const Navbar: FC = memo(() => {
 	const { t } = useTranslation();
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const authData = useSelector(getUserAuthData);
 
@@ -37,13 +39,20 @@ export const Navbar: FC = memo(() => {
 		}
 	}, [authData, setAuthFormOpen]);
 
+	const createArticleHandler = useCallback(() => {
+		navigate('/articles/new');
+	}, [navigate]);
+
 	return (
 		<header className={cn(styles.Navbar, {})}>
-			<div className={styles.buttons}>
-				<Button theme={ThemeButton.CLEAR_INVERTED} onClick={authData ? onLogout : setAuthOpen}>
-					{authData ? t('Log out') : t('Sign in')}
+			<Button theme={ThemeButton.CLEAR_INVERTED} onClick={authData ? onLogout : setAuthOpen}>
+				{authData ? t('Log out') : t('Sign in')}
+			</Button>
+			{authData && (
+				<Button onClick={createArticleHandler} theme={ThemeButton.CLEAR_INVERTED}>
+					{t('New article')}
 				</Button>
-			</div>
+			)}
 			{isAuthFormOpen && <LoginModal onClose={setAuthClose} open={isAuthFormOpen} />}
 		</header>
 	);

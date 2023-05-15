@@ -1,6 +1,7 @@
 .Navbar {
 	display: flex;
 	align-items: center;
+	column-gap: 100px;
 
 	width: 100%;
 	height: var(--navbar-height);

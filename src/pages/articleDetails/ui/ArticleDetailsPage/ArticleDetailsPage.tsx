@@ -18,13 +18,14 @@ import {
 	getArticleCommentsError,
 	getArticleCommentsisLoading,
 	getArticleRecomendationsIsLoading,
-} from '../model/selectors/articleDetailsPageSelectors';
-import { getArticleComments } from '../model/slice/articleCommentsSlice';
-import { articleDetailsPageReducer } from '../model/slice/articlePageReducer';
-import { getArticleDetailsRecomendations } from '../model/slice/articleRecomendationsSlice';
-import { addArticleComment } from '../services/addArticleComment';
-import { fetchCommentsByArticleId } from '../services/fetchArticleComments';
-import { fetchArticleRecomendations } from '../services/fetchArticleRecomendations';
+} from '../../model/selectors/articleDetailsPageSelectors';
+import { getArticleComments } from '../../model/slice/articleCommentsSlice';
+import { articleDetailsPageReducer } from '../../model/slice/articlePageReducer';
+import { getArticleDetailsRecomendations } from '../../model/slice/articleRecomendationsSlice';
+import { addArticleComment } from '../../services/addArticleComment';
+import { fetchCommentsByArticleId } from '../../services/fetchArticleComments';
+import { fetchArticleRecomendations } from '../../services/fetchArticleRecomendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import styles from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
@@ -41,7 +42,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	const { t } = useTranslation('article-details');
 
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
 
 	const { id } = useParams<{ id: string }>();
 
@@ -67,10 +67,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 		[dispatch],
 	);
 
-	const backToAllHandler = useCallback(() => {
-		navigate(`/articles`);
-	}, [navigate]);
-
 	if (!id) {
 		return <Text title={t('Article not found')} theme={ThemeText.ERROR} />;
 	}
@@ -78,7 +74,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 	return (
 		<Page>
 			<div className={cn(styles.articleDetailsPage, {}, className)}>
-				<Button onClick={backToAllHandler}>{t('Back to all')}</Button>
+				<ArticleDetailsPageHeader />
 				<ArticleDetails id={id} />
 				<Text className={styles.recsText} title={t('Recommendations')} />
 				<ArticleList
