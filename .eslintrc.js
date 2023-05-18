@@ -25,8 +25,9 @@ module.exports = {
 		sourceType: 'module',
 		project: ['./tsconfig.json'],
 	},
-	plugins: ['react', 'prettier', 'i18next'],
+	plugins: ['react', 'prettier', 'i18next', 'fsd-path-checker-mendokuse'],
 	rules: {
+		'fsd-path-checker-mendokuse/relative-path-checker-fsd': 'error',
 		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'error',

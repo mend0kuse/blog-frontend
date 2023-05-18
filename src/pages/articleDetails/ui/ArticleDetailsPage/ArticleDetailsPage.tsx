@@ -5,14 +5,13 @@ import { AddNewCommentForm } from 'features/AddNewComment';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
-import { Button } from 'shared/ui/Button/Button';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page/Page';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import {
 	getArticleCommentsError,

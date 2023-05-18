@@ -1,5 +1,4 @@
 import { getArticleData } from 'enteties/Article';
-import { getCanEditArticle } from 'pages/articleDetails/model/selectors/articleDetailsPageSelectors';
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
 
@@ -8,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
 
+import { getCanEditArticle } from '../../model/selectors/articleDetailsPageSelectors';
 import styles from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {

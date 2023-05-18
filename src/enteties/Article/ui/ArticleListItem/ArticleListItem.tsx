@@ -7,9 +7,8 @@ import { Card } from 'shared/ui/Card/Card';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { SizeText, Text } from 'shared/ui/Text/Text';
 
-import { type FC, type HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
+import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
 import { AricleBlockType, type Article, type ArticleBlockText, ArticleView } from '../../model/types/ArticleTypes';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';

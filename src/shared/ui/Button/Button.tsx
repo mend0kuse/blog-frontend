@@ -1,7 +1,6 @@
-import cn from 'shared/lib/classNames/cn';
-
 import { type ButtonHTMLAttributes, type FC } from 'react';
 
+import cn from '../../lib/classNames/cn';
 import styles from './Button.module.scss';
 
 export enum ThemeButton {

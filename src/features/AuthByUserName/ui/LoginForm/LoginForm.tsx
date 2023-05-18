@@ -1,9 +1,3 @@
-import { getLoginError } from 'features/AuthByUserName/model/selectors/getLoginError/getLoginError';
-import { getLoginLoading } from 'features/AuthByUserName/model/selectors/getLoginLoading/getLoginLoading';
-import { getLoginPassword } from 'features/AuthByUserName/model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginUsername } from 'features/AuthByUserName/model/selectors/getLoginUsername/getLoginUsername';
-import { loginActions, loginReducer } from 'features/AuthByUserName/model/slices/loginSlice';
-import { loginByUserName } from 'features/AuthByUserName/services/loginByUserName/loginByUserName';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
@@ -14,6 +8,12 @@ import { type FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { loginActions, loginReducer } from '../../model/slices/loginSlice';
+import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
 import styles from './LoginForm.module.scss';
 
 const reducers: ReducersList = {

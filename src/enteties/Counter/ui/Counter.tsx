@@ -1,7 +1,6 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
 import { Button } from 'shared/ui/Button/Button';
 
-import { t } from 'i18next';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';

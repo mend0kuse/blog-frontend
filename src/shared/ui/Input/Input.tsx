@@ -1,4 +1,4 @@
-import cn, { type Mods } from 'shared/lib/classNames/cn';
+import cn from 'shared/lib/classNames/cn';
 
 import { type FC, type InputHTMLAttributes, memo, useState } from 'react';
 
