@@ -1,4 +1,3 @@
-import { counterReducer } from 'enteties/Counter';
 import { userReducer } from 'enteties/User';
 import { savePageScrollReducer } from 'features/SavePageScroll';
 import { $api } from 'shared/api/api';
@@ -13,7 +12,6 @@ import { createReducerManager } from './reducerManager';
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
-		counter: counterReducer,
 		user: userReducer,
 		pageScroll: savePageScrollReducer,
 	};

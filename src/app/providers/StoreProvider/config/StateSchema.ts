@@ -1,6 +1,5 @@
 import { type AxiosInstance } from 'axios';
 import { type ArticleSchema } from 'enteties/Article';
-import { type CounterSchema } from 'enteties/Counter';
 import { type UserSchema } from 'enteties/User';
 import { type AddNewCommentSchema } from 'features/AddNewComment';
 import { type ArticleCategoriesSchema } from 'features/ArticleCategories';
@@ -16,7 +15,6 @@ import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObjec
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
 export interface StateSchema {
-	counter: CounterSchema;
 	user: UserSchema;
 	pageScroll: SavePageScrollSchema;
 
