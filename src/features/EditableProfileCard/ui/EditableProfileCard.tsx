@@ -5,6 +5,7 @@ import { ProfileCard } from 'enteties/Profile';
 import { getUserAuthData } from 'enteties/User';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { HStack } from 'shared/ui/Stack';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useCallback } from 'react';
@@ -114,7 +115,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 
 	return (
 		<div className={cn(styles.EditableProfileCard)}>
-			<div className={styles.header}>
+			<HStack align='center' justify='between' className={styles.header}>
 				<Text title={t('Profile Page')} />
 				{canEdit && (
 					<>
@@ -123,18 +124,18 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo(({ classNa
 								{t('Edit')}
 							</Button>
 						) : (
-							<div className={styles.headerBtns}>
+							<HStack gap='8'>
 								<Button theme={ThemeButton.OUTLINE_ERR} onClick={onCancelEdit}>
 									{t('Cancel')}
 								</Button>
 								<Button theme={ThemeButton.OUTLINE} onClick={onSaveEdit}>
 									{t('Save')}
 								</Button>
-							</div>
+							</HStack>
 						)}
 					</>
 				)}
-			</div>
+			</HStack>
 
 			{validateErrors &&
 				validateErrors.length > 0 &&

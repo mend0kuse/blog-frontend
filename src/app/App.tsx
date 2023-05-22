@@ -3,6 +3,7 @@ import { userActions } from 'enteties/User';
 import { getUserInit } from 'enteties/User/model/selectors/getUserInit';
 import cn from 'shared/lib/classNames/cn';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { HStack } from 'shared/ui/Stack';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
@@ -25,10 +26,10 @@ const App = () => {
 			<Suspense fallback={<Loader />}>
 				<Navbar />
 				{_init && (
-					<div className='content'>
+					<HStack>
 						<Sidebar />
 						<AppRouter />
-					</div>
+					</HStack>
 				)}
 			</Suspense>
 		</div>

@@ -141,7 +141,8 @@
       "createdAt": "24.01.2022",
       "userId": "1",
       "type": [
-        "IT", "SCIENCE"
+        "IT",
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -165,7 +166,8 @@
       "createdAt": "26.02.2020",
       "userId": "1",
       "type": [
-        "IT","ECONOMICS"
+        "IT",
+        "ECONOMICS"
       ],
       "blocks": [
         {
@@ -595,6 +597,12 @@
       "articleId": "1",
       "userId": "2",
       "id": "mR-8nWF"
+    },
+    {
+      "text": "asd",
+      "articleId": "7",
+      "userId": "1",
+      "id": "0k6dJe-"
     }
   ],
   "users": [

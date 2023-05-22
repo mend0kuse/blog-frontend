@@ -29,9 +29,6 @@
 	}
 
 	.info {
-		display: flex;
-		justify-content: space-between;
-
 		margin: 10px 0;
 	}
 
@@ -42,12 +39,6 @@
 
 		white-space: nowrap;
 		text-overflow: ellipsis;
-	}
-
-	.views {
-		display: flex;
-		align-items: center;
-		column-gap: 5px;
 	}
 
 	.title p {
@@ -71,17 +62,7 @@
 }
 
 .list {
-	.header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.user {
-		display: flex;
-		column-gap: 15px;
-
-		align-items: center;
-	}
+	width: 100%;
 
 	.title {
 		margin: 15px 0;
@@ -99,17 +80,6 @@
 	}
 
 	.footer {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
 		margin-top: 20px;
-	}
-
-	.views {
-		display: flex;
-		column-gap: 10px;
-
-		align-items: center;
 	}
 }

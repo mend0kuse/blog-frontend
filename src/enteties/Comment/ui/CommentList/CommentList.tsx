@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { type Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 import styles from './CommentList.module.scss';
+import { VStack } from 'shared/ui/Stack';
 
 interface CommentListProps {
 	className?: string;
@@ -26,11 +27,11 @@ export const CommentList: FC<CommentListProps> = memo((props) => {
 	return (
 		<div className={cn(styles.commentList, {}, className)}>
 			<Text className={styles.title} title={t('Comments')} />
-			<div className={styles.inner}>
+			<VStack gap='16' className={styles.inner}>
 				{comments?.length
 					? comments.map((comm) => <CommentCard isLoading={isLoading} comment={comm} key={comm.id} />)
 					: t('Not comments yet')}
-			</div>
+			</VStack>
 		</div>
 	);
 });

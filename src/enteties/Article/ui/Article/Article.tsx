@@ -12,6 +12,7 @@ import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinam
 import cn from 'shared/lib/classNames/cn';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { SizeText, Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo, useEffect } from 'react';
@@ -74,24 +75,26 @@ export const ArticleDetails: FC<ArticleProps> = memo((props) => {
 	if (isLoading) return <ArticleSkeleton />;
 
 	return (
-		<div className={cn(styles.article, {}, className)}>
+		<VStack max className={cn(styles.article, {}, className)}>
 			<Avatar size={200} className={styles.avatar} src={data?.img} />
 			<Text title={data?.title} size={SizeText.l} text={data?.subtitle} />
 
 			{/* views */}
-			<div className={styles.views}>
+			<HStack align='center' gap='8' className={styles.views}>
 				<Icon SVG={EyeIcon} />
 				<Text text={data?.views} />
-			</div>
+			</HStack>
 
 			{/* date */}
-			<div className={styles.date}>
+			<HStack align='center' gap='8' className={styles.date}>
 				<Icon SVG={CalendarIcon} />
 				<Text text={data?.createdAt} />
-			</div>
+			</HStack>
 
-			<div className={styles.blocksInner}>{data?.blocks.map(renderBlock)}</div>
-		</div>
+			<VStack gap='16' max className={styles.blocksInner}>
+				{data?.blocks.map(renderBlock)}
+			</VStack>
+		</VStack>
 	);
 });
 

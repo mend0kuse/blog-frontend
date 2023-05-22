@@ -5,6 +5,7 @@ import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
 import { setQueryParamInUrl } from 'shared/lib/url/setQueryParamInUrl';
 import { Card, CardTheme } from 'shared/ui/Card/Card';
+import { HStack } from 'shared/ui/Stack';
 
 import { type FC, memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -56,7 +57,7 @@ export const ArticleCategories: FC<ArticleCategoriesProps> = memo((props) => {
 	}, []);
 
 	return (
-		<div className={cn(styles.articleCategories, {}, className)}>
+		<HStack gap='16' className={cn(styles.articleCategories, {}, className)}>
 			{categories.map((category) => (
 				<Card
 					className={styles.category}
@@ -67,7 +68,7 @@ export const ArticleCategories: FC<ArticleCategoriesProps> = memo((props) => {
 					{t(category)}
 				</Card>
 			))}
-		</div>
+		</HStack>
 	);
 });
 

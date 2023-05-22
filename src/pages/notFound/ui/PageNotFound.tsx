@@ -1,4 +1,5 @@
 import cn from 'shared/lib/classNames/cn';
+import { HStack } from 'shared/ui/Stack';
 import { Page } from 'widgets/Page/Page';
 
 import { type FC, type HTMLAttributes } from 'react';
@@ -12,7 +13,9 @@ export const PageNotFound: FC<PageNotFoundProps> = () => {
 	const { t } = useTranslation();
 	return (
 		<Page>
-			<div className={cn(styles.PageNotFound)}>{t('Page not found')}</div>
+			<HStack align='center' justify='center' className={cn(styles.PageNotFound)}>
+				{t('Page not found')}
+			</HStack>
 		</Page>
 	);
 };

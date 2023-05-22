@@ -4,6 +4,7 @@ import TileIcon from 'shared/assets/icons/tile.svg';
 import cn from 'shared/lib/classNames/cn';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack } from 'shared/ui/Stack';
 
 import { type FC, memo } from 'react';
 
@@ -30,7 +31,7 @@ export const ToggleArticlesView: FC<ToggleArticlesViewProps> = memo((props) => {
 	const { className, onClick, selected } = props;
 
 	return (
-		<div className={cn(styles.toggleArticlesView, {}, className)}>
+		<HStack align='center' gap='8' className={cn(styles.toggleArticlesView, {}, className)}>
 			{views.map(({ icon, view }) => (
 				<Button
 					onClick={() => {
@@ -42,7 +43,7 @@ export const ToggleArticlesView: FC<ToggleArticlesViewProps> = memo((props) => {
 					<Icon className={cn(styles.icon, { [styles.selected]: selected === view })} SVG={icon} />
 				</Button>
 			))}
-		</div>
+		</HStack>
 	);
 });
 

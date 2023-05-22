@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNewCommentText } from '../../model/selectors/addNewCommentSelectors';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slices/addNewCommentSlice';
 import styles from './addNewCommentForm.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 const reducers: ReducersList = {
 	addNewComment: addNewCommentReducer,
@@ -44,7 +45,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
 	}, [dispatch, onSend, text]);
 
 	return (
-		<div className={cn(styles.addNewCommentForm, {}, className)}>
+		<HStack align='center' justify='between' className={cn(styles.addNewCommentForm, {}, className)}>
 			<Input
 				withoutUpper
 				className={styles.field}
@@ -53,7 +54,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
 				placeholder={t('Enter text')}
 			/>
 			<Button onClick={onSendHandler}>{t('Send')}</Button>
-		</div>
+		</HStack>
 	);
 };
 

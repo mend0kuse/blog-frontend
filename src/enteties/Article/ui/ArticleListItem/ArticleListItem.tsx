@@ -5,6 +5,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Card } from 'shared/ui/Card/Card';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack } from 'shared/ui/Stack';
 import { SizeText, Text } from 'shared/ui/Text/Text';
 
 import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
@@ -33,13 +34,13 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 						<img src={article.img} className={styles.img} alt={article.title} />
 						<Text text={article.createdAt} className={styles.created} />
 					</div>
-					<div className={styles.info}>
+					<HStack justify='between' className={styles.info}>
 						<Text className={styles.types} text={article.type.join(', ')} />
-						<div className={styles.views}>
+						<HStack align='center' gap='4'>
 							<Text className={styles.viewsCount} text={article.views} />
 							<Icon SVG={EyeIcon} />
-						</div>
-					</div>
+						</HStack>
+					</HStack>
 					<Text text={article.title} className={styles.title} />
 				</Card>
 			</AppLink>
@@ -50,13 +51,20 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
 	return (
 		<Card className={cn(styles.articleListItem, {}, className, styles.list)}>
-			<div className={styles.header}>
-				<AppLink to={`/profile/${article.user.id}`} className={styles.user}>
-					<Avatar size={50} src={article.user.avatar} alt={article.user.username} className={styles.avatar} />
-					<Text text={article.user.username} className={styles.username} />
+			<HStack justify='between'>
+				<AppLink to={`/profile/${article.user.id}`}>
+					<HStack gap='16' align='center'>
+						<Avatar
+							size={50}
+							src={article.user.avatar}
+							alt={article.user.username}
+							className={styles.avatar}
+						/>
+						<Text text={article.user.username} className={styles.username} />
+					</HStack>
 				</AppLink>
 				<Text text={article.createdAt} className={styles.created} />
-			</div>
+			</HStack>
 
 			<Text size={SizeText.l} text={article.title} className={styles.title} />
 			<Text className={styles.types} text={article.type.join(', ')} />
@@ -67,15 +75,15 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
 			{textBlock && <ArticleTextBlock block={textBlock} className={styles.text} />}
 
-			<div className={styles.footer}>
+			<HStack align='center' justify='between' className={styles.footer}>
 				<AppLink target={target} to={`/articles/${article.id}`}>
 					<Button theme={ThemeButton.OUTLINE}>{t('Read More')}</Button>
 				</AppLink>
-				<div className={styles.views}>
+				<HStack gap='8' align='center' className={styles.views}>
 					<Text className={styles.viewsCount} text={article.views} />
 					<Icon SVG={EyeIcon} />
-				</div>
-			</div>
+				</HStack>
+			</HStack>
 		</Card>
 	);
 });

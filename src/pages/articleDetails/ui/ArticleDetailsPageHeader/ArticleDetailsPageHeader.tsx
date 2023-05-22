@@ -1,6 +1,7 @@
 import { getArticleData } from 'enteties/Article';
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
+import { HStack } from 'shared/ui/Stack';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -36,10 +37,10 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	}, [article?.id, navigate]);
 
 	return (
-		<div className={cn(styles.articleDetailsPageHeader, {}, className)}>
+		<HStack justify='between' className={cn(styles.articleDetailsPageHeader, {}, className)}>
 			<Button onClick={backToAllHandler}>{t('Back to all')}</Button>
 			{canEdit && <Button onClick={editArticleHandler}>{t('Edit article')}</Button>}
-		</div>
+		</HStack>
 	);
 });
 

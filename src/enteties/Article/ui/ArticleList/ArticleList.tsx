@@ -1,5 +1,5 @@
 import { type Article, ArticleView } from 'enteties/Article/model/types/ArticleTypes';
-import cn from 'shared/lib/classNames/cn';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
 import { Text } from 'shared/ui/Text/Text';
 
 import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
-import styles from './ArticleList.module.scss';
 
 interface ArticleListProps {
 	className?: string;
@@ -27,14 +26,22 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 
 	const { t } = useTranslation();
 
+	const isList = view === ArticleView.LIST;
+
 	return (
-		<div className={cn(styles.articleList, {}, className, styles[view])}>
+		<Flex
+			className={className}
+			direction={isList ? 'column' : 'row'}
+			wrap={isList ? undefined : 'wrap'}
+			gap='32'
+			max
+		>
 			{!isLoading && articles?.length === 0 && <Text text={t('Articles not found')} />}
 			{articles?.map((article) => (
 				<ArticleListItem target={target} article={article} view={view} key={article.id} />
 			))}
 			{isLoading && getSkeletons(view)}
-		</div>
+		</Flex>
 	);
 });
 

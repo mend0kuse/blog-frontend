@@ -1,4 +1,5 @@
 import cn from 'shared/lib/classNames/cn';
+import { VStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 
 import { type FC, memo } from 'react';
@@ -18,14 +19,14 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props) => {
 	} = props;
 
 	return (
-		<div className={cn(styles.articleTextBlock, {}, className)}>
+		<VStack max gap='16' className={cn(styles.articleTextBlock, {}, className)}>
 			{title && <Text title={title} />}
 			<div className={styles.inner}>
 				{paragraphs?.map((i) => (
 					<Text key={i} text={i} />
 				))}
 			</div>
-		</div>
+		</VStack>
 	);
 });
 

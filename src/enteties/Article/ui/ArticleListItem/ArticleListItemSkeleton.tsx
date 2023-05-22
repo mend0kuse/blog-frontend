@@ -5,6 +5,7 @@ import { memo } from 'react';
 
 import { ArticleView } from '../../model/types/ArticleTypes';
 import styles from './ArticleListItem.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticleListItemSkeletonProps {
 	className?: string;
@@ -17,13 +18,13 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
 	if (view === ArticleView.LIST) {
 		return (
 			<div className={cn(styles.articleListItem, {}, className, styles[view])}>
-				<div className={styles.header}>
-					<div className={styles.user}>
+				<HStack justify='between' align='center' className={styles.header}>
+					<HStack gap='16' align='center' className={styles.user}>
 						<Skeleton borderRadius='50%' height={30} width={30} />
 						<Skeleton width={150} height={16} className={styles.username} />
-					</div>
+					</HStack>
 					<Skeleton width={150} height={16} className={styles.date} />
-				</div>
+				</HStack>
 				<Skeleton width={250} height={24} className={styles.title} />
 				<Skeleton height={200} className={styles.imgBlock} />
 				<div className={styles.footer}>

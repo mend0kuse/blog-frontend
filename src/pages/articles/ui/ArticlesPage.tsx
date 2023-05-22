@@ -23,6 +23,7 @@ import {
 import { articlesActions, articlesReducer, getArticles } from '../model/slices/articlesSlice';
 import { fetchArticles } from '../services/fetchArticles';
 import styles from './ArticlesPage.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ArticlePageProps {
 	className?: string;
@@ -99,10 +100,10 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	return (
 		<Page onScrollEnd={nextPageFetch}>
 			<div className={cn(styles.articlesPage, {}, className)}>
-				<div className={styles.header}>
+				<HStack align='center' justify='between'>
 					<ArticleSortFields />
 					<ToggleArticlesView onClick={viewClickHandler} selected={view} />
-				</div>
+				</HStack>
 				<ArticlesSearch />
 				<ArticleCategories />
 				<ArticleList articles={articles} view={view} isLoading={isLoading} />
