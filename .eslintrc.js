@@ -42,6 +42,7 @@ module.exports = {
 		'@typescript-eslint/no-misused-promises': 'off',
 		'@typescript-eslint/no-floating-promises': 'off',
 		'@typescript-eslint/no-invalid-void-type': 'off',
+		'@typescript-eslint/restrict-template-expressions': 'off',
 		'i18next/no-literal-string': [
 			'error',
 			{
