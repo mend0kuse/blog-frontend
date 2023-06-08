@@ -1,11 +1,11 @@
 import cn from 'shared/lib/classNames/cn';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { HStack } from 'shared/ui/Stack';
 
 import { memo } from 'react';
 
 import { ArticleView } from '../../model/types/ArticleTypes';
 import styles from './ArticleListItem.module.scss';
-import { HStack } from 'shared/ui/Stack';
 
 interface ArticleListItemSkeletonProps {
 	className?: string;

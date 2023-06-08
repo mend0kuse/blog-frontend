@@ -2,6 +2,7 @@ import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinam
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNewCommentText } from '../../model/selectors/addNewCommentSelectors';
 import { addNewCommentActions, addNewCommentReducer } from '../../model/slices/addNewCommentSlice';
 import styles from './addNewCommentForm.module.scss';
-import { HStack } from 'shared/ui/Stack';
 
 const reducers: ReducersList = {
 	addNewComment: addNewCommentReducer,

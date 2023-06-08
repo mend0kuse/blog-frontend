@@ -3,7 +3,7 @@ import cn from 'shared/lib/classNames/cn';
 
 import { Fragment, type ReactNode } from 'react';
 
-import { autoUpdate, flip, offset, size, useFloating } from '@floating-ui/react';
+import { autoUpdate, flip, size, useFloating } from '@floating-ui/react';
 import { Listbox as HeadlessListBox } from '@headlessui/react';
 
 import { Button } from '../Button/Button';

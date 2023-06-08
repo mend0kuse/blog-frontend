@@ -5,7 +5,6 @@ import cn from 'shared/lib/classNames/cn';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
-import { Icon } from 'shared/ui/Icon/Icon';
 
 import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

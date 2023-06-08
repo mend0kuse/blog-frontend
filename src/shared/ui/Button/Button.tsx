@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type FC, type MutableRefObject, forwardRef, useRef } from 'react';
+import { type ButtonHTMLAttributes, forwardRef } from 'react';
 
 import cn from '../../lib/classNames/cn';
 import styles from './Button.module.scss';

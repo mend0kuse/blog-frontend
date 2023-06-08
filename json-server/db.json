@@ -622,7 +622,7 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "avatar": "https://i.pinimg.com/originals/a8/8b/b6/a88bb6c1cbeeafe541d381d6d15d23d1.jpg"
+      "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg"
     },
     {
       "id": "2",
@@ -634,14 +634,13 @@
   "profile": [
     {
       "id": "1",
-      "first": "Семён",
-      "lastname": "Васильев",
-      "age": 19,
+      "first": "1212123",
+      "lastname": "123123132312",
+      "age": 12123,
+      "username": "asd",
+      "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg",
       "currency": "RUB",
-      "country": "Russia",
-      "city": "Irkutsk",
-      "username": "admin",
-      "avatar": "https://i.pinimg.com/originals/a8/8b/b6/a88bb6c1cbeeafe541d381d6d15d23d1.jpg"
+      "country": "Ukraine"
     },
     {
       "id": "2",

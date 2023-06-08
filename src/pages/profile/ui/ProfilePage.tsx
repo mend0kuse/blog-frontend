@@ -1,30 +1,30 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import { EditableProfileCard, fetchProfileData, profileReducer } from 'features/EditableProfileCard';
-import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
+import { type Profile } from 'enteties/Profile';
+import { EditableProfileCard } from 'features/EditableProfileCard';
 import { Page } from 'widgets/Page/Page';
 
-import { type FC } from 'react';
+import { type FC, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
-const reducers: ReducersList = {
-	profile: profileReducer,
-};
+import { useGetProfileQuery, useUpdateProfileMutation } from '../api/profileApi';
 
 const ProfilePage: FC = () => {
-	const dispatch = useAppDispatch();
-
 	const { id } = useParams<{ id: string }>();
 
-	useDinamycModuleLoader(reducers);
+	const { error, isLoading, data: profile, refetch: refetchProfile } = useGetProfileQuery(id || '');
 
-	useInititalEffect(() => {
-		dispatch(fetchProfileData(id));
-	});
+	const [updateProfile] = useUpdateProfileMutation();
+
+	const updateHandler = useCallback(
+		(formData: Profile) => {
+			updateProfile({ id, formData });
+			refetchProfile();
+		},
+		[id, refetchProfile, updateProfile],
+	);
 
 	return (
 		<Page>
-			<EditableProfileCard />
+			<EditableProfileCard updateHandler={updateHandler} error={error} isLoading={isLoading} profile={profile} />
 		</Page>
 	);
 };

@@ -8,6 +8,7 @@ import { useDebounce } from 'shared/hooks/useDebounce';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
+import { HStack } from 'shared/ui/Stack';
 import { Page } from 'widgets/Page/Page';
 
 import { type FC, memo, useCallback, useEffect, useRef } from 'react';
@@ -23,7 +24,6 @@ import {
 import { articlesActions, articlesReducer, getArticles } from '../model/slices/articlesSlice';
 import { fetchArticles } from '../services/fetchArticles';
 import styles from './ArticlesPage.module.scss';
-import { HStack } from 'shared/ui/Stack';
 
 interface ArticlePageProps {
 	className?: string;

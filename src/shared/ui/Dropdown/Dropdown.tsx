@@ -2,7 +2,7 @@ import cn from 'shared/lib/classNames/cn';
 
 import { type FC, Fragment, type ReactNode } from 'react';
 
-import { type Placement, autoUpdate, flip, offset, shift, useFloating } from '@floating-ui/react';
+import { type Placement, autoUpdate, flip, offset, useFloating } from '@floating-ui/react';
 import { Menu as HeadlessMenu } from '@headlessui/react';
 
 import { AppLink } from '../AppLink/AppLink';

@@ -1,6 +1,6 @@
 import cn from 'shared/lib/classNames/cn';
 
-import { type FC, forwardRef, memo } from 'react';
+import { forwardRef } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
 import styles from './AppLink.module.scss';

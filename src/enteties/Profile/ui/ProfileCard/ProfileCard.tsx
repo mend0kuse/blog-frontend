@@ -9,6 +9,9 @@ import { Text, ThemeText } from 'shared/ui/Text/Text';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { type SerializedError } from '@reduxjs/toolkit';
+import { type FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
+
 import { type Profile } from '../../model/types/profile';
 import styles from './ProfileCard.module.scss';
 
@@ -16,7 +19,7 @@ interface ProfileCardProps {
 	className?: string;
 	data?: Profile | null;
 	isLoading?: boolean;
-	error?: string;
+	error?: FetchBaseQueryError | SerializedError;
 	readOnly?: boolean;
 
 	// handlers
@@ -56,11 +59,23 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}
 
 	if (error) {
-		return (
-			<div className={cn(styles.ProfileCard, {}, className)}>
-				<Text title={t(error)} theme={ThemeText.ERROR} />
-			</div>
-		);
+		if ('status' in error) {
+			// you can access all properties of `FetchBaseQueryError` here
+			const errMsg = 'error' in error ? error.error : JSON.stringify(error.data);
+
+			return (
+				<div className={cn(styles.ProfileCard, {}, className)}>
+					<Text title={t(errMsg)} theme={ThemeText.ERROR} />
+				</div>
+			);
+		} else {
+			// you can access all properties of `SerializedError` here
+			return (
+				<div className={cn(styles.ProfileCard, {}, className)}>
+					<Text title={t(error.message || 'Error happend')} theme={ThemeText.ERROR} />
+				</div>
+			);
+		}
 	}
 
 	const mods: Mods = {

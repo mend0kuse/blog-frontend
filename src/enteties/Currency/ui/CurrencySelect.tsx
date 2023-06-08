@@ -1,5 +1,5 @@
 import { type ListBoxItem, Listbox } from 'shared/ui/ListBox/ListBox';
-import { Select, type SelectHtmlProps, type SelectOption } from 'shared/ui/Select/Select';
+import { type SelectHtmlProps } from 'shared/ui/Select/Select';
 
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';

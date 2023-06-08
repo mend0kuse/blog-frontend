@@ -4,7 +4,6 @@ import { ValidateProfileError } from '../../types/editableProfile';
 
 export const validateProfileData = (formData: Profile | null) => {
 	const errors: ValidateProfileError[] = [];
-	console.log(formData);
 
 	if (formData) {
 		const { first, lastname, age } = formData;
@@ -17,7 +16,6 @@ export const validateProfileData = (formData: Profile | null) => {
 			errors.push(ValidateProfileError.INCORRECT_AGE);
 		}
 	}
-	console.log(errors);
 
 	return errors;
 };

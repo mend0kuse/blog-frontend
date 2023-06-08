@@ -2,15 +2,10 @@ import { type Profile } from 'enteties/Profile';
 
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { changeProfileData } from '../services/changeProfileData/changeProfileData';
-import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
-import { type ProfileSchema } from '../types/editableProfile';
+import { type ProfileSchema, type ValidateProfileError } from '../types/editableProfile';
 
 const initialState: ProfileSchema = {
 	readonly: true,
-	isLoading: false,
-	data: undefined,
-	error: undefined,
 };
 
 export const profileSlice = createSlice({
@@ -20,8 +15,8 @@ export const profileSlice = createSlice({
 		setReadonly(state, action: PayloadAction<boolean>) {
 			state.readonly = action.payload;
 		},
-		cancelEdit(state) {
-			state.formData = state.data;
+		cancelEdit(state, action: PayloadAction<Profile>) {
+			state.formData = action.payload;
 			state.readonly = true;
 			state.validateError = undefined;
 		},
@@ -49,39 +44,12 @@ export const profileSlice = createSlice({
 		setCountry(state, action: PayloadAction<Profile['country']>) {
 			state.formData = { ...state.formData, country: action.payload };
 		},
-	},
-	extraReducers: (builder) => {
-		builder
-			/* get profile */
-			.addCase(fetchProfileData.pending, (state) => {
-				state.error = '';
-				state.isLoading = true;
-			})
-			.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
-				state.isLoading = false;
-				state.data = action.payload;
-				state.formData = action.payload;
-			})
-			.addCase(fetchProfileData.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-			/* change profile */
-			.addCase(changeProfileData.pending, (state) => {
-				state.validateError = undefined;
-				state.isLoading = true;
-			})
-			.addCase(changeProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
-				state.isLoading = false;
-				state.data = action.payload;
-				state.formData = action.payload;
-				state.validateError = undefined;
-				state.readonly = true;
-			})
-			.addCase(changeProfileData.rejected, (state, action) => {
-				state.isLoading = false;
-				state.validateError = action.payload;
-			});
+		setFormData(state, action: PayloadAction<Profile>) {
+			state.formData = action.payload;
+		},
+		setValidateErrors(state, action: PayloadAction<ValidateProfileError[]>) {
+			state.validateError = action.payload;
+		},
 	},
 });
 

@@ -33,6 +33,4 @@ Loading.args = {
 };
 
 export const Error = Template.bind({});
-Error.args = {
-	error: 'Auth Error',
-};
+Error.args = {};
