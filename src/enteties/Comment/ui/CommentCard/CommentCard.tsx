@@ -25,7 +25,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props) => {
 	return (
 		<VStack max gap='16' className={cn(styles.commentCard, {}, className)}>
 			<AppLink to={`${RouterPaths.profile}${comment.user.id}`} className={styles.header}>
-				<HStack gap='8' align='center' >
+				<HStack gap='8' align='center'>
 					<Avatar size={30} src={comment.user.avatar} />
 					<Text title={comment.user.username} />
 				</HStack>

@@ -1,29 +1,16 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import { ArticleDetails, ArticleList } from 'enteties/Article';
-import { CommentList } from 'enteties/Comment';
-import { AddNewCommentForm } from 'features/AddNewComment';
+import { ArticleDetails } from 'enteties/Article';
+import { ArticleDetailsRecomendations } from 'features/ArticleDetailsRecomendations';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page/Page';
 
-import { type FC, memo, useCallback } from 'react';
+import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import {
-	getArticleCommentsError,
-	getArticleCommentsisLoading,
-	getArticleRecomendationsIsLoading,
-} from '../../model/selectors/articleDetailsPageSelectors';
-import { getArticleComments } from '../../model/slice/articleCommentsSlice';
 import { articleDetailsPageReducer } from '../../model/slice/articlePageReducer';
-import { getArticleDetailsRecomendations } from '../../model/slice/articleRecomendationsSlice';
-import { addArticleComment } from '../../services/addArticleComment';
-import { fetchCommentsByArticleId } from '../../services/fetchArticleComments';
-import { fetchArticleRecomendations } from '../../services/fetchArticleRecomendations';
+import { ArticleComments } from '../ArticleComments/ArticleComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import styles from './ArticleDetailsPage.module.scss';
 
@@ -36,35 +23,12 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
-	const { className } = props;
-
 	const { t } = useTranslation('article-details');
 
-	const dispatch = useAppDispatch();
-
+	const { className } = props;
 	const { id } = useParams<{ id: string }>();
 
 	useDinamycModuleLoader(reducers);
-
-	useInititalEffect(() => {
-		dispatch(fetchCommentsByArticleId(id));
-		dispatch(fetchArticleRecomendations());
-	});
-
-	const comments = useSelector(getArticleComments.selectAll);
-	const recomendations = useSelector(getArticleDetailsRecomendations.selectAll);
-
-	const isLoading = useSelector(getArticleCommentsisLoading);
-	const error = useSelector(getArticleCommentsError);
-
-	const isLoadingRecs = useSelector(getArticleRecomendationsIsLoading);
-
-	const sendComment = useCallback(
-		(value: string) => {
-			dispatch(addArticleComment(value));
-		},
-		[dispatch],
-	);
 
 	if (!id) {
 		return <Text title={t('Article not found')} theme={ThemeText.ERROR} />;
@@ -75,15 +39,8 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 			<div className={cn(styles.articleDetailsPage, {}, className)}>
 				<ArticleDetailsPageHeader />
 				<ArticleDetails id={id} />
-				<Text className={styles.recsText} title={t('Recommendations')} />
-				<ArticleList
-					target={'_blank'}
-					className={styles.recs}
-					articles={recomendations}
-					isLoading={isLoadingRecs}
-				/>
-				<AddNewCommentForm onSend={sendComment} />
-				<CommentList error={error} isLoading={isLoading} comments={comments} />
+				<ArticleDetailsRecomendations />
+				<ArticleComments id={id} />
 			</div>
 		</Page>
 	);

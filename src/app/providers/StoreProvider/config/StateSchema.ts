@@ -10,6 +10,7 @@ import { type ProfileSchema } from 'features/EditableProfileCard';
 import { type SavePageScrollSchema } from 'features/SavePageScroll';
 import { type ArticleDetailsPageSchema } from 'pages/articleDetails';
 import { type ArticlesSchema } from 'pages/articles';
+import { type rtkApi } from 'shared/api/rtkApi';
 
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
@@ -17,6 +18,7 @@ import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 export interface StateSchema {
 	user: UserSchema;
 	pageScroll: SavePageScrollSchema;
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
 	// Async
 	profile?: ProfileSchema;

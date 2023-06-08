@@ -14,10 +14,10 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
     const { t } = useTranslation();
     
     return (
-        <div className={classNames(styles.${componentName}, {}, className)}>
+        <div className={cn(styles.${componentName}, {}, className)}>
            
         </div>
     );
 });
 
-${componentName}.displayName = ${componentName};`;
+${componentName}.displayName = '${componentName}';`;

@@ -1,4 +1,5 @@
 import cn from 'shared/lib/classNames/cn';
+import { VStack } from 'shared/ui/Stack';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
 
 import { type FC, memo } from 'react';
@@ -7,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 import { type Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 import styles from './CommentList.module.scss';
-import { VStack } from 'shared/ui/Stack';
 
 interface CommentListProps {
 	className?: string;

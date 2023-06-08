@@ -1,6 +1,7 @@
 import { userReducer } from 'enteties/User';
 import { savePageScrollReducer } from 'features/SavePageScroll';
 import { $api } from 'shared/api/api';
+import { rtkApi } from 'shared/api/rtkApi';
 
 import { useDispatch } from 'react-redux';
 
@@ -14,6 +15,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 		...asyncReducers,
 		user: userReducer,
 		pageScroll: savePageScrollReducer,
+		[rtkApi.reducerPath]: rtkApi.reducer,
 	};
 
 	const reducerManager = createReducerManager(rootReducer);
@@ -29,7 +31,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 						api: $api,
 					},
 				},
-			}),
+			}).concat(rtkApi.middleware),
 	});
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment

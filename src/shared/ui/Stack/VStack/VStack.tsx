@@ -5,5 +5,5 @@ import { Flex, type FlexProps } from '../Flex/Flex';
 interface VStackProps extends Omit<FlexProps, 'direction'> {}
 
 export const VStack: FC<VStackProps> = (props) => {
-	return <Flex {...props} direction='column' />;
+	return <Flex {...props} align='stretch' direction='column' />;
 };
