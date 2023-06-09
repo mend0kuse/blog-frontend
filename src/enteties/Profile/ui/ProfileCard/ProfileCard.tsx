@@ -92,6 +92,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 						readOnly={readOnly}
 						onChange={onChangeFirstName}
 						placeholder={t('Your name')}
+						data-testid='ProfileCard.first'
 					/>
 					<Input
 						value={data?.lastname}

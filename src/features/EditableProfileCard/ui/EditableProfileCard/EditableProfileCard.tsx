@@ -110,13 +110,18 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
 	);
 
 	return (
-		<div className={cn(styles.EditableProfileCard)}>
+		<div className={cn(styles.EditableProfileCard)} data-testid='EditableProfileCard'>
 			<EditableProfileCardHeader profile={profile} updateHandler={updateHandler} />
 
 			{validateErrors &&
 				validateErrors.length > 0 &&
 				validateErrors.map((err) => (
-					<Text key={err} theme={ThemeText.ERROR} text={ValidateErrorsTranslated[err]} />
+					<Text
+						data-testid='EditableProfileCard.ValidationError'
+						key={err}
+						theme={ThemeText.ERROR}
+						text={ValidateErrorsTranslated[err]}
+					/>
 				))}
 
 			<ProfileCard

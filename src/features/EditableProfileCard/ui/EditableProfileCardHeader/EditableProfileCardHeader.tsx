@@ -38,8 +38,6 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = mem
 	}, [dispatch]);
 
 	const onCancelEdit = useCallback(() => {
-		console.log(profile);
-
 		if (profile) {
 			dispatch(profileActions.cancelEdit(profile));
 		}
@@ -62,15 +60,23 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = mem
 				{canEdit && (
 					<>
 						{readOnly ? (
-							<Button theme={ThemeButton.OUTLINE} onClick={onEdit}>
+							<Button theme={ThemeButton.OUTLINE} onClick={onEdit} data-testid='EditableProfileCard.Edit'>
 								{t('Edit')}
 							</Button>
 						) : (
 							<HStack gap='8'>
-								<Button theme={ThemeButton.OUTLINE_ERR} onClick={onCancelEdit}>
+								<Button
+									theme={ThemeButton.OUTLINE_ERR}
+									data-testid='EditableProfileCard.Cancel'
+									onClick={onCancelEdit}
+								>
 									{t('Cancel')}
 								</Button>
-								<Button theme={ThemeButton.OUTLINE} onClick={onSaveEdit}>
+								<Button
+									theme={ThemeButton.OUTLINE}
+									data-testid='EditableProfileCard.Save'
+									onClick={onSaveEdit}
+								>
 									{t('Save')}
 								</Button>
 							</HStack>
