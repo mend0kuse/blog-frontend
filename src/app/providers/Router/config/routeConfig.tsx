@@ -1,8 +1,11 @@
+import { type UserRole } from 'enteties/User';
 import { AboutPage } from 'pages/about';
+import { AdminPanelPage } from 'pages/adminPanel';
 import { ArticleDetailsPage } from 'pages/articleDetails';
 import { ArticleEdit } from 'pages/articleEdit';
 import { ArticleNew } from 'pages/articleNew';
 import { ArticlesPage } from 'pages/articles';
+import { ForbiddenPage } from 'pages/forbidden';
 import { MainPage } from 'pages/main';
 import { PageNotFound } from 'pages/notFound';
 import { ProfilePage } from 'pages/profile';
@@ -12,6 +15,7 @@ import { type RouteProps } from 'react-router-dom';
 
 export type AppRoutesProps = RouteProps & {
 	authOnly?: boolean;
+	allowRoles?: UserRole[];
 };
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -51,5 +55,15 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 		path: RouterPaths[AppRoutes.ARTICLE_EDIT],
 		element: <ArticleEdit />,
 		authOnly: true,
+	},
+	[AppRoutes.ADMIN_PANEL]: {
+		path: RouterPaths[AppRoutes.ADMIN_PANEL],
+		element: <AdminPanelPage />,
+		authOnly: true,
+		allowRoles: ['Admin'],
+	},
+	[AppRoutes.FORBIDDEN]: {
+		path: RouterPaths[AppRoutes.FORBIDDEN],
+		element: <ForbiddenPage />,
 	},
 };

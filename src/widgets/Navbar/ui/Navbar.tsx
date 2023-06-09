@@ -1,4 +1,4 @@
-import { getUserAuthData, userActions } from 'enteties/User';
+import { getUserAuthData, getUserIsAdmin, userActions } from 'enteties/User';
 import { LoginModal } from 'features/AuthByUserName';
 import { RouterPaths } from 'shared/config/routes/routes';
 import cn from 'shared/lib/classNames/cn';
@@ -20,6 +20,7 @@ export const Navbar: FC = memo(() => {
 	const navigate = useNavigate();
 
 	const authData = useSelector(getUserAuthData);
+	const isAdmin = useSelector(getUserIsAdmin);
 
 	const [isAuthFormOpen, setAuthFormOpen] = useState(false);
 
@@ -54,6 +55,7 @@ export const Navbar: FC = memo(() => {
 				</Button>
 				<Dropdown
 					items={[
+						...(isAdmin ? [{ text: 'Админка', href: RouterPaths.admin_panel }] : []),
 						{ text: 'Профиль', href: RouterPaths.profile + authData.id },
 						{ text: 'Выйти', onClick: onLogout },
 					]}

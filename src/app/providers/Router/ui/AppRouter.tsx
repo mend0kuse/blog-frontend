@@ -8,11 +8,17 @@ import { RequireAuth } from './RequireAuth';
 
 export const AppRouter: FC = () => {
 	const renderWithWrapper = useCallback((route: AppRoutesProps) => {
-		const { authOnly, element, path } = route;
+		const { authOnly, element, path, allowRoles } = route;
 
 		const el = <Suspense fallback={<PageLoader />}>{element}</Suspense>;
 
-		return <Route path={path} key={path} element={authOnly ? <RequireAuth>{el}</RequireAuth> : el} />;
+		return (
+			<Route
+				path={path}
+				key={path}
+				element={authOnly || allowRoles ? <RequireAuth allowRoles={allowRoles}>{el}</RequireAuth> : el}
+			/>
+		);
 	}, []);
 
 	return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;

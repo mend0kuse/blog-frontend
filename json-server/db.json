@@ -621,12 +621,21 @@
     {
       "id": "1",
       "username": "admin",
+      "role":["Admin"],
       "password": "123",
       "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg"
     },
     {
       "id": "2",
-      "username": "zxc",
+      "username": "User",
+      "role":["User"],
+      "password": "asd",
+      "avatar": "https://mobimg.b-cdn.net/v3/fetch/3a/3a0b9db20a6f22387ca7a1123827a965.jpeg"
+    },
+    {
+      "id": "3",
+      "username": "Manager",
+      "role":["Manager"],
       "password": "asd",
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/3a/3a0b9db20a6f22387ca7a1123827a965.jpeg"
     }
@@ -634,7 +643,7 @@
   "profile": [
     {
       "id": "1",
-      "first": "1212123",
+      "first": "admin",
       "lastname": "123123132312",
       "age": 12123,
       "username": "asd",
@@ -644,7 +653,18 @@
     },
     {
       "id": "2",
-      "first": "zxc",
+      "first": "user",
+      "lastname": "asd",
+      "age": 22,
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Irkutsk",
+      "username": "sam",
+      "avatar": "https://mobimg.b-cdn.net/v3/fetch/3a/3a0b9db20a6f22387ca7a1123827a965.jpeg"
+    },
+    {
+      "id": "3",
+      "first": "manager",
       "lastname": "asd",
       "age": 22,
       "currency": "RUB",

@@ -6,6 +6,8 @@ export enum AppRoutes {
 	ARTICLE_DETAILS = 'article_details',
 	ARTICLE_NEW = 'article_new',
 	ARTICLE_EDIT = 'article_edit',
+	ADMIN_PANEL = 'admin_panel',
+	FORBIDDEN = 'forbidden',
 
 	//
 	ERROR = 'ERROR',
@@ -19,6 +21,8 @@ export const RouterPaths: Record<AppRoutes, string> = {
 	[AppRoutes.ARTICLE_DETAILS]: '/articles/',
 	[AppRoutes.ARTICLE_NEW]: '/articles/new',
 	[AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit',
+	[AppRoutes.ADMIN_PANEL]: '/admin',
+	[AppRoutes.FORBIDDEN]: '/forbidden',
 
 	//
 	[AppRoutes.ERROR]: '*',
