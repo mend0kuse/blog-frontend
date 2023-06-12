@@ -1,6 +1,6 @@
 import { type AxiosInstance } from 'axios';
-import { type ArticleSchema } from 'enteties/Article';
-import { type UserSchema } from 'enteties/User';
+import { type ArticleSchema } from 'entities/Article';
+import { type UserSchema } from 'entities/User';
 import { type AddNewCommentSchema } from 'features/AddNewComment';
 import { type ArticleCategoriesSchema } from 'features/ArticleCategories';
 import { type ArticleSortFieldSchema } from 'features/ArticleSortFields';

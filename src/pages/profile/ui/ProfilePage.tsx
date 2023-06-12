@@ -1,4 +1,4 @@
-import { type Profile } from 'enteties/Profile';
+import { type Profile } from 'entities/Profile';
 import { EditableProfileCard } from 'features/EditableProfileCard';
 import { Page } from 'widgets/Page/Page';
 

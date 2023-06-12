@@ -1,6 +1,6 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
-import { type Profile } from 'enteties/Profile';
-import { getUserAuthData } from 'enteties/User';
+import { type Profile } from 'entities/Profile';
+import { getUserAuthData } from 'entities/User';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';

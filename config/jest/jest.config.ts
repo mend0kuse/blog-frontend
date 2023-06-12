@@ -33,13 +33,13 @@ export default {
 	coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
 
 	// An array of directory names to be searched recursively up from the requiring module's location
-	moduleDirectories: ['node_modules'],
 
 	// An array of file extensions your modules use
 	moduleFileExtensions: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
 	// The root directory that Jest should scan for tests and modules within
 	rootDir: '../../',
+	moduleDirectories: ['node_modules', 'src'],
 	modulePaths: ['<rootDir>src'],
 	// The glob patterns Jest uses to detect test files
 	testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
@@ -47,6 +47,7 @@ export default {
 	moduleNameMapper: {
 		'\\.(s?css)$': 'identity-obj-proxy',
 		'\\.svg': path.resolve(__dirname, 'jestEmpyComponent.tsx'),
+		'entities/(.*)': '<rootDir>src/entities/$1',
 	},
 	// Indicates whether the coverage information should be collected while executing the test
 	// collectCoverage: false,

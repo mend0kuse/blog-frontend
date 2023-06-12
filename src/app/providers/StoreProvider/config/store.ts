@@ -1,4 +1,4 @@
-import { userReducer } from 'enteties/User';
+import { userReducer } from 'entities/User';
 import { savePageScrollReducer } from 'features/SavePageScroll';
 import { $api } from 'shared/api/api';
 import { rtkApi } from 'shared/api/rtkApi';

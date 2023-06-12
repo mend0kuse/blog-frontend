@@ -1,5 +1,5 @@
-import { Country } from 'enteties/Country';
-import { Currency } from 'enteties/Currency';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 import { componentRender, type componentRenderOptions } from 'shared/lib/tests/renderComponent';
 
 import { screen } from '@testing-library/react';

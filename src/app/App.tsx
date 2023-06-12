@@ -1,6 +1,6 @@
 import { AppRouter } from 'app/providers/Router';
-import { userActions } from 'enteties/User';
-import { getUserInit } from 'enteties/User/model/selectors/getUserInit';
+import { userActions } from 'entities/User';
+import { getUserInit } from 'entities/User/model/selectors/getUserInit';
 import cn from 'shared/lib/classNames/cn';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { HStack } from 'shared/ui/Stack';

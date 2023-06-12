@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
-import { ArticleList, type ArticleView } from 'enteties/Article';
+import { ArticleList, type ArticleView } from 'entities/Article';
 import { ArticleCategories, getChosenCategory } from 'features/ArticleCategories';
 import { ArticleSortFields, getArticleSort, getArticleSortOrder } from 'features/ArticleSortFields';
 import { ArticlesSearch, getArticlesSearchQ } from 'features/ArticlesSearch';

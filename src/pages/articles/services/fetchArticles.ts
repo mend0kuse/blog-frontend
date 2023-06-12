@@ -1,6 +1,6 @@
 import { type AsyncThunkConfig } from 'app/providers/StoreProvider';
 import { type AxiosResponse } from 'axios';
-import { type Article } from 'enteties/Article';
+import { type Article } from 'entities/Article';
 import { getArticleSort, getArticleSortOrder } from 'features/ArticleSortFields';
 import { getArticlesSearchQ } from 'features/ArticlesSearch';
 

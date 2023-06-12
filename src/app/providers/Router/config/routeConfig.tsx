@@ -1,4 +1,4 @@
-import { type UserRole } from 'enteties/User';
+import { type UserRole } from 'entities/User';
 import { AboutPage } from 'pages/about';
 import { AdminPanelPage } from 'pages/adminPanel';
 import { ArticleDetailsPage } from 'pages/articleDetails';

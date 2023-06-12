@@ -1,4 +1,4 @@
-import { type ArticleType } from 'enteties/Article';
+import { type ArticleType } from 'entities/Article';
 
 export interface ArticleCategoriesSchema {
 	chosenCategory: ArticleCategory;

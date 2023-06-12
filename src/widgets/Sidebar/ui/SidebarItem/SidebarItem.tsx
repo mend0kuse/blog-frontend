@@ -1,4 +1,4 @@
-import { getUserAuthData } from 'enteties/User';
+import { getUserAuthData } from 'entities/User';
 import cn from 'shared/lib/classNames/cn';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 

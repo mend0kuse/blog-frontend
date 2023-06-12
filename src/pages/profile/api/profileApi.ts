@@ -1,4 +1,4 @@
-import { type Profile } from 'enteties/Profile';
+import { type Profile } from 'entities/Profile';
 import { rtkApi } from 'shared/api/rtkApi';
 
 const profileApi = rtkApi.injectEndpoints({

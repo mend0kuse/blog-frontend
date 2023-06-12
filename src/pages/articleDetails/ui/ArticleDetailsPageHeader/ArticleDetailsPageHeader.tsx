@@ -1,4 +1,4 @@
-import { getArticleData } from 'enteties/Article';
+import { getArticleData } from 'entities/Article';
 import cn from 'shared/lib/classNames/cn';
 import { Button } from 'shared/ui/Button/Button';
 import { HStack } from 'shared/ui/Stack';

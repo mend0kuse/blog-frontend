@@ -1,4 +1,4 @@
-import { ArticleDetails } from 'enteties/Article';
+import { ArticleDetails } from 'entities/Article';
 import { ArticleDetailsRecomendations } from 'features/ArticleDetailsRecomendations';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import cn from 'shared/lib/classNames/cn';

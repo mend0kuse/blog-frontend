@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
-import { ArticleType } from 'enteties/Article';
+import { ArticleType } from 'entities/Article';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import { useInititalEffect } from 'shared/hooks/useInititalEffect';
 import cn from 'shared/lib/classNames/cn';

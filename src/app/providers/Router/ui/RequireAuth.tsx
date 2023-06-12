@@ -1,4 +1,4 @@
-import { type UserRole, getUserAuthData, getUserRoles } from 'enteties/User';
+import { type UserRole, getUserAuthData, getUserRoles } from 'entities/User';
 import { RouterPaths } from 'shared/config/routes/routes';
 
 import { useMemo } from 'react';

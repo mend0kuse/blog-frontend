@@ -1,7 +1,7 @@
 import { useAppDispatch } from 'app/providers/StoreProvider';
-import { type Country } from 'enteties/Country';
-import { type Currency } from 'enteties/Currency';
-import { type Profile, ProfileCard } from 'enteties/Profile';
+import { type Country } from 'entities/Country';
+import { type Currency } from 'entities/Currency';
+import { type Profile, ProfileCard } from 'entities/Profile';
 import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
 import cn from 'shared/lib/classNames/cn';
 import { Text, ThemeText } from 'shared/ui/Text/Text';
