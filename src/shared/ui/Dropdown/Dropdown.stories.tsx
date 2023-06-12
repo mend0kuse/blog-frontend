@@ -10,4 +10,15 @@ export default {
 const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+	items: [
+		{
+			text: 'asd',
+			href: 'asd',
+		},
+		{
+			text: 'asd',
+			onClick: () => {},
+		},
+	],
+};

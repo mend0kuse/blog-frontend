@@ -16,20 +16,38 @@
 
 	// code
 	--code-bg: #1212A1;
+
+	// card
+	--card-bg: #0D0D6B;
+
+	// card
+	--listbox-bg: #0D0D6B;
+
+	// dropdown
+	--dropdown-bg: #0D0D6B;
 }
 
 .mock.light {
-	--bg-color: #e8e8ea;
+	--bg-color: #E8E8EA;
 	--inverted-bg-color: #090949;
-	--primary-color: #041c65;
-	--secondary-color: #0449e0;
+	--primary-color: #041C65;
+	--secondary-color: #0449E0;
 	--inverted-primary-color: #049604;
-	--inverted-secondary-color: #04ff04;
+	--inverted-secondary-color: #04FF04;
 
 	// skeleton
-	--skeleton-color: rgb(255, 255, 255);
+	--skeleton-color: rgb(255 255 255);
 	--skeleton-shadow: rgba(0 0 0 / 20%);
 
 	// code
-	--code-bg: #fff;
+	--code-bg: #FFF;
+
+	// card
+	--card-bg: #D5D5D7;
+
+	// listbox
+	--listbox-bg: #D5D5D7;
+
+	// dropdown
+	--dropdown-bg: #D5D5D7;
 }

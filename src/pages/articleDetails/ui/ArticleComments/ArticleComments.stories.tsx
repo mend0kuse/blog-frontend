@@ -3,7 +3,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { ArticleComments } from './ArticleComments';
 
 export default {
-	title: 'shared/ArticleComments',
+	title: 'pages/ArticleComments',
 	component: ArticleComments,
 } as ComponentMeta<typeof ArticleComments>;
 

@@ -3,7 +3,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 
 export default {
-	title: 'shared/EditableProfileCardHeader',
+	title: 'features/EditableProfileCardHeader',
 	component: EditableProfileCardHeader,
 } as ComponentMeta<typeof EditableProfileCardHeader>;
 

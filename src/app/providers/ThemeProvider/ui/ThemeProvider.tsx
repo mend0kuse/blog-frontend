@@ -1,8 +1,8 @@
 import { type Theme, ThemeContext, defaultTheme } from 'shared/config/themes/ThemeContext';
 
-import { type FC, useEffect, useMemo, useState } from 'react';
+import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
-export const ThemeContextProvider: FC = ({ children }) => {
+export const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
 	useEffect(() => {

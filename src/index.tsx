@@ -4,10 +4,18 @@ import { StoreProvider } from 'app/providers/StoreProvider';
 import { ThemeContextProvider } from 'app/providers/ThemeProvider';
 import 'shared/config/i18n/i18n';
 
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-render(
+const container = document.getElementById('root');
+
+if (!container) {
+	throw new Error('mount container not found');
+}
+
+const root = createRoot(container);
+
+root.render(
 	<ErrorBoundary>
 		<BrowserRouter>
 			<StoreProvider>
@@ -17,5 +25,4 @@ render(
 			</StoreProvider>
 		</BrowserRouter>
 	</ErrorBoundary>,
-	document.getElementById('root'),
 );

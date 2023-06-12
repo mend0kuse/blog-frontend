@@ -3,7 +3,7 @@ import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 import { ToggleArticlesView } from './ToggleArticlesView';
 
 export default {
-	title: 'shared/ToggleArticlesView',
+	title: 'features/ToggleArticlesView',
 	component: ToggleArticlesView,
 } as ComponentMeta<typeof ToggleArticlesView>;
 
