@@ -1,5 +1,6 @@
 import type webpack from 'webpack';
 
+import removePropsBabelPlugin from '../babel/removePropsBabelPlugin';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { type BuildOptions } from './types/config';
 
@@ -14,24 +15,30 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 		use: ['file-loader'],
 	};
 
-	const babelLoader = {
+	const codeBabelLoader = {
+		test: /\.(js|ts)$/,
+		exclude: /node_modules/,
+		use: {
+			loader: 'babel-loader',
+			options: {
+				presets: ['@babel/preset-env', ['@babel/preset-typescript', { isTsx: false }]],
+			},
+		},
+	};
+
+	const tsxBabelLoader = {
 		test: /\.(js|jsx|tsx)$/,
 		exclude: /node_modules/,
 		use: {
 			loader: 'babel-loader',
 			options: {
-				presets: ['@babel/preset-env'],
+				plugins: [[removePropsBabelPlugin, { props: ['data-testid'] }]],
+				presets: ['@babel/preset-env', ['@babel/preset-typescript', { isTsx: true }]],
 			},
 		},
 	};
 
 	const cssLoader = buildCssLoader(options.isDev);
-	// Если без ts, то нужен babel-loader
-	const typescriptLoader = {
-		test: /\.tsx?$/,
-		use: 'ts-loader',
-		exclude: /node_modules/,
-	};
 
-	return [babelLoader, typescriptLoader, cssLoader, svgLoader, fileLoader];
+	return [codeBabelLoader, tsxBabelLoader, cssLoader, svgLoader, fileLoader];
 }
