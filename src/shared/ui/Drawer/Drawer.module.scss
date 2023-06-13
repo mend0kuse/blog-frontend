@@ -7,7 +7,7 @@
 
 	visibility: hidden;
 
-	transition: 0.2s linear all;
+	transition: 0.3s linear all;
 
 	opacity: 0;
 }
@@ -23,7 +23,7 @@
 	height: 0;
 	padding: 30px;
 
-	transition: 0.2s all linear;
+	transition: 0.3s all linear;
 
 	background: var(--bg-color);
 }
@@ -35,5 +35,11 @@
 
 	.content {
 		height: 50vh;
+	}
+}
+
+.isClosing {
+	.content {
+		height: 0;
 	}
 }

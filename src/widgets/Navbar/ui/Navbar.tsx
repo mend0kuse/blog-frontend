@@ -23,6 +23,7 @@ export const Navbar: FC = memo(() => {
 	const [isAuthFormOpen, setAuthFormOpen] = useState(false);
 
 	const setAuthOpen = useCallback(() => {
+		console.log('клик на войти');
 		setAuthFormOpen(true);
 	}, []);
 
@@ -39,8 +40,6 @@ export const Navbar: FC = memo(() => {
 	const createArticleHandler = useCallback(() => {
 		navigate('/articles/new');
 	}, [navigate]);
-
-	const [open, setOpen] = useState(false);
 
 	if (authData) {
 		return (
@@ -61,7 +60,7 @@ export const Navbar: FC = memo(() => {
 			<Button theme={ThemeButton.CLEAR_INVERTED} onClick={setAuthOpen}>
 				{t('Sign in')}
 			</Button>
-			{isAuthFormOpen && <LoginModal onClose={setAuthClose} open={isAuthFormOpen} />}
+			<LoginModal onClose={setAuthClose} open={isAuthFormOpen} />
 		</header>
 	);
 });
