@@ -1,3 +1,11 @@
 .UserNotifications {
 
 }
+
+.popoverContent {
+	overflow-y: scroll;
+
+	min-width: 500px;
+	min-height: 200px;
+	max-height: 200px;
+}

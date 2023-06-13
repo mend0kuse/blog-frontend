@@ -1,17 +1,15 @@
-import { getUserAuthData, getUserIsAdmin, userActions } from 'entities/User';
+import { getUserAuthData } from 'entities/User';
 import { LoginModal } from 'features/AuthByUserName';
 import { UserActions } from 'features/UserActions';
 import { UserNotifications } from 'features/UserNotifications';
-import { RouterPaths } from 'shared/config/routes/routes';
 import cn from 'shared/lib/classNames/cn';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
 import { HStack } from 'shared/ui/Stack';
 
 import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Navbar.module.scss';
@@ -41,6 +39,8 @@ export const Navbar: FC = memo(() => {
 	const createArticleHandler = useCallback(() => {
 		navigate('/articles/new');
 	}, [navigate]);
+
+	const [open, setOpen] = useState(false);
 
 	if (authData) {
 		return (

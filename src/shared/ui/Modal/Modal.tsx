@@ -1,16 +1,9 @@
 import cn from 'shared/lib/classNames/cn';
 
-import {
-	type FC,
-	type MouseEvent,
-	type MutableRefObject,
-	type ReactNode,
-	useCallback,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { type FC, type MutableRefObject, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
 
 const ANIMATION_DELAY = 200;
@@ -26,8 +19,6 @@ interface ModalProps {
 export const Modal: FC<ModalProps> = (props) => {
 	const { children, className, onClose, open, lazy } = props;
 
-	const [isMounted, setIsMounted] = useState(false);
-
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 	const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
 
@@ -37,10 +28,8 @@ export const Modal: FC<ModalProps> = (props) => {
 	});
 
 	useEffect(() => {
-		if (open) setIsMounted(true);
-
 		timerRef.current = setTimeout(() => {
-			setMods({ ...mods, [styles.open]: true });
+			setMods({ ...mods, [styles.open]: open });
 		}, ANIMATION_DELAY);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [open]);
@@ -53,10 +42,6 @@ export const Modal: FC<ModalProps> = (props) => {
 		}, ANIMATION_DELAY);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [onClose]);
-
-	const contentClickHandler = (e: MouseEvent) => {
-		e.stopPropagation();
-	};
 
 	const onEscDown = useCallback(
 		(e: KeyboardEvent) => {
@@ -78,22 +63,16 @@ export const Modal: FC<ModalProps> = (props) => {
 		};
 	}, [open, onEscDown]);
 
-	if (lazy && !isMounted) {
+	if (lazy && !open) {
 		return null;
 	}
 
 	return (
-		<div className={cn(styles.Modal, mods, className)}>
-			<div className={styles.overlay} onClick={closeHandler}>
-				<div
-					className={styles.content}
-					onClick={(e) => {
-						contentClickHandler(e);
-					}}
-				>
-					{children}
-				</div>
+		<Portal>
+			<div className={cn(styles.Modal, mods, className)}>
+				<Overlay onClick={closeHandler} />
+				<div className={styles.content}>{children}</div>
 			</div>
-		</div>
+		</Portal>
 	);
 };

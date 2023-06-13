@@ -1,0 +1,39 @@
+.drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	visibility: hidden;
+
+	transition: 0.2s linear all;
+
+	opacity: 0;
+}
+
+.content {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	overflow: auto;
+
+	height: 0;
+	padding: 30px;
+
+	transition: 0.2s all linear;
+
+	background: var(--bg-color);
+}
+
+.open {
+	visibility: visible;
+
+	opacity: 1;
+
+	.content {
+		height: 50vh;
+	}
+}
