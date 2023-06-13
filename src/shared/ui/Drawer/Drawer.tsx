@@ -1,46 +1,68 @@
-import { useModal } from 'shared/hooks/useModal';
-import cn, { type Mods } from 'shared/lib/classNames/cn';
+import cn from 'shared/lib/classNames/cn';
 
-import { type FC, type ReactNode, memo } from 'react';
+import { type FC, type ReactNode, useCallback, useEffect } from 'react';
+
+import { a, config, useSpring } from '@react-spring/web';
+import { useDrag } from '@use-gesture/react';
 
 import { Overlay } from '../Overlay/Overlay';
-import { Portal } from '../Portal/Portal';
 import styles from './Drawer.module.scss';
 
 interface DrawerProps {
 	className?: string;
 	children: ReactNode;
-	open: boolean;
+	isOpen: boolean;
 	lazy?: boolean;
 	onClose: () => void;
 }
 
-export const Drawer: FC<DrawerProps> = memo((props) => {
-	const { className, children, onClose, open, lazy } = props;
+const height = window.innerHeight - 100;
 
-	const { closeHandler, isClosing, isMounted } = useModal({
-		animationDelay: 200,
-		close: onClose,
-		isOpen: open,
-	});
+export const Drawer: FC<DrawerProps> = (props) => {
+	const { className, children, onClose, isOpen } = props;
 
-	if (lazy && !isMounted) {
-		return null;
-	}
+	const [{ y }, api] = useSpring(() => ({ y: height }));
 
-	const mods: Mods = {
-		[styles.isClosing]: isClosing,
-		[styles.open]: open,
+	const open = useCallback(
+		({ canceled }: { canceled?: boolean }) => {
+			api.start({ y: 0, immediate: false, config: canceled ? config.wobbly : config.stiff });
+		},
+		[api],
+	);
+
+	const close = (velocity = 0) => {
+		api.start({ y: height, immediate: false, config: { ...config.stiff, velocity } });
+		onClose();
 	};
 
-	return (
-		<Portal>
-			<div className={cn(styles.drawer, mods, className)}>
-				<Overlay onClick={closeHandler} />
-				<div className={styles.content}>{children}</div>
-			</div>
-		</Portal>
-	);
-});
+	useEffect(() => {
+		if (isOpen) {
+			open({});
+		}
+	}, [isOpen, open]);
 
-Drawer.displayName = 'Drawer';
+	const bind = useDrag(
+		({ last, velocity: [, vy], direction: [, dy], offset: [, oy], cancel, canceled }) => {
+			if (oy < -70) cancel();
+			if (last) {
+				oy > height * 0.5 || (vy > 0.5 && dy > 0) ? close(vy) : open({ canceled });
+			} else api.start({ y: oy, immediate: true });
+		},
+		{ from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true },
+	);
+
+	const display = y.to((py) => (py < height ? 'block' : 'none'));
+
+	return (
+		<div className={cn(styles.drawer, { [styles.isOpen]: isOpen }, className)}>
+			<Overlay onClick={() => {}} />
+			<a.div
+				className={cn(styles.sheet)}
+				{...bind()}
+				style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+			>
+				{children}
+			</a.div>
+		</div>
+	);
+};

@@ -1,5 +1,19 @@
-.drawer {
+.sheet {
 	position: fixed;
+	left: 2vw;
+
+	width: 96vw;
+	height: calc(100vh + 100px);
+	padding: 20px;
+
+	border-radius: 15px 15px 0;
+	background: var(--bg-color);
+	touch-action: none;
+}
+
+.drawer {
+	position: absolute;
+	z-index: 100000;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -7,39 +21,13 @@
 
 	visibility: hidden;
 
-	transition: 0.3s linear all;
+	transition: 0.2s linear all;
 
 	opacity: 0;
 }
 
-.content {
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
-
-	overflow: auto;
-
-	height: 0;
-	padding: 30px;
-
-	transition: 0.3s all linear;
-
-	background: var(--bg-color);
-}
-
-.open {
+.isOpen {
 	visibility: visible;
 
 	opacity: 1;
-
-	.content {
-		height: 50vh;
-	}
-}
-
-.isClosing {
-	.content {
-		height: 0;
-	}
 }

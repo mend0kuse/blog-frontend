@@ -37,7 +37,7 @@ export const UserNotifications = memo((props: UserNotificationsProps) => {
 					<Button onClick={openDrawerHandler} theme={ThemeButton.CLEAR}>
 						<Icon inverted SVG={NotificationIcon} />
 					</Button>
-					<Drawer onClose={closeDrawerHandler} open={drawerOpen}>
+					<Drawer onClose={closeDrawerHandler} isOpen={drawerOpen}>
 						<NotificationList />
 					</Drawer>
 				</>
