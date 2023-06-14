@@ -43,6 +43,12 @@ module.exports = {
 		'@typescript-eslint/no-floating-promises': 'off',
 		'@typescript-eslint/no-invalid-void-type': 'off',
 		'@typescript-eslint/restrict-template-expressions': 'off',
+		'@typescript-eslint/consistent-type-imports': [
+			'error',
+			{
+				disallowTypeAnnotations: false,
+			},
+		],
 		'i18next/no-literal-string': [
 			'error',
 			{
