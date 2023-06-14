@@ -1,4 +1,4 @@
-import { type StateSchema } from 'app/providers/StoreProvider';
+import { type StateSchema } from '@/app/providers/StoreProvider';
 
 export const getArticleSort = (state: StateSchema) => state.articleSort?.sort;
 export const getArticleSortOrder = (state: StateSchema) => state.articleSort?.order;

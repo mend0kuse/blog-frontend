@@ -1,9 +1,9 @@
-import { type StateSchema, useAppDispatch } from 'app/providers/StoreProvider';
-import { getPageScrollByPathname, savePageScrollActions } from 'features/SavePageScroll';
-import { useInViewport } from 'shared/hooks/useInViewport';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
-import { useThrottle } from 'shared/hooks/useThrottle';
-import cn from 'shared/lib/classNames/cn';
+import { type StateSchema, useAppDispatch } from '@/app/providers/StoreProvider';
+import { getPageScrollByPathname, savePageScrollActions } from '@/features/SavePageScroll';
+import { useInViewport } from '@/shared/hooks/useInViewport';
+import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
+import { useThrottle } from '@/shared/hooks/useThrottle';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, type ReactNode, type UIEvent, useRef } from 'react';
 import { useSelector } from 'react-redux';

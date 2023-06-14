@@ -1,8 +1,8 @@
-import { getUserAuthData, getUserIsAdmin, userActions } from 'entities/User';
-import { RouterPaths } from 'shared/config/routes/routes';
-import cn from 'shared/lib/classNames/cn';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
+import { RouterPaths } from '@/shared/config/routes/routes';
+import cn from '@/shared/lib/classNames/cn';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
 
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,5 +1,5 @@
-import { CreateArticle } from 'features/CreateArticle';
-import { Page } from 'widgets/Page/Page';
+import { CreateArticle } from '@/features/CreateArticle';
+import { Page } from '@/widgets/Page/Page';
 
 import { type FC } from 'react';
 

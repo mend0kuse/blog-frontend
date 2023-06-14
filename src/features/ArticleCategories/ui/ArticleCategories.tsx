@@ -1,11 +1,11 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import { ArticleType } from 'entities/Article';
-import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
-import cn from 'shared/lib/classNames/cn';
-import { setQueryParamInUrl } from 'shared/lib/url/setQueryParamInUrl';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
-import { HStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { ArticleType } from '@/entities/Article';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
+import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
+import cn from '@/shared/lib/classNames/cn';
+import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { HStack } from '@/shared/ui/Stack';
 
 import { type FC, memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';

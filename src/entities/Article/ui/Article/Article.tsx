@@ -1,12 +1,12 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import CalendarIcon from 'shared/assets/icons/calendar.svg';
-import EyeIcon from 'shared/assets/icons/eye.svg';
-import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import cn from 'shared/lib/classNames/cn';
-import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { HStack, VStack } from 'shared/ui/Stack';
-import { SizeText, Text, ThemeText } from 'shared/ui/Text/Text';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
+import CalendarIcon from '@/shared/assets/icons/calendar.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
+import cn from '@/shared/lib/classNames/cn';
+import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { Icon } from '@/shared/ui/Icon/Icon';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { SizeText, Text, ThemeText } from '@/shared/ui/Text/Text';
 
 import { type FC, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

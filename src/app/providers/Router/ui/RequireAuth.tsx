@@ -1,5 +1,5 @@
-import { type UserRole, getUserAuthData, getUserRoles } from 'entities/User';
-import { RouterPaths } from 'shared/config/routes/routes';
+import { type UserRole, getUserAuthData, getUserRoles } from '@/entities/User';
+import { RouterPaths } from '@/shared/config/routes/routes';
 
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';

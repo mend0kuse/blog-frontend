@@ -1,4 +1,4 @@
-import cn from 'shared/lib/classNames/cn';
+import cn from '@/shared/lib/classNames/cn';
 
 import { forwardRef } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';

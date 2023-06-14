@@ -1,5 +1,5 @@
-import { Flex } from 'shared/ui/Stack/Flex/Flex';
-import { Text } from 'shared/ui/Text/Text';
+import { Flex } from '@/shared/ui/Stack/Flex/Flex';
+import { Text } from '@/shared/ui/Text/Text';
 
 import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';

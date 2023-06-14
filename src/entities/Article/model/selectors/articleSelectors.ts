@@ -1,4 +1,4 @@
-import { type StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
+import { type StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 
 export const getArticleData = (state: StateSchema) => state.articleDetails?.data || undefined;
 

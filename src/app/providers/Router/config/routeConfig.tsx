@@ -1,15 +1,15 @@
-import { type UserRole } from 'entities/User';
-import { AboutPage } from 'pages/about';
-import { AdminPanelPage } from 'pages/adminPanel';
-import { ArticleDetailsPage } from 'pages/articleDetails';
-import { ArticleEdit } from 'pages/articleEdit';
-import { ArticleNew } from 'pages/articleNew';
-import { ArticlesPage } from 'pages/articles';
-import { ForbiddenPage } from 'pages/forbidden';
-import { MainPage } from 'pages/main';
-import { PageNotFound } from 'pages/notFound';
-import { ProfilePage } from 'pages/profile';
-import { AppRoutes, RouterPaths } from 'shared/config/routes/routes';
+import { type UserRole } from '@/entities/User';
+import { AboutPage } from '@/pages/about';
+import { AdminPanelPage } from '@/pages/adminPanel';
+import { ArticleDetailsPage } from '@/pages/articleDetails';
+import { ArticleEdit } from '@/pages/articleEdit';
+import { ArticleNew } from '@/pages/articleNew';
+import { ArticlesPage } from '@/pages/articles';
+import { ForbiddenPage } from '@/pages/forbidden';
+import { MainPage } from '@/pages/main';
+import { PageNotFound } from '@/pages/notFound';
+import { ProfilePage } from '@/pages/profile';
+import { AppRoutes, RouterPaths } from '@/shared/config/routes/routes';
 
 import { type RouteProps } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
-import Arrow from 'shared/assets/icons/arrow.svg';
-import cn from 'shared/lib/classNames/cn';
+import Arrow from '@/shared/assets/icons/arrow.svg';
+import cn from '@/shared/lib/classNames/cn';
 
 import { Fragment, type ReactNode } from 'react';
 

@@ -1,5 +1,5 @@
-import { AnimationProvider, useAnimationLibs } from 'shared/animation/AnimationProvider';
-import cn from 'shared/lib/classNames/cn';
+import { AnimationProvider, useAnimationLibs } from '@/shared/animation/AnimationProvider';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, type ReactNode, useCallback, useEffect } from 'react';
 

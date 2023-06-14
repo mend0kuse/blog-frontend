@@ -1,5 +1,5 @@
-import { useModal } from 'shared/hooks/useModal';
-import cn from 'shared/lib/classNames/cn';
+import { useModal } from '@/shared/hooks/useModal';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, type ReactNode } from 'react';
 

@@ -1,11 +1,11 @@
-import { AppRouter } from 'app/providers/Router';
-import { userActions } from 'entities/User';
-import { getUserInit } from 'entities/User/model/selectors/getUserInit';
-import cn from 'shared/lib/classNames/cn';
-import { Loader } from 'shared/ui/Loader/Loader';
-import { HStack } from 'shared/ui/Stack';
-import { Navbar } from 'widgets/Navbar';
-import { Sidebar } from 'widgets/Sidebar';
+import { AppRouter } from '@/app/providers/Router';
+import { userActions } from '@/entities/User';
+import { getUserInit } from '@/entities/User/model/selectors/getUserInit';
+import cn from '@/shared/lib/classNames/cn';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { HStack } from '@/shared/ui/Stack';
+import { Navbar } from '@/widgets/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
 
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

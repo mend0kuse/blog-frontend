@@ -1,4 +1,4 @@
-import cn, { type Mods } from 'shared/lib/classNames/cn';
+import cn, { type Mods } from '@/shared/lib/classNames/cn';
 
 import { type DetailedHTMLProps, type FC, type HTMLAttributes } from 'react';
 

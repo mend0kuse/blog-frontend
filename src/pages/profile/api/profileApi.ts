@@ -1,5 +1,5 @@
-import { type Profile } from 'entities/Profile';
-import { rtkApi } from 'shared/api/rtkApi';
+import { type Profile } from '@/entities/Profile';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 const profileApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({

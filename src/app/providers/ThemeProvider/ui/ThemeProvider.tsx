@@ -1,4 +1,4 @@
-import { type Theme, ThemeContext, defaultTheme } from 'shared/config/themes/ThemeContext';
+import { type Theme, ThemeContext, defaultTheme } from '@/shared/config/themes/ThemeContext';
 
 import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 

@@ -1,5 +1,5 @@
-import cn from 'shared/lib/classNames/cn';
-import { Text } from 'shared/ui/Text/Text';
+import cn from '@/shared/lib/classNames/cn';
+import { Text } from '@/shared/ui/Text/Text';
 
 import { type FC, memo } from 'react';
 

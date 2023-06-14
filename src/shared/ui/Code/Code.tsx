@@ -1,5 +1,5 @@
-import CopyIcon from 'shared/assets/icons/copy.svg';
-import cn from 'shared/lib/classNames/cn';
+import CopyIcon from '@/shared/assets/icons/copy.svg';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, memo, useCallback } from 'react';
 

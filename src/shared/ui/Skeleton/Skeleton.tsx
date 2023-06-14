@@ -1,4 +1,4 @@
-import cn from 'shared/lib/classNames/cn';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type CSSProperties, type FC } from 'react';
 

@@ -1,8 +1,8 @@
-import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import cn from 'shared/lib/classNames/cn';
-import { Button } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
-import { HStack } from 'shared/ui/Stack';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
+import cn from '@/shared/lib/classNames/cn';
+import { Button } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input/Input';
+import { HStack } from '@/shared/ui/Stack';
 
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,4 @@
-import { ErrorPage } from 'pages/errorPage';
+import { ErrorPage } from '@/pages/errorPage';
 
 import { Component, type ErrorInfo, type ReactNode } from 'react';
 

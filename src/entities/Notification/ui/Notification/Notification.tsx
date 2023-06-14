@@ -1,6 +1,6 @@
-import cn from 'shared/lib/classNames/cn';
-import { Card, CardTheme } from 'shared/ui/Card/Card';
-import { Text } from 'shared/ui/Text/Text';
+import cn from '@/shared/lib/classNames/cn';
+import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { Text } from '@/shared/ui/Text/Text';
 
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,7 +1,7 @@
-import { userReducer } from 'entities/User';
-import { savePageScrollReducer } from 'features/SavePageScroll';
-import { $api } from 'shared/api/api';
-import { rtkApi } from 'shared/api/rtkApi';
+import { userReducer } from '@/entities/User';
+import { savePageScrollReducer } from '@/features/SavePageScroll';
+import { $api } from '@/shared/api/api';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 import { useDispatch } from 'react-redux';
 

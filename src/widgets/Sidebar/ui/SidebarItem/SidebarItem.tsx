@@ -1,6 +1,6 @@
-import { getUserAuthData } from 'entities/User';
-import cn from 'shared/lib/classNames/cn';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { getUserAuthData } from '@/entities/User';
+import cn from '@/shared/lib/classNames/cn';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';

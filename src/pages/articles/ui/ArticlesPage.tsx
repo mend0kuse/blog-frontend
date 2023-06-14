@@ -1,15 +1,15 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import { ArticleList, type ArticleView } from 'entities/Article';
-import { ArticleCategories, getChosenCategory } from 'features/ArticleCategories';
-import { ArticleSortFields, getArticleSort, getArticleSortOrder } from 'features/ArticleSortFields';
-import { ArticlesSearch, getArticlesSearchQ } from 'features/ArticlesSearch';
-import { ToggleArticlesView } from 'features/ToggleArticlesView';
-import { useDebounce } from 'shared/hooks/useDebounce';
-import { type ReducersList, useDinamycModuleLoader } from 'shared/hooks/useDinamycModuleLoader';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
-import cn from 'shared/lib/classNames/cn';
-import { HStack } from 'shared/ui/Stack';
-import { Page } from 'widgets/Page/Page';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { ArticleList, type ArticleView } from '@/entities/Article';
+import { ArticleCategories, getChosenCategory } from '@/features/ArticleCategories';
+import { ArticleSortFields, getArticleSort, getArticleSortOrder } from '@/features/ArticleSortFields';
+import { ArticlesSearch, getArticlesSearchQ } from '@/features/ArticlesSearch';
+import { ToggleArticlesView } from '@/features/ToggleArticlesView';
+import { useDebounce } from '@/shared/hooks/useDebounce';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
+import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
+import cn from '@/shared/lib/classNames/cn';
+import { HStack } from '@/shared/ui/Stack';
+import { Page } from '@/widgets/Page/Page';
 
 import { type FC, memo, useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';

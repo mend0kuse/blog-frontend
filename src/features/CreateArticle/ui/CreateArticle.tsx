@@ -1,4 +1,4 @@
-import cn from 'shared/lib/classNames/cn';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';

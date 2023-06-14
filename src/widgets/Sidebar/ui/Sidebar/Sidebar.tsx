@@ -1,6 +1,6 @@
-import { LangSwitcher } from 'features/LangSwitcher';
-import { ThemeSwitcher } from 'features/ThemeSwitcher';
-import cn from 'shared/lib/classNames/cn';
+import { LangSwitcher } from '@/features/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, type HTMLAttributes, memo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';

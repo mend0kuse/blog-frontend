@@ -1,5 +1,5 @@
-import cn from 'shared/lib/classNames/cn';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import cn from '@/shared/lib/classNames/cn';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 import { type FC } from 'react';
 

@@ -1,11 +1,11 @@
-import { getUserAuthData } from 'entities/User';
-import { LoginModal } from 'features/AuthByUserName';
-import { UserActions } from 'features/UserActions';
-import { UserNotifications } from 'features/UserNotifications';
-import cn from 'shared/lib/classNames/cn';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { Drawer } from 'shared/ui/Drawer/Drawer';
-import { HStack } from 'shared/ui/Stack';
+import { getUserAuthData } from '@/entities/User';
+import { LoginModal } from '@/features/AuthByUserName';
+import { UserActions } from '@/features/UserActions';
+import { UserNotifications } from '@/features/UserNotifications';
+import cn from '@/shared/lib/classNames/cn';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Drawer } from '@/shared/ui/Drawer/Drawer';
+import { HStack } from '@/shared/ui/Stack';
 
 import { type FC, memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,16 +1,16 @@
 import { type AxiosInstance } from 'axios';
-import { type ArticleSchema } from 'entities/Article';
-import { type UserSchema } from 'entities/User';
-import { type AddNewCommentSchema } from 'features/AddNewComment';
-import { type ArticleCategoriesSchema } from 'features/ArticleCategories';
-import { type ArticleSortFieldSchema } from 'features/ArticleSortFields';
-import { type ArticlesSearchSchema } from 'features/ArticlesSearch';
-import { type LoginSchema } from 'features/AuthByUserName';
-import { type ProfileSchema } from 'features/EditableProfileCard';
-import { type SavePageScrollSchema } from 'features/SavePageScroll';
-import { type ArticleDetailsPageSchema } from 'pages/articleDetails';
-import { type ArticlesSchema } from 'pages/articles';
-import { type rtkApi } from 'shared/api/rtkApi';
+import { type ArticleSchema } from '@/entities/Article';
+import { type UserSchema } from '@/entities/User';
+import { type AddNewCommentSchema } from '@/features/AddNewComment';
+import { type ArticleCategoriesSchema } from '@/features/ArticleCategories';
+import { type ArticleSortFieldSchema } from '@/features/ArticleSortFields';
+import { type ArticlesSearchSchema } from '@/features/ArticlesSearch';
+import { type LoginSchema } from '@/features/AuthByUserName';
+import { type ProfileSchema } from '@/features/EditableProfileCard';
+import { type SavePageScrollSchema } from '@/features/SavePageScroll';
+import { type ArticleDetailsPageSchema } from '@/pages/articleDetails';
+import { type ArticlesSchema } from '@/pages/articles';
+import { type rtkApi } from '@/shared/api/rtkApi';
 
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
 import { type ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';

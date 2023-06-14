@@ -1,7 +1,7 @@
-import { type AsyncThunkConfig } from 'app/providers/StoreProvider';
+import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type AxiosResponse } from 'axios';
-import { type Comment } from 'entities/Comment';
-import { getUserAuthData } from 'entities/User';
+import { type Comment } from '@/entities/Comment';
+import { getUserAuthData } from '@/entities/User';
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 

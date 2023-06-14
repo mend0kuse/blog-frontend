@@ -1,4 +1,4 @@
-import { componentRender } from 'shared/lib/tests/renderComponent';
+import { componentRender } from '@/shared/lib/tests/renderComponent';
 
 import { fireEvent, screen } from '@testing-library/react';
 

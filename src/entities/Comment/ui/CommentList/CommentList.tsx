@@ -1,6 +1,6 @@
-import cn from 'shared/lib/classNames/cn';
-import { VStack } from 'shared/ui/Stack';
-import { Text, ThemeText } from 'shared/ui/Text/Text';
+import cn from '@/shared/lib/classNames/cn';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, ThemeText } from '@/shared/ui/Text/Text';
 
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';

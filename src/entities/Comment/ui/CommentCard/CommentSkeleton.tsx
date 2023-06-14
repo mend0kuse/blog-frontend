@@ -1,6 +1,6 @@
-import cn from 'shared/lib/classNames/cn';
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
-import { HStack, VStack } from 'shared/ui/Stack';
+import cn from '@/shared/lib/classNames/cn';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { HStack, VStack } from '@/shared/ui/Stack';
 
 import { type FC, memo } from 'react';
 

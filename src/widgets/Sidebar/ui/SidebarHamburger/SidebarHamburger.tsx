@@ -1,5 +1,5 @@
-import cn from 'shared/lib/classNames/cn';
-import { Button } from 'shared/ui/Button/Button';
+import cn from '@/shared/lib/classNames/cn';
+import { Button } from '@/shared/ui/Button/Button';
 
 import { type FC, memo } from 'react';
 

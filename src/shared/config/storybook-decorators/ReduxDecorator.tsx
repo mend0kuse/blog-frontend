@@ -1,11 +1,11 @@
-import { type StateSchema, StoreProvider } from 'app/providers/StoreProvider';
-import { articleReducer } from 'entities/Article/model/slices/articleSlice';
-import { AricleBlockType, ArticleType } from 'entities/Article/model/types/ArticleTypes';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { loginReducer } from 'features/AuthByUserName';
-import { profileReducer } from 'features/EditableProfileCard';
-import { type ReducersList } from 'shared/hooks/useDinamycModuleLoader';
+import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
+import { articleReducer } from '@/entities/Article/model/slices/articleSlice';
+import { AricleBlockType, ArticleType } from '@/entities/Article/model/types/ArticleTypes';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { loginReducer } from '@/features/AuthByUserName';
+import { profileReducer } from '@/features/EditableProfileCard';
+import { type ReducersList } from '@/shared/hooks/useDinamycModuleLoader';
 
 import { type Story } from '@storybook/react';
 

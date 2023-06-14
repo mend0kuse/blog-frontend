@@ -1,8 +1,8 @@
-import { useAppDispatch } from 'app/providers/StoreProvider';
-import { CommentList } from 'entities/Comment';
-import { AddNewCommentForm } from 'features/AddNewComment';
-import { useInititalEffect } from 'shared/hooks/useInititalEffect';
-import cn from 'shared/lib/classNames/cn';
+import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { CommentList } from '@/entities/Comment';
+import { AddNewCommentForm } from '@/features/AddNewComment';
+import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
+import cn from '@/shared/lib/classNames/cn';
 
 import { type FC, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
