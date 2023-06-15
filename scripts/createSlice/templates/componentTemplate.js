@@ -1,6 +1,6 @@
 const interfaceConst = 'interface';
 
-module.exports = (componentName) => `import cn from 'shared/lib/classNames/cn';
+module.exports = (componentName) => `import cn from '@/shared/lib/classNames/cn';
 import { useTranslation } from 'react-i18next';
 import styles from './${componentName}.module.scss';
 import { memo } from 'react';

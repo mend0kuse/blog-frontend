@@ -1,3 +1,6 @@
+import { memo, useCallback, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
 import { NotificationList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notif.svg';
 import { mobileBreakpoint } from '@/shared/const/breakpoints';
@@ -6,9 +9,6 @@ import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { Popover } from '@/shared/ui/Popover/Popover';
-
-import { memo, useCallback, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 
 import styles from './UserNotifications.module.scss';
 

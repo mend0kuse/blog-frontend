@@ -1,6 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, memo } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './Text.module.scss';
 
