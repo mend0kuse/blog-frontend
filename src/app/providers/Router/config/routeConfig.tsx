@@ -1,3 +1,5 @@
+import { type RouteProps } from 'react-router-dom';
+
 import { type UserRole } from '@/entities/User';
 import { AboutPage } from '@/pages/about';
 import { AdminPanelPage } from '@/pages/adminPanel';
@@ -10,8 +12,6 @@ import { MainPage } from '@/pages/main';
 import { PageNotFound } from '@/pages/notFound';
 import { ProfilePage } from '@/pages/profile';
 import { AppRoutes, RouterPaths } from '@/shared/config/routes/routes';
-
-import { type RouteProps } from 'react-router-dom';
 
 export type AppRoutesProps = RouteProps & {
 	authOnly?: boolean;

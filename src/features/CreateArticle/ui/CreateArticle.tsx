@@ -1,7 +1,7 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './CreateArticle.module.scss';
 

@@ -1,6 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, type HTMLProps, type ReactNode, memo } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './Card.module.scss';
 

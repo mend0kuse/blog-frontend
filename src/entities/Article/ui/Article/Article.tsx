@@ -1,3 +1,7 @@
+import { type FC, memo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
@@ -7,10 +11,6 @@ import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { SizeText, Text, ThemeText } from '@/shared/ui/Text/Text';
-
-import { type FC, memo, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import { getArticleData, getArticleError, getArticleisLoading } from '../../model/selectors/articleSelectors';
 import { articleReducer } from '../../model/slices/articleSlice';

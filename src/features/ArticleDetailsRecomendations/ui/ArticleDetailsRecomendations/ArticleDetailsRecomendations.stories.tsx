@@ -1,5 +1,4 @@
 import { AricleBlockType, ArticleType } from '@/entities/Article';
-
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import { ArticleDetailsRecomendations } from './ArticleDetailsRecomendations';

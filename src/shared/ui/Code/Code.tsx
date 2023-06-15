@@ -1,7 +1,7 @@
+import { type FC, memo, useCallback } from 'react';
+
 import CopyIcon from '@/shared/assets/icons/copy.svg';
 import cn from '@/shared/lib/classNames/cn';
-
-import { type FC, memo, useCallback } from 'react';
 
 import { Button } from '../Button/Button';
 import styles from './Code.module.scss';

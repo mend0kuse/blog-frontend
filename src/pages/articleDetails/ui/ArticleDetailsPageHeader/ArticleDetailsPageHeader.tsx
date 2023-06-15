@@ -1,12 +1,12 @@
-import { getArticleData } from '@/entities/Article';
-import cn from '@/shared/lib/classNames/cn';
-import { Button } from '@/shared/ui/Button/Button';
-import { HStack } from '@/shared/ui/Stack';
-
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
+
+import { getArticleData } from '@/entities/Article';
+import cn from '@/shared/lib/classNames/cn';
+import { Button } from '@/shared/ui/Button/Button';
+import { HStack } from '@/shared/ui/Stack';
 
 import { getCanEditArticle } from '../../model/selectors/articleDetailsPageSelectors';
 import styles from './ArticleDetailsPageHeader.module.scss';

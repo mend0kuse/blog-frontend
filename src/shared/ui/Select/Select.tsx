@@ -1,7 +1,7 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type ChangeEvent, type SelectHTMLAttributes } from 'react';
 import { useMemo } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './Select.module.scss';
 

@@ -1,8 +1,7 @@
-import Arrow from '@/shared/assets/icons/arrow.svg';
-import cn from '@/shared/lib/classNames/cn';
-
 import { Fragment, type ReactNode } from 'react';
 
+import Arrow from '@/shared/assets/icons/arrow.svg';
+import cn from '@/shared/lib/classNames/cn';
 import { autoUpdate, flip, size, useFloating } from '@floating-ui/react';
 import { Listbox as HeadlessListBox } from '@headlessui/react';
 

@@ -1,3 +1,6 @@
+import { type FC, memo, useCallback, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { ArticleList, type ArticleView } from '@/entities/Article';
 import { ArticleCategories, getChosenCategory } from '@/features/ArticleCategories';
@@ -10,9 +13,6 @@ import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
 import { HStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page/Page';
-
-import { type FC, memo, useCallback, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 
 import {
 	getArticlesHasMore,

@@ -1,10 +1,9 @@
+import { useDispatch } from 'react-redux';
+
 import { userReducer } from '@/entities/User';
 import { savePageScrollReducer } from '@/features/SavePageScroll';
 import { $api } from '@/shared/api/api';
 import { rtkApi } from '@/shared/api/rtkApi';
-
-import { useDispatch } from 'react-redux';
-
 import { type CombinedState, type Reducer, type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
 import { type StateSchema } from './StateSchema';

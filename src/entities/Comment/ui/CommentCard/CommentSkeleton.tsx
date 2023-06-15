@@ -1,8 +1,8 @@
+import { type FC, memo } from 'react';
+
 import cn from '@/shared/lib/classNames/cn';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { HStack, VStack } from '@/shared/ui/Stack';
-
-import { type FC, memo } from 'react';
 
 import styles from './CommentCard.module.scss';
 

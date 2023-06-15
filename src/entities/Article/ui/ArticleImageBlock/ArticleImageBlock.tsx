@@ -1,7 +1,7 @@
+import { type FC, memo } from 'react';
+
 import cn from '@/shared/lib/classNames/cn';
 import { Text } from '@/shared/ui/Text/Text';
-
-import { type FC, memo } from 'react';
 
 import { type ArticleBlockImage } from '../../model/types/ArticleTypes';
 import styles from './ArticleImageBlock.module.scss';

@@ -1,6 +1,5 @@
 import { type StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
 import { type Article, ArticleView } from '@/entities/Article';
-
 import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 import { type ArticlesSchema } from '../types/articlesSchema';

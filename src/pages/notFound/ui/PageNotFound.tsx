@@ -1,9 +1,9 @@
+import { type FC, type HTMLAttributes } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import cn from '@/shared/lib/classNames/cn';
 import { HStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page/Page';
-
-import { type FC, type HTMLAttributes } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import styles from './PageNotFound.module.scss';
 

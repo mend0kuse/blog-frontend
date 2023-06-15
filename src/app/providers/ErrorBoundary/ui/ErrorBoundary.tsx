@@ -1,6 +1,6 @@
-import { ErrorPage } from '@/pages/errorPage';
-
 import { Component, type ErrorInfo, type ReactNode } from 'react';
+
+import { ErrorPage } from '@/pages/errorPage';
 
 interface Props {
 	children?: ReactNode;

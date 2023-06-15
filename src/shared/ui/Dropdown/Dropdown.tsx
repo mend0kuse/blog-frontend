@@ -1,7 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, Fragment, type ReactNode } from 'react';
 
+import cn from '@/shared/lib/classNames/cn';
 import { type Placement, autoUpdate, flip, offset, useFloating } from '@floating-ui/react';
 import { Menu as HeadlessMenu } from '@headlessui/react';
 

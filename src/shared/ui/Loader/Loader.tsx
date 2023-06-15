@@ -1,6 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, type HTMLAttributes } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import './Loader.scss';
 

@@ -1,6 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type CSSProperties, type FC, type ImgHTMLAttributes, useMemo } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './Avatar.module.scss';
 

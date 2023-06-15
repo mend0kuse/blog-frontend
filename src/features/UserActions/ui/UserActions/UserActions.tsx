@@ -1,12 +1,11 @@
+import { memo, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
 import { RouterPaths } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
-
-import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
 
 interface UserActionsProps {
 	className?: string;
@@ -14,7 +13,6 @@ interface UserActionsProps {
 
 export const UserActions = memo((props: UserActionsProps) => {
 	const { className } = props;
-	const { t } = useTranslation();
 
 	const dispatch = useDispatch();
 	const authData = useSelector(getUserAuthData);

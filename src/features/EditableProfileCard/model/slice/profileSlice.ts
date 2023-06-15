@@ -1,5 +1,4 @@
 import { type Profile } from '@/entities/Profile';
-
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { type ProfileSchema, type ValidateProfileError } from '../types/editableProfile';

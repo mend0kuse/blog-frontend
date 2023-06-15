@@ -1,6 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, type InputHTMLAttributes, memo, useState } from 'react';
+
+import cn from '@/shared/lib/classNames/cn';
 
 import styles from './Input.module.scss';
 

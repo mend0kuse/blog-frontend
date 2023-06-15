@@ -1,6 +1,5 @@
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-
 import { type ComponentMeta, type ComponentStory } from '@storybook/react';
 
 import { ProfileCard } from './ProfileCard';

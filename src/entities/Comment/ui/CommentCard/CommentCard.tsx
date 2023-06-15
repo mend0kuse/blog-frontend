@@ -1,11 +1,11 @@
+import { type FC, memo } from 'react';
+
 import { RouterPaths } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
-
-import { type FC, memo } from 'react';
 
 import { type Comment } from '../../model/types/comment';
 import styles from './CommentCard.module.scss';

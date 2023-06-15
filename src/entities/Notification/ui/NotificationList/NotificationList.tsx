@@ -1,8 +1,8 @@
+import { type FC } from 'react';
+
 import cn from '@/shared/lib/classNames/cn';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
-
-import { type FC } from 'react';
 
 import { useGetUserNotificationsQuery } from '../../api/notificationApi';
 import { NotificationItem } from '../Notification/Notification';

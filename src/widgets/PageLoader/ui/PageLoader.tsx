@@ -1,7 +1,7 @@
+import { type FC, type HTMLAttributes } from 'react';
+
 import cn from '@/shared/lib/classNames/cn';
 import { Loader } from '@/shared/ui/Loader/Loader';
-
-import { type FC, type HTMLAttributes } from 'react';
 
 import styles from './PageLoader.module.scss';
 

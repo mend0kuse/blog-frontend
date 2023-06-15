@@ -1,3 +1,6 @@
+import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import cn from '@/shared/lib/classNames/cn';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
@@ -7,9 +10,6 @@ import { Card } from '@/shared/ui/Card/Card';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { HStack } from '@/shared/ui/Stack';
 import { SizeText, Text } from '@/shared/ui/Text/Text';
-
-import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { AricleBlockType, type Article, type ArticleBlockText, ArticleView } from '../../model/types/ArticleTypes';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';

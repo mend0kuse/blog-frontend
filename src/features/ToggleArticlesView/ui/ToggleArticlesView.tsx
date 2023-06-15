@@ -1,3 +1,5 @@
+import { type FC, memo } from 'react';
+
 import { ArticleView } from '@/entities/Article';
 import ListIcon from '@/shared/assets/icons/list.svg';
 import TileIcon from '@/shared/assets/icons/tile.svg';
@@ -5,8 +7,6 @@ import cn from '@/shared/lib/classNames/cn';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import { HStack } from '@/shared/ui/Stack';
-
-import { type FC, memo } from 'react';
 
 import styles from './ToggleArticlesView.module.scss';
 

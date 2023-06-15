@@ -1,13 +1,13 @@
+import { type FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleDetailsRecomendations } from '@/features/ArticleDetailsRecomendations';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
 import { Text, ThemeText } from '@/shared/ui/Text/Text';
 import { Page } from '@/widgets/Page/Page';
-
-import { type FC, memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 
 import { articleDetailsPageReducer } from '../../model/slice/articlePageReducer';
 import { ArticleComments } from '../ArticleComments/ArticleComments';

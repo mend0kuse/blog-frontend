@@ -1,13 +1,13 @@
+import { type FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { type Profile } from '@/entities/Profile';
 import { getUserAuthData } from '@/entities/User';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
-
-import { type FC, memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';

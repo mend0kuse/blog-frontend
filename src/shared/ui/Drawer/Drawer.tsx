@@ -1,7 +1,7 @@
+import { type FC, type ReactNode, useCallback, useEffect } from 'react';
+
 import { AnimationProvider, useAnimationLibs } from '@/shared/animation/AnimationProvider';
 import cn from '@/shared/lib/classNames/cn';
-
-import { type FC, type ReactNode, useCallback, useEffect } from 'react';
 
 import { Overlay } from '../Overlay/Overlay';
 import styles from './Drawer.module.scss';

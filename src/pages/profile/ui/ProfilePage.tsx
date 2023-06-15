@@ -1,9 +1,9 @@
+import { type FC, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+
 import { type Profile } from '@/entities/Profile';
 import { EditableProfileCard } from '@/features/EditableProfileCard';
 import { Page } from '@/widgets/Page/Page';
-
-import { type FC, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
 
 import { useGetProfileQuery, useUpdateProfileMutation } from '../api/profileApi';
 

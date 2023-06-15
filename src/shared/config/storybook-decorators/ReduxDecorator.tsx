@@ -6,7 +6,6 @@ import { Currency } from '@/entities/Currency';
 import { loginReducer } from '@/features/AuthByUserName';
 import { profileReducer } from '@/features/EditableProfileCard';
 import { type ReducersList } from '@/shared/hooks/useDinamycModuleLoader';
-
 import { type Story } from '@storybook/react';
 
 const state: DeepPartial<StateSchema> = {

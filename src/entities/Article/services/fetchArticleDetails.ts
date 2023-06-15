@@ -1,6 +1,6 @@
-import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type AxiosResponse } from 'axios';
 
+import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { type Article } from '../model/types/ArticleTypes';

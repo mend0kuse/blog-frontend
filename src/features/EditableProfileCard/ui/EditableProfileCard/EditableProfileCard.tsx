@@ -1,3 +1,7 @@
+import { type FC, memo, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { type Country } from '@/entities/Country';
 import { type Currency } from '@/entities/Currency';
@@ -5,11 +9,6 @@ import { type Profile, ProfileCard } from '@/entities/Profile';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
 import { Text, ThemeText } from '@/shared/ui/Text/Text';
-
-import { type FC, memo, useCallback, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-
 import { type SerializedError } from '@reduxjs/toolkit';
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 

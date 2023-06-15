@@ -1,3 +1,7 @@
+import { type FC, memo, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { ArticleType } from '@/entities/Article';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
@@ -6,10 +10,6 @@ import cn from '@/shared/lib/classNames/cn';
 import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
 import { Card, CardTheme } from '@/shared/ui/Card/Card';
 import { HStack } from '@/shared/ui/Stack';
-
-import { type FC, memo, useCallback, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import { getCategoriesInited, getChosenCategory } from '../model/selectors/articleCategoriesSelectors';
 import { articleCategoriesActions, articleCategoriesReducer } from '../model/slices/articleCategoriesSlice';

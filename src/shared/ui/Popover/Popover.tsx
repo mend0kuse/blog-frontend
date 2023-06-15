@@ -1,7 +1,6 @@
-import cn from '@/shared/lib/classNames/cn';
-
 import { type FC, type ReactNode, memo } from 'react';
 
+import cn from '@/shared/lib/classNames/cn';
 import { type Placement, autoUpdate, flip, offset, useFloating } from '@floating-ui/react';
 import { Popover as HPopover } from '@headlessui/react';
 
