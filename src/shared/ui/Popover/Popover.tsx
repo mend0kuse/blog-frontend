@@ -24,7 +24,7 @@ export const Popover: FC<PopoverProps> = memo((props) => {
 
 	return (
 		<HPopover className={cn(styles.popover, {}, className)}>
-			<HPopover.Button ref={refs.setReference} className={styles.btn}>
+			<HPopover.Button as={'div'} ref={refs.setReference} className={styles.btn}>
 				{trigger}
 			</HPopover.Button>
 			<HPopover.Panel ref={refs.setFloating} className={styles.content} style={{ ...floatingStyles }}>

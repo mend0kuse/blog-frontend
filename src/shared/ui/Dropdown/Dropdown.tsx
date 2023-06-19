@@ -31,7 +31,7 @@ export const Dropdown: FC<DropdownProps> = (props) => {
 
 	return (
 		<HeadlessMenu as={'div'} className={cn(styles.dropdown, {}, className)}>
-			<HeadlessMenu.Button ref={refs.setReference} className={styles.btn}>
+			<HeadlessMenu.Button as='div' ref={refs.setReference} className={styles.btn}>
 				{trigger}
 			</HeadlessMenu.Button>
 			<HeadlessMenu.Items as='div' ref={refs.setFloating} className={styles.menu} style={{ ...floatingStyles }}>

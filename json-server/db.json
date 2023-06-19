@@ -689,7 +689,7 @@
       "username": "asd",
       "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg",
       "currency": "RUB",
-      "country": "Ukraine"
+      "country": "Kazahstan"
     },
     {
       "id": "2",
@@ -712,6 +712,88 @@
       "city": "Irkutsk",
       "username": "sam",
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/3a/3a0b9db20a6f22387ca7a1123827a965.jpeg"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
+    },
+    {
+      "newRating": {
+        "articleId": "1",
+        "rate": 4,
+        "userId": "1",
+        "feedback": "asd"
+      },
+      "id": "UYwRbw4"
+    },
+    {
+      "newRating": {
+        "articleId": "1",
+        "rate": 5,
+        "userId": "1",
+        "feedback": "norm"
+      },
+      "id": "9jZSpSo"
+    },
+    {
+      "articleId": "1",
+      "rate": 5,
+      "userId": "1",
+      "feedback": "nice",
+      "id": "-suyNoG"
+    },
+    {
+      "userId": "1",
+      "articleId": "6",
+      "rate": 5,
+      "feedback": "asd",
+      "id": "adO-RFH"
+    },
+    {
+      "userId": "1",
+      "articleId": "12",
+      "rate": 4,
+      "id": "YyWDRSn"
     }
   ]
 }

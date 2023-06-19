@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 
 import StarIcon from '@/shared/assets/icons/star.svg';
 import cn from '@/shared/lib/classNames/cn';
@@ -17,9 +17,13 @@ interface StarRatingProps {
 const marks = [1, 2, 3, 4, 5];
 
 export const StarRating: FC<StarRatingProps> = memo((props) => {
-	const { className, selectedRating, onClick, starSize = 20 } = props;
+	const { className, selectedRating = 0, onClick, starSize = 20 } = props;
 
-	const [currentStar, setCurrentStar] = useState(selectedRating ?? 0);
+	const [currentStar, setCurrentStar] = useState(selectedRating);
+
+	useEffect(() => {
+		setCurrentStar(selectedRating);
+	}, [selectedRating]);
 
 	const onHover = useCallback(
 		(order: number) => {

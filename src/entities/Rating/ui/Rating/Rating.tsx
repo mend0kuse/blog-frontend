@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
@@ -17,22 +17,27 @@ import styles from './Rating.module.scss';
 
 interface RatingProps {
 	className?: string;
-	title?: string;
-	feedbackTitle?: string;
+	title?: string | null;
+	feedbackTitle?: string | null;
 	hasFeedback?: boolean;
+	initialRating?: number;
 	onCancel?: (stars: number) => void;
 	onSubmit?: (stars: number, feedback?: string) => void;
 }
 
 export const Rating = memo((props: RatingProps) => {
-	const { className, feedbackTitle, hasFeedback, onCancel, onSubmit, title } = props;
+	const { className, feedbackTitle, initialRating = 0, hasFeedback, onCancel, onSubmit, title } = props;
 
 	const { t } = useTranslation();
 	const isMobile = useMediaQuery({ query: mobileBreakpoint });
 
-	const [selectedRating, setSelectedRating] = useState<number>(0);
+	const [selectedRating, setSelectedRating] = useState(initialRating);
 	const [feedbackShow, setFeedbackShow] = useState(false);
 	const [feedbackText, setFeedbackText] = useState('');
+
+	useEffect(() => {
+		setSelectedRating(initialRating);
+	}, [initialRating]);
 
 	const onSubmitClick = useCallback(() => {
 		setFeedbackShow(false);
