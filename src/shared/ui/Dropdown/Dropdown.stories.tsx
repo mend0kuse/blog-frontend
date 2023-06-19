@@ -11,6 +11,8 @@ const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} 
 
 export const Normal = Template.bind({});
 Normal.args = {
+	trigger: <p>trigger</p>,
+	placement: 'bottom-start',
 	items: [
 		{
 			text: 'asd',

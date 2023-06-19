@@ -13,4 +13,16 @@ export default {
 const Template: ComponentStory<typeof Rating> = (args) => <Rating {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+	title: 'Оцените статью',
+	hasFeedback: true,
+	feedbackTitle: 'Оставьте комментарий!',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+	title: 'Спасибо за отзыв',
+	initialRating: 4,
+	hasFeedback: true,
+	feedbackTitle: 'Оставьте комментарий!',
+};
