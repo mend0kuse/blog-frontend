@@ -12,7 +12,7 @@ import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDin
 import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
 import { HStack } from '@/shared/ui/Stack';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
 import {
 	getArticlesHasMore,

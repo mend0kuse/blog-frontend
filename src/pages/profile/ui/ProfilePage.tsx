@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { type Profile } from '@/entities/Profile';
 import { EditableProfileCard } from '@/features/EditableProfileCard';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
 import { useGetProfileQuery, useUpdateProfileMutation } from '../api/profileApi';
 

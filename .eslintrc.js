@@ -14,9 +14,10 @@ module.exports = {
 	],
 	overrides: [
 		{
-			files: ['*.test.tsx'],
+			files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
 			rules: {
 				'i18next/no-literal-string': 'off',
+				'max-len': 'off',
 			},
 		},
 	],
@@ -27,7 +28,8 @@ module.exports = {
 	},
 	plugins: ['react', 'prettier', 'i18next', 'fsd-path-checker-mendokuse'],
 	rules: {
-		'fsd-path-checker-mendokuse/relative-path-checker-fsd': 'error',
+		'fsd-path-checker-mendokuse/relative-path-checker-fsd': ['error', { alias: '@' }],
+		'fsd-path-checker-mendokuse/public-api-import-fsd': ['error', { alias: '@' }],
 		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'error',

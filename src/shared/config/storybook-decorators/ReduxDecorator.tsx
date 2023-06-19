@@ -1,6 +1,5 @@
 import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
-import { articleReducer } from '@/entities/Article/model/slices/articleSlice';
-import { AricleBlockType, ArticleType } from '@/entities/Article/model/types/ArticleTypes';
+import { AricleBlockType, ArticleType, articleReducer } from '@/entities/Article';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { loginReducer } from '@/features/AuthByUserName';

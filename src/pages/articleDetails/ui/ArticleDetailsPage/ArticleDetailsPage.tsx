@@ -8,7 +8,7 @@ import { ArticleRating } from '@/features/ArticleRating';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
 import { Text, ThemeText } from '@/shared/ui/Text/Text';
-import { Page } from '@/widgets/Page/Page';
+import { Page } from '@/widgets/Page';
 
 import { articleDetailsPageReducer } from '../../model/slice/articlePageReducer';
 import { ArticleComments } from '../ArticleComments/ArticleComments';
