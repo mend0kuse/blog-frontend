@@ -1,4 +1,4 @@
-import { type StateSchema } from '@/app/providers/StoreProvider/config/StateSchema';
+import { type StateSchema } from '@/app/providers/StoreProvider';
 import { type Article, ArticleView } from '@/entities/Article';
 import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 

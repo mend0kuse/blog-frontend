@@ -29,6 +29,10 @@ module.exports = {
 	plugins: ['react', 'prettier', 'i18next', 'fsd-path-checker-mendokuse'],
 	rules: {
 		'fsd-path-checker-mendokuse/relative-path-checker-fsd': ['error', { alias: '@' }],
+		'fsd-path-checker-mendokuse/layers-imports': [
+			'error',
+			{ alias: '@', ignoreImportPatterns: ['**/StoreProvider'] },
+		],
 		'fsd-path-checker-mendokuse/public-api-import-fsd': [
 			'error',
 			{ alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'] },

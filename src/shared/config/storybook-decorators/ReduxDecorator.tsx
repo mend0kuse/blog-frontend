@@ -1,3 +1,4 @@
+/* eslint-disable fsd-path-checker-mendokuse/layers-imports */
 import { type StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { AricleBlockType, ArticleType, articleReducer } from '@/entities/Article';
 import { Country } from '@/entities/Country';
