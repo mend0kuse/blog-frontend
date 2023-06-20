@@ -2,7 +2,7 @@ import { type FC, memo } from 'react';
 
 import cn from '@/shared/lib/classNames/cn';
 import { VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text/Text';
+import { Text } from '@/shared/ui/Text';
 
 import { type ArticleBlockText } from '../../model/types/ArticleTypes';
 import styles from './ArticleTextBlock.module.scss';

@@ -7,8 +7,8 @@ import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDin
 import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
 import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
-import { Card } from '@/shared/ui/Card/Card';
-import { Input } from '@/shared/ui/Input/Input';
+import { Card } from '@/shared/ui/Card';
+import { Input } from '@/shared/ui/Input';
 
 import { getArticlesSearchInit, getArticlesSearchQ } from '../model/selectors/articlesSearchSelectors';
 import { articlesSearchActions, articlesSearchReducer } from '../model/slices/articleSearchSlice';

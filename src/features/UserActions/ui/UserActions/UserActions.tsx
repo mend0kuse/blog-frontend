@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, getUserIsAdmin, userActions } from '@/entities/User';
 import { RouterPaths } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Dropdown } from '@/shared/ui/Dropdown/Dropdown';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Dropdown } from '@/shared/ui/Dropdown';
 
 interface UserActionsProps {
 	className?: string;

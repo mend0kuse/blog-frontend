@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import cn from '@/shared/lib/classNames/cn';
-import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack } from '@/shared/ui/Stack';
 
 import { ArticleView } from '../../model/types/ArticleTypes';

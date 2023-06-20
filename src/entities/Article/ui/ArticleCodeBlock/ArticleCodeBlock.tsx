@@ -1,7 +1,7 @@
 import { type FC, memo } from 'react';
 
 import cn from '@/shared/lib/classNames/cn';
-import { Code } from '@/shared/ui/Code/Code';
+import { Code } from '@/shared/ui/Code';
 
 import { type ArticleBlockCode } from '../../model/types/ArticleTypes';
 import styles from './ArticleCodeBlock.module.scss';

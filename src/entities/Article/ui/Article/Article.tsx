@@ -7,10 +7,10 @@ import CalendarIcon from '@/shared/assets/icons/calendar.svg';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Icon } from '@/shared/ui/Icon/Icon';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { SizeText, Text, ThemeText } from '@/shared/ui/Text/Text';
+import { SizeText, Text, ThemeText } from '@/shared/ui/Text';
 
 import { getArticleData, getArticleError, getArticleisLoading } from '../../model/selectors/articleSelectors';
 import { articleReducer } from '../../model/slices/articleSlice';

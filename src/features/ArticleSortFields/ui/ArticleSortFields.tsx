@@ -7,7 +7,7 @@ import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDin
 import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
 import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
-import { Select, type SelectOption } from '@/shared/ui/Select/Select';
+import { Select, type SelectOption } from '@/shared/ui/Select';
 
 import {
 	getArticleSort,

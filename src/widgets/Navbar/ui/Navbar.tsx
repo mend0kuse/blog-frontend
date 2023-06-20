@@ -8,7 +8,7 @@ import { LoginModal } from '@/features/AuthByUserName';
 import { UserActions } from '@/features/UserActions';
 import { UserNotifications } from '@/features/UserNotifications';
 import cn from '@/shared/lib/classNames/cn';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 
 import styles from './Navbar.module.scss';

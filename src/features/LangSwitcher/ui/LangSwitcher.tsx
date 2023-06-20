@@ -2,7 +2,7 @@ import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import cn from '@/shared/lib/classNames/cn';
-import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Button, ThemeButton } from '@/shared/ui/Button';
 
 import styles from './LangSwitcher.module.scss';
 

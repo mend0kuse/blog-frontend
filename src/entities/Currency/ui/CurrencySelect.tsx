@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { type ListBoxItem, Listbox } from '@/shared/ui/ListBox/ListBox';
-import { type SelectHtmlProps } from '@/shared/ui/Select/Select';
+import { type ListBoxItem, Listbox } from '@/shared/ui/ListBox';
+import { type SelectHtmlProps } from '@/shared/ui/Select';
 
 import { Currency } from '../types/Currency';
 

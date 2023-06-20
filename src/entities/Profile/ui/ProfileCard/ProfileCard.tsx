@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { type Country, CountrySelect } from '@/entities/Country';
 import { type Currency, CurrencySelect } from '@/entities/Currency';
 import cn, { type Mods } from '@/shared/lib/classNames/cn';
-import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { Input } from '@/shared/ui/Input/Input';
-import { Loader } from '@/shared/ui/Loader/Loader';
-import { Text, ThemeText } from '@/shared/ui/Text/Text';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Input } from '@/shared/ui/Input';
+import { Loader } from '@/shared/ui/Loader';
+import { Text, ThemeText } from '@/shared/ui/Text';
 import { type SerializedError } from '@reduxjs/toolkit';
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 

@@ -8,7 +8,7 @@ import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDin
 import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
 import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
-import { Card, CardTheme } from '@/shared/ui/Card/Card';
+import { Card, CardTheme } from '@/shared/ui/Card';
 import { HStack } from '@/shared/ui/Stack';
 
 import { getCategoriesInited, getChosenCategory } from '../model/selectors/articleCategoriesSelectors';
