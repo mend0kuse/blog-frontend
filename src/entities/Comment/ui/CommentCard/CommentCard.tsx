@@ -1,6 +1,6 @@
 import { type FC, memo } from 'react';
 
-import { RouterPaths } from '@/shared/config/routes/routes';
+import { getProfilePageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -24,7 +24,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props) => {
 
 	return (
 		<VStack max gap='16' className={cn(styles.commentCard, {}, className)}>
-			<AppLink to={`${RouterPaths.profile}${comment.user.id}`} className={styles.header}>
+			<AppLink to={getProfilePageRoute(comment.user.id)} className={styles.header}>
 				<HStack gap='8' align='center'>
 					<Avatar size={30} src={comment.user.avatar} />
 					<Text title={comment.user.username} />

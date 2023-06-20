@@ -2,6 +2,7 @@ import { type FC, type HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EyeIcon from '@/shared/assets/icons/eye.svg';
+import { getArticlePageRoute, getProfilePageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -28,7 +29,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
 	if (view === ArticleView.TILE) {
 		return (
-			<AppLink to={`/articles/${article.id}`} target={target}>
+			<AppLink to={getArticlePageRoute(article.id)} target={target}>
 				<Card className={cn(styles.articleListItem, {}, className, styles.tile)}>
 					<div className={styles.imgBlock}>
 						<img src={article.img} className={styles.img} alt={article.title} />
@@ -52,7 +53,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 	return (
 		<Card className={cn(styles.articleListItem, {}, className, styles.list)}>
 			<HStack justify='between'>
-				<AppLink to={`/profile/${article.user.id}`}>
+				<AppLink to={getProfilePageRoute(article.user.id)}>
 					<HStack gap='16' align='center'>
 						<Avatar
 							size={50}
@@ -76,7 +77,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 			{textBlock && <ArticleTextBlock block={textBlock} className={styles.text} />}
 
 			<HStack align='center' justify='between' className={styles.footer}>
-				<AppLink target={target} to={`/articles/${article.id}`}>
+				<AppLink target={target} to={getArticlePageRoute(article.id)}>
 					<Button theme={ThemeButton.OUTLINE}>{t('Read More')}</Button>
 				</AppLink>
 				<HStack gap='8' align='center' className={styles.views}>

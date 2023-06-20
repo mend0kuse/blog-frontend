@@ -1,9 +1,10 @@
 import { type FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { generatePath, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getArticleData } from '@/entities/Article';
+import { AppRoutes, getEditPageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
@@ -24,15 +25,12 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	const article = useSelector(getArticleData);
 
 	const backToAllHandler = useCallback(() => {
-		navigate(`/articles`);
+		navigate(AppRoutes.ARTICLES);
 	}, [navigate]);
 
 	const editArticleHandler = useCallback(() => {
 		if (article?.id) {
-			const url = generatePath('/articles/:id/edit', {
-				id: article.id,
-			});
-			navigate(url);
+			navigate(getEditPageRoute(article.id));
 		}
 	}, [article?.id, navigate]);
 

@@ -11,7 +11,7 @@ import { ForbiddenPage } from '@/pages/forbidden';
 import { MainPage } from '@/pages/main';
 import { PageNotFound } from '@/pages/notFound';
 import { ProfilePage } from '@/pages/profile';
-import { AppRoutes, RouterPaths } from '@/shared/config/routes/routes';
+import { AppRoutes, getArticlePageRoute, getEditPageRoute, getProfilePageRoute } from '@/shared/config/routes/routes';
 
 export type AppRoutesProps = RouteProps & {
 	authOnly?: boolean;
@@ -20,50 +20,50 @@ export type AppRoutesProps = RouteProps & {
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 	[AppRoutes.MAIN]: {
-		path: RouterPaths[AppRoutes.MAIN],
+		path: AppRoutes.MAIN,
 		element: <MainPage />,
 	},
 	[AppRoutes.ABOUT]: {
-		path: RouterPaths[AppRoutes.ABOUT],
+		path: AppRoutes.ABOUT,
 		element: <AboutPage />,
 	},
 	[AppRoutes.ERROR]: {
-		path: RouterPaths[AppRoutes.ERROR],
+		path: AppRoutes.ERROR,
 		element: <PageNotFound />,
 	},
 	[AppRoutes.PROFILE]: {
-		path: RouterPaths[AppRoutes.PROFILE] + ':id',
+		path: getProfilePageRoute(':id'),
 		element: <ProfilePage />,
 		authOnly: true,
 	},
 	[AppRoutes.ARTICLES]: {
-		path: RouterPaths[AppRoutes.ARTICLES],
+		path: AppRoutes.ARTICLES,
 		element: <ArticlesPage />,
 		authOnly: true,
 	},
 	[AppRoutes.ARTICLE_DETAILS]: {
-		path: RouterPaths[AppRoutes.ARTICLE_DETAILS] + ':id',
+		path: getArticlePageRoute(':id'),
 		element: <ArticleDetailsPage />,
 		authOnly: true,
 	},
 	[AppRoutes.ARTICLE_NEW]: {
-		path: RouterPaths[AppRoutes.ARTICLE_NEW],
+		path: AppRoutes.ARTICLE_NEW,
 		element: <ArticleNew />,
 		authOnly: true,
 	},
 	[AppRoutes.ARTICLE_EDIT]: {
-		path: RouterPaths[AppRoutes.ARTICLE_EDIT],
+		path: getEditPageRoute(':id'),
 		element: <ArticleEdit />,
 		authOnly: true,
 	},
 	[AppRoutes.ADMIN_PANEL]: {
-		path: RouterPaths[AppRoutes.ADMIN_PANEL],
+		path: AppRoutes.ADMIN_PANEL,
 		element: <AdminPanelPage />,
 		authOnly: true,
 		allowRoles: ['Admin'],
 	},
 	[AppRoutes.FORBIDDEN]: {
-		path: RouterPaths[AppRoutes.FORBIDDEN],
+		path: AppRoutes.FORBIDDEN,
 		element: <ForbiddenPage />,
 	},
 };
