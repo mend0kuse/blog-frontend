@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { getArticleData } from '@/entities/Article';
+import { useGetArticleData } from '@/entities/Article';
 import { AppRoutes, getEditPageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { Button } from '@/shared/ui/Button';
@@ -22,7 +22,7 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	const navigate = useNavigate();
 
 	const canEdit = useSelector(getCanEditArticle);
-	const article = useSelector(getArticleData);
+	const article = useGetArticleData();
 
 	const backToAllHandler = useCallback(() => {
 		navigate(AppRoutes.ARTICLES);

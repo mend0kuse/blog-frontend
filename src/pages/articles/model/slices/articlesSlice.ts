@@ -1,6 +1,7 @@
 import { type StateSchema } from '@/app/providers/StoreProvider';
 import { type Article, ArticleView } from '@/entities/Article';
-import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { buildSlice } from '@/shared/store/buildSlice';
+import { type PayloadAction, createEntityAdapter } from '@reduxjs/toolkit';
 
 import { type ArticlesSchema } from '../types/articlesSchema';
 import { ARTICLES_VIEW_KEY } from './../../../../shared/const/localStorage';
@@ -10,7 +11,7 @@ const articlesAdapter = createEntityAdapter<Article>({
 	selectId: (article) => article.id,
 });
 
-const articlesSlice = createSlice({
+const articlesSlice = buildSlice({
 	name: 'articles',
 	initialState: articlesAdapter.getInitialState<ArticlesSchema>({
 		isLoading: false,
@@ -69,4 +70,4 @@ export const getArticles = articlesAdapter.getSelectors<StateSchema>(
 );
 
 export const { reducer: articlesReducer } = articlesSlice;
-export const { actions: articlesActions } = articlesSlice;
+export const { actions: articlesActions, useActions: useArticleActions } = articlesSlice;

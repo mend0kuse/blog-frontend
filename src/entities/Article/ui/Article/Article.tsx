@@ -1,6 +1,5 @@
 import { type FC, memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import CalendarIcon from '@/shared/assets/icons/calendar.svg';
@@ -12,7 +11,7 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { SizeText, Text, ThemeText } from '@/shared/ui/Text';
 
-import { getArticleData, getArticleError, getArticleisLoading } from '../../model/selectors/articleSelectors';
+import { useGetArticleData, useGetArticleError, useGetArticleisLoading } from '../../model/selectors/articleSelectors';
 import { articleReducer } from '../../model/slices/articleSlice';
 import { AricleBlockType, type ArticleBlock } from '../../model/types/ArticleTypes';
 import { fetchArticleDetails } from '../../services/fetchArticleDetails';
@@ -56,9 +55,9 @@ export const ArticleDetails: FC<ArticleProps> = memo((props) => {
 
 	useDinamycModuleLoader(reducers);
 
-	const data = useSelector(getArticleData);
-	const error = useSelector(getArticleError);
-	const isLoading = useSelector(getArticleisLoading);
+	const data = useGetArticleData();
+	const error = useGetArticleError();
+	const isLoading = useGetArticleisLoading();
 
 	useEffect(() => {
 		if (_PROJECT_ !== 'storybook') {

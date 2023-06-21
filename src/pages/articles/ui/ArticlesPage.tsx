@@ -21,7 +21,7 @@ import {
 	getArticlesPage,
 	getArticlesView,
 } from '../model/selectors/articlesSelectors';
-import { articlesActions, articlesReducer, getArticles } from '../model/slices/articlesSlice';
+import { articlesReducer, getArticles, useArticleActions } from '../model/slices/articlesSlice';
 import { fetchArticles } from '../services/fetchArticles';
 import styles from './ArticlesPage.module.scss';
 
@@ -35,10 +35,11 @@ const reducers: ReducersList = {
 
 const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	const { className } = props;
+	const dispatch = useAppDispatch();
 
 	useDinamycModuleLoader(reducers, false);
 
-	const dispatch = useAppDispatch();
+	const { init, setPage, setView } = useArticleActions();
 
 	const articles = useSelector(getArticles.selectAll);
 	const isLoading = useSelector(getArticlesLoading);
@@ -56,7 +57,7 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 
 	useInititalEffect(() => {
 		if (!inited) {
-			dispatch(articlesActions.init());
+			init();
 			dispatch(fetchArticles({}));
 		}
 	});
@@ -70,31 +71,31 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 
 	const nextPageFetch = useCallback(() => {
 		if (!isLoading && hasMore) {
-			dispatch(articlesActions.setPage(page + 1));
+			setPage(page + 1);
 			dispatch(fetchArticles({}));
 		}
-	}, [dispatch, hasMore, isLoading, page]);
+	}, [dispatch, hasMore, isLoading, page, setPage]);
 
 	/* Observe filters change */
 	useEffect(() => {
 		if (firstRender.current) return;
 
-		dispatch(articlesActions.setPage(1));
+		setPage(1);
 		fetchWithReplace();
-	}, [dispatch, fetchWithReplace, order, sortKey, category]);
+	}, [dispatch, fetchWithReplace, order, sortKey, category, setPage]);
 
 	useEffect(() => {
 		if (firstRender.current) {
 			firstRender.current = false;
 			return;
 		}
-		dispatch(articlesActions.setPage(1));
+		setPage(1);
 		fetchDataWithDebounce();
-	}, [dispatch, fetchDataWithDebounce, search]);
+	}, [dispatch, fetchDataWithDebounce, search, setPage]);
 
 	/* Handlers */
 	const viewClickHandler = (view: ArticleView) => {
-		dispatch(articlesActions.setView(view));
+		setView(view);
 	};
 
 	return (

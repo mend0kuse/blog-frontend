@@ -1,7 +1,10 @@
 import { type StateSchema } from '@/app/providers/StoreProvider';
+import { buildSelector } from '@/shared/store';
 
-export const getArticleData = (state: StateSchema) => state.articleDetails?.data || undefined;
+export const [useGetArticleData, getArticleData] = buildSelector(
+	(state: StateSchema) => state.articleDetails?.data || undefined,
+);
 
-export const getArticleisLoading = (state: StateSchema) => state.articleDetails?.isLoading || false;
+export const [useGetArticleisLoading] = buildSelector((state: StateSchema) => state.articleDetails?.isLoading || false);
 
-export const getArticleError = (state: StateSchema) => state.articleDetails?.error || '';
+export const [useGetArticleError] = buildSelector((state: StateSchema) => state.articleDetails?.error || '');
