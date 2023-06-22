@@ -2,6 +2,8 @@
 	position: fixed;
 	left: 2vw;
 
+	overflow-y: auto;
+
 	width: 96vw;
 	height: calc(100vh + 100px);
 	padding: 20px;

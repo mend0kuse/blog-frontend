@@ -2,6 +2,10 @@ import { type CSSProperties, type FC, type ImgHTMLAttributes, useMemo } from 're
 
 import cn from '@/shared/lib/classNames/cn';
 
+import UserIcon from '../../assets/icons/user.svg';
+import { AppImage } from '../AppImage';
+import { Icon } from '../Icon';
+import { Skeleton } from '../Skeleton';
 import styles from './Avatar.module.scss';
 
 interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -18,5 +22,13 @@ export const Avatar: FC<AvatarProps> = (props) => {
 		};
 	}, [size]);
 
-	return <img className={cn(styles.Avatar, {}, className)} style={style} {...otherProps} />;
+	return (
+		<AppImage
+			loader={<Skeleton height={size} width={size} borderRadius={'50%'} />}
+			error={<Icon inverted SVG={UserIcon} className={cn(styles.Avatar, {}, className)} />}
+			className={cn(styles.Avatar, {}, className)}
+			style={style}
+			{...otherProps}
+		/>
+	);
 };

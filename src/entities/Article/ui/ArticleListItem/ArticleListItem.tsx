@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { getArticlePageRoute, getProfilePageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
+import { AppImage } from '@/shared/ui/AppImage';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack } from '@/shared/ui/Stack';
 import { SizeText, Text } from '@/shared/ui/Text';
 
@@ -32,7 +34,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 			<AppLink to={getArticlePageRoute(article.id)} target={target}>
 				<Card className={cn(styles.articleListItem, {}, className, styles.tile)}>
 					<div className={styles.imgBlock}>
-						<img src={article.img} className={styles.img} alt={article.title} />
+						<AppImage
+							loader={<Skeleton height={300} width={'100%'} />}
+							src={article.img}
+							className={styles.img}
+							alt={article.title}
+						/>
 						<Text text={article.createdAt} className={styles.created} />
 					</div>
 					<HStack justify='between' className={styles.info}>
@@ -71,7 +78,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 			<Text className={styles.types} text={article.type.join(', ')} />
 
 			<div className={styles.imgBlock}>
-				<img src={article.img} className={styles.img} alt={article.title} />
+				<AppImage
+					loader={<Skeleton height={200} width={200} />}
+					src={article.img}
+					className={styles.img}
+					alt={article.title}
+				/>
 			</div>
 
 			{textBlock && <ArticleTextBlock block={textBlock} className={styles.text} />}
