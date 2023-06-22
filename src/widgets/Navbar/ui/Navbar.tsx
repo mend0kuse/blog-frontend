@@ -41,7 +41,7 @@ export const Navbar: FC = memo(() => {
 
 	if (authData) {
 		return (
-			<header className={cn(styles.Navbar, {})}>
+			<header data-testid='Navbar' className={cn(styles.Navbar, {})}>
 				<HStack justify='end' gap='16' align='center'>
 					<Button onClick={createArticleHandler} theme={ThemeButton.CLEAR_INVERTED}>
 						{t('New article')}
@@ -54,7 +54,7 @@ export const Navbar: FC = memo(() => {
 	}
 
 	return (
-		<header className={cn(styles.Navbar, {})}>
+		<header data-testid='Navbar' className={cn(styles.Navbar, {})}>
 			<Button theme={ThemeButton.CLEAR_INVERTED} onClick={setAuthOpen}>
 				{t('Sign in')}
 			</Button>

@@ -8,17 +8,18 @@ import { useInViewport } from '@/shared/hooks/useInViewport';
 import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import { useThrottle } from '@/shared/hooks/useThrottle';
 import cn from '@/shared/lib/classNames/cn';
+import type { TestProps } from '@/shared/lib/tests/testProps';
 
 import styles from './Page.module.scss';
 
-interface PageProps {
+interface PageProps extends TestProps {
 	className?: string;
 	children: ReactNode;
 	onScrollEnd?: () => void;
 }
 
 export const Page: FC<PageProps> = (props) => {
-	const { className, children, onScrollEnd } = props;
+	const { className, children, onScrollEnd, 'data-testId': dataTestID } = props;
 	const dispath = useAppDispatch();
 
 	const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -40,10 +41,15 @@ export const Page: FC<PageProps> = (props) => {
 	}, 1000);
 
 	return (
-		<div onScroll={scrollHandler} ref={wrapperRef} className={cn(styles.page, {}, className)}>
+		<main
+			data-testid={dataTestID}
+			onScroll={scrollHandler}
+			ref={wrapperRef}
+			className={cn(styles.page, {}, className)}
+		>
 			{children}
 			<div ref={targetRef} />
-		</div>
+		</main>
 	);
 };
 

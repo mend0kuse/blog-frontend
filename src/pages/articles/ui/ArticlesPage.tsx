@@ -99,7 +99,7 @@ const ArticlesPage: FC<ArticlePageProps> = (props) => {
 	};
 
 	return (
-		<Page onScrollEnd={nextPageFetch}>
+		<Page data-testId='ArticlesPage' onScrollEnd={nextPageFetch}>
 			<div className={cn(styles.articlesPage, {}, className)}>
 				<HStack align='center' justify='between'>
 					<ArticleSortFields />

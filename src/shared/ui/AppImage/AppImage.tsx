@@ -2,17 +2,18 @@ import type { FC, ImgHTMLAttributes, ReactElement } from 'react';
 import { memo, useEffect, useState } from 'react';
 
 import cn from '@/shared/lib/classNames/cn';
+import type { TestProps } from '@/shared/lib/tests/testProps';
 
 import styles from './AppImage.module.scss';
 
-interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement>, TestProps {
 	className?: string;
 	loader?: ReactElement;
 	error?: ReactElement;
 }
 
 export const AppImage: FC<AppImageProps> = memo((props) => {
-	const { className, loader, error, src = '', alt = '', ...otherProps } = props;
+	const { className, loader, error, src = '', alt = '', 'data-testId': dataTestId, ...otherProps } = props;
 
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
@@ -37,7 +38,15 @@ export const AppImage: FC<AppImageProps> = memo((props) => {
 		return error;
 	}
 
-	return <img alt={alt} src={src} className={cn(styles.appImage, {}, className)} {...otherProps} />;
+	return (
+		<img
+			data-testid={dataTestId}
+			alt={alt}
+			src={src}
+			className={cn(styles.appImage, {}, className)}
+			{...otherProps}
+		/>
+	);
 });
 
 AppImage.displayName = 'AppImage';

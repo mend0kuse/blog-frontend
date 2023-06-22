@@ -12,7 +12,7 @@ interface PageNotFoundProps extends HTMLAttributes<HTMLDivElement> {}
 export const PageNotFound: FC<PageNotFoundProps> = () => {
 	const { t } = useTranslation();
 	return (
-		<Page>
+		<Page data-testId='NotFoundPage'>
 			<HStack align='center' justify='center' className={cn(styles.PageNotFound)}>
 				{t('Page not found')}
 			</HStack>

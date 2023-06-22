@@ -35,7 +35,7 @@ export const UserActions = memo((props: UserActionsProps) => {
 				{ text: 'Профиль', href: getProfilePageRoute(authData.id) },
 				{ text: 'Выйти', onClick: onLogout },
 			]}
-			trigger={<Avatar src={authData.avatar} />}
+			trigger={<Avatar data-testId='UserAvatar' src={authData.avatar} />}
 		/>
 	);
 });
