@@ -57,6 +57,8 @@ export const StarRating: FC<StarRatingProps> = memo((props) => {
 		<div className={cn(styles.starRating, {}, className)}>
 			{marks.map((number) => (
 				<Icon
+					data-testid={`StarRating.${number}`}
+					data-selected={currentStar >= number}
 					onClick={onStarClick(number)}
 					className={cn(styles.star, { [styles.disabled]: Boolean(selectedRating) })}
 					onMouseEnter={onHover(number)}

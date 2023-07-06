@@ -31,7 +31,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 
 	if (view === ArticleView.TILE) {
 		return (
-			<AppLink to={getArticlePageRoute(article.id)} target={target}>
+			<AppLink data-testid='ArticleListItem' to={getArticlePageRoute(article.id)} target={target}>
 				<Card className={cn(styles.articleListItem, {}, className, styles.tile)}>
 					<div className={styles.imgBlock}>
 						<AppImage
@@ -58,7 +58,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo((props) => {
 	const textBlock = article.blocks.find((i) => i.type === AricleBlockType.TEXT) as ArticleBlockText;
 
 	return (
-		<Card className={cn(styles.articleListItem, {}, className, styles.list)}>
+		<Card data-testid='ArticleListItem' className={cn(styles.articleListItem, {}, className, styles.list)}>
 			<HStack justify='between'>
 				<AppLink to={getProfilePageRoute(article.user.id)}>
 					<HStack gap='16' align='center'>

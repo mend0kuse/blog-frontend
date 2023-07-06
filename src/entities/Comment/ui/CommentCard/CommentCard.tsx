@@ -23,7 +23,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props) => {
 	if (isLoading) return <CommentSkeleton />;
 
 	return (
-		<VStack max gap='16' className={cn(styles.commentCard, {}, className)}>
+		<VStack data-testid='CommentCard' max gap='16' className={cn(styles.commentCard, {}, className)}>
 			<AppLink to={getProfilePageRoute(comment.user.id)} className={styles.header}>
 				<HStack gap='8' align='center'>
 					<Avatar size={30} src={comment.user.avatar} />

@@ -66,8 +66,10 @@ export const Rating = memo((props: RatingProps) => {
 			<Text title={feedbackTitle} />
 			<Input value={feedbackText} onChange={setFeedbackText} />
 			<HStack gap='8' justify='end'>
-				<Button onClick={onSubmitClick}>{t('Submit')}</Button>
-				<Button theme={ThemeButton.OUTLINE_ERR} onClick={onModalClose}>
+				<Button data-testid='Rating.Send' onClick={onSubmitClick}>
+					{t('Submit')}
+				</Button>
+				<Button data-testid='Rating.Cancel' theme={ThemeButton.OUTLINE_ERR} onClick={onModalClose}>
 					{t('Cancel')}
 				</Button>
 			</HStack>

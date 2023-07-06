@@ -35,6 +35,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 			wrap={isList ? undefined : 'wrap'}
 			gap='32'
 			max
+			data-testid='ArticleList'
 		>
 			{!isLoading && articles?.length === 0 && <Text text={t('Articles not found')} />}
 			{articles?.map((article) => (

@@ -51,9 +51,12 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
 				className={styles.field}
 				value={text}
 				onChange={onChangeHandler}
+				data-testid='AddComment.Input'
 				placeholder={t('Enter text')}
 			/>
-			<Button onClick={onSendHandler}>{t('Send')}</Button>
+			<Button data-testid='AddComment.Send' onClick={onSendHandler}>
+				{t('Send')}
+			</Button>
 		</HStack>
 	);
 };
