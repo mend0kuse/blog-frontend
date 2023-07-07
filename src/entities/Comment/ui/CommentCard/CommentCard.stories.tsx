@@ -15,6 +15,7 @@ Normal.args = {
 		id: '1',
 		text: '123123',
 		user: {
+			features: {},
 			id: '1',
 			role: ['Admin'],
 			username: 'admin',

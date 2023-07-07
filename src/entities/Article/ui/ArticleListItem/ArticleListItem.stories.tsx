@@ -14,6 +14,7 @@ export const Normal = Template.bind({});
 Normal.args = {
 	article: {
 		user: {
+			features: {},
 			id: '1',
 			role: ['Admin'],
 			username: 'admin',

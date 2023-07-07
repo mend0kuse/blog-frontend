@@ -698,16 +698,22 @@
       "role": [
         "Admin"
       ],
+      "features": {
+        "isRatingEnabled": true
+      },
       "password": "123",
       "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg"
     },
     {
       "id": "2",
-      "username": "User",
+      "username": "user",
       "role": [
         "User"
       ],
-      "password": "asd",
+      "features": {
+        "isRatingEnabled": false
+      },
+      "password": "123",
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/3a/3a0b9db20a6f22387ca7a1123827a965.jpeg"
     },
     {
