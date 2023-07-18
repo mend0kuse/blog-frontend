@@ -2,7 +2,7 @@ export interface FeatureFlags {
 	isRatingEnabled?: boolean;
 }
 
-let featureFlags: FeatureFlags;
+let featureFlags: FeatureFlags = {};
 
 export const setFeatureFlags = (flags: FeatureFlags) => {
 	featureFlags = flags;
