@@ -1,6 +1,7 @@
 import { USER_KEY } from '@/shared/const/localStorage';
 import { setFeatureFlags } from '@/shared/features';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { userApi } from '../../api/userApi';
 
 import { type User, type UserSchema } from './../types/user';
 
@@ -16,19 +17,18 @@ export const userSlice = createSlice({
 			state.authData = action.payload;
 			setFeatureFlags(action.payload.features);
 		},
-		initAuthData(state) {
-			const user = localStorage.getItem(USER_KEY);
-			if (user) {
-				const parsed = JSON.parse(user) as User;
-				state.authData = parsed;
-				setFeatureFlags(parsed.features);
-			}
+		setInited(state) {
 			state._init = true;
 		},
 		logout(state) {
 			state.authData = undefined;
 			localStorage.removeItem(USER_KEY);
 		},
+	},
+	extraReducers(builder) {
+		builder.addMatcher(userApi.endpoints.getUserById.matchFulfilled, (state, { payload }) => {
+			state.authData = payload;
+		});
 	},
 });
 

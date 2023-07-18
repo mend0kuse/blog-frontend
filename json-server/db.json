@@ -701,6 +701,9 @@
       "features": {
         "isRatingEnabled": true
       },
+      "userSettings": {
+        "theme": "light"
+      },
       "password": "123",
       "avatar": "https://w.forfun.com/fetch/e6/e6044cb0b978ce39ff76b57402ebd1de.jpeg"
     },

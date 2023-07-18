@@ -1,14 +1,21 @@
-import { type FC, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import { type FC, type PropsWithChildren, useEffect, useMemo, useRef, useState } from 'react';
 
-import { type Theme, ThemeContext, defaultTheme } from '@/shared/config/themes/ThemeContext';
+import { getUserSettings } from '@/entities/User';
+import { Theme, ThemeContext } from '@/shared/config/themes/ThemeContext';
 
 export const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
-	const [theme, setTheme] = useState<Theme>(defaultTheme);
+	const { theme: defaultTheme } = getUserSettings();
+	const initial = useRef(false);
+	const [theme, setTheme] = useState<Theme>(defaultTheme ?? Theme.DARK);
 
 	useEffect(() => {
-		document.body.className = theme;
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+		if (!initial.current && defaultTheme) {
+			setTheme(defaultTheme);
+			initial.current = true;
+		}
+
+		document.body.className = defaultTheme ?? Theme.DARK;
+	}, [defaultTheme]);
 
 	const defaultProps = useMemo(() => ({ theme, setTheme }), [theme]);
 

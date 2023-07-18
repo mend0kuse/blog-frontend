@@ -1,7 +1,8 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { getUserInit, userActions } from '@/entities/User';
+import { getUserInit, useLazyGetUserByIdQuery, userActions } from '@/entities/User';
+import { USER_KEY } from '@/shared/const/localStorage';
 import cn from '@/shared/lib/classNames/cn';
 import { Loader } from '@/shared/ui/Loader';
 import { HStack } from '@/shared/ui/Stack';
@@ -9,16 +10,28 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 
 import { AppRouter } from './providers/Router';
+import { useAppDispatch } from './providers/StoreProvider';
 import './styles/index.scss';
 
 const App = () => {
-	const dispath = useDispatch();
+	const [getUserById, { isFetching }] = useLazyGetUserByIdQuery();
+	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispath(userActions.initAuthData());
-	}, [dispath]);
+		const id = localStorage.getItem(USER_KEY);
+
+		if (id) {
+			getUserById(JSON.parse(id));
+		}
+
+		dispatch(userActions.setInited());
+	}, [dispatch, getUserById]);
 
 	const _init = useSelector(getUserInit);
+
+	if (isFetching) {
+		return <Loader />;
+	}
 
 	return (
 		<div className={cn('app', {})}>
