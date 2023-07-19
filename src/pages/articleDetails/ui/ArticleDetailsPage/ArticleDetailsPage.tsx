@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleDetailsRecomendations } from '@/features/ArticleDetailsRecomendations';
-import { ArticleRating } from '@/features/ArticleRating';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
 import { Text, ThemeText } from '@/shared/ui/Text';
@@ -41,7 +40,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 				<ArticleDetailsPageHeader />
 				<ArticleDetails id={id} />
 				<ArticleDetailsRecomendations />
-				<ArticleRating id={id} />
 				<ArticleComments id={id} />
 			</div>
 		</Page>
