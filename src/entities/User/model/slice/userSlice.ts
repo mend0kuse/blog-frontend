@@ -1,8 +1,8 @@
-import { USER_KEY } from '@/shared/const/localStorage';
+import { USER_KEY } from '@/shared/browser-storage/localStorage';
 import { setFeatureFlags } from '@/shared/features';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { userApi } from '../../api/userApi';
 
+import { userApi } from '../../api/userApi';
 import { type User, type UserSchema } from './../types/user';
 
 const initialState: UserSchema = {

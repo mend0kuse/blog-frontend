@@ -1,10 +1,8 @@
-import { type FC } from 'react';
-
 import cn from '@/shared/lib/classNames/cn';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { VStack } from '@/shared/ui/Stack';
 
-import { useGetUserNotificationsQuery } from '../../api/notificationApi';
+import { useGetNotifications } from '../../model/useGetNotifications';
 import { NotificationItem } from '../Notification/Notification';
 import styles from './NotificationList.module.scss';
 
@@ -12,12 +10,10 @@ interface NotificationListProps {
 	className?: string;
 }
 
-export const NotificationList: FC<NotificationListProps> = (props) => {
+export const NotificationList = (props: NotificationListProps) => {
 	const { className } = props;
 
-	const { data: notifications, isLoading } = useGetUserNotificationsQuery(null, {
-		pollingInterval: 5000,
-	});
+	const { isLoading, notifications } = useGetNotifications();
 
 	if (isLoading) {
 		return (

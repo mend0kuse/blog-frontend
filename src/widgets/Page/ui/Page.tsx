@@ -1,14 +1,14 @@
-import { type FC, type ReactNode, type UIEvent, useRef } from 'react';
+import { type ReactNode, type UIEvent, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { type StateSchema, useAppDispatch } from '@/app/providers/StoreProvider';
 import { getPageScrollByPathname, savePageScrollActions } from '@/features/SavePageScroll';
-import { useInViewport } from '@/shared/hooks/useInViewport';
-import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
-import { useThrottle } from '@/shared/hooks/useThrottle';
 import cn from '@/shared/lib/classNames/cn';
 import type { TestProps } from '@/shared/lib/tests/testProps';
+import { useInititalEffect } from '@/shared/lib/useInititalEffect';
+import { useThrottle } from '@/shared/lib/useThrottle';
+import { useInViewport } from '@/shared/ui/useInViewport';
 
 import styles from './Page.module.scss';
 
@@ -18,7 +18,7 @@ interface PageProps extends TestProps {
 	onScrollEnd?: () => void;
 }
 
-export const Page: FC<PageProps> = (props) => {
+export const Page = (props: PageProps) => {
 	const { className, children, onScrollEnd, 'data-testId': dataTestID } = props;
 	const dispath = useAppDispatch();
 

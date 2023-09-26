@@ -2,7 +2,7 @@ import type { AxiosResponse } from 'axios';
 
 import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type User, userActions } from '@/entities/User';
-import { USER_KEY } from '@/shared/const/localStorage';
+import { USER_KEY } from '@/shared/browser-storage/localStorage';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface LoginByUserNameProps {

@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleDetailsRecomendations } from '@/features/ArticleDetailsRecomendations';
-import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/store/useDinamycModuleLoader';
 import { Text, ThemeText } from '@/shared/ui/Text';
 import { Page } from '@/widgets/Page';
 

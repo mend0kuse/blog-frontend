@@ -2,8 +2,8 @@ import { memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 
-import { mobileBreakpoint } from '@/shared/const/breakpoints';
 import cn from '@/shared/lib/classNames/cn';
+import { useToggler } from '@/shared/lib/useToggler';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { Card } from '@/shared/ui/Card';
 import { Drawer } from '@/shared/ui/Drawer';
@@ -12,6 +12,7 @@ import { Modal } from '@/shared/ui/Modal';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { StarRating } from '@/shared/ui/StarRating';
 import { Text } from '@/shared/ui/Text';
+import { mobileBreakpoint } from '@/shared/ui/breakpoints';
 
 import styles from './Rating.module.scss';
 
@@ -32,7 +33,7 @@ export const Rating = memo((props: RatingProps) => {
 	const isMobile = useMediaQuery({ query: mobileBreakpoint });
 
 	const [selectedRating, setSelectedRating] = useState(initialRating);
-	const [feedbackShow, setFeedbackShow] = useState(false);
+	const { setFalse: closeFeedback, setTrue: openFeedback, value: feedbackShow } = useToggler();
 	const [feedbackText, setFeedbackText] = useState('');
 
 	useEffect(() => {
@@ -40,26 +41,26 @@ export const Rating = memo((props: RatingProps) => {
 	}, [initialRating]);
 
 	const onSubmitClick = useCallback(() => {
-		setFeedbackShow(false);
+		closeFeedback();
 		onSubmit?.(selectedRating, feedbackText);
-	}, [feedbackText, onSubmit, selectedRating]);
+	}, [closeFeedback, feedbackText, onSubmit, selectedRating]);
 
 	const onSelect = useCallback(
 		(rating: number) => {
 			setSelectedRating(rating);
 			if (hasFeedback) {
-				setFeedbackShow(true);
+				openFeedback();
 			} else {
 				onSubmit?.(selectedRating);
 			}
 		},
-		[hasFeedback, onSubmit, selectedRating],
+		[hasFeedback, onSubmit, openFeedback, selectedRating],
 	);
 
 	const onModalClose = useCallback(() => {
-		setFeedbackShow(false);
+		closeFeedback();
 		onCancel?.(selectedRating);
-	}, [onCancel, selectedRating]);
+	}, [closeFeedback, onCancel, selectedRating]);
 
 	const form = (
 		<VStack className={styles.form} gap='16'>

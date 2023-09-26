@@ -2,8 +2,8 @@ import { type FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { type ReducersList, useDinamycModuleLoader } from '@/shared/hooks/useDinamycModuleLoader';
 import cn from '@/shared/lib/classNames/cn';
+import { type ReducersList, useDinamycModuleLoader } from '@/shared/store/useDinamycModuleLoader';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Text, ThemeText } from '@/shared/ui/Text';

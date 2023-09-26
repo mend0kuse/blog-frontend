@@ -1,4 +1,4 @@
-import { type FC, memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,32 +8,26 @@ import { LoginModal } from '@/features/AuthByUserName';
 import { UserActions } from '@/features/UserActions';
 import { UserNotifications } from '@/features/UserNotifications';
 import cn from '@/shared/lib/classNames/cn';
+import { useToggler } from '@/shared/lib/useToggler';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 
 import styles from './Navbar.module.scss';
 
-export const Navbar: FC = memo(() => {
+export const Navbar = memo(() => {
 	const { t } = useTranslation();
 
 	const navigate = useNavigate();
 
+	const { setFalse: setAuthClose, setTrue: setAuthOpen, value: isAuthFormOpen } = useToggler();
+
 	const authData = useSelector(getUserAuthData);
-	const [isAuthFormOpen, setAuthFormOpen] = useState(false);
-
-	const setAuthOpen = useCallback(() => {
-		setAuthFormOpen(true);
-	}, []);
-
-	const setAuthClose = useCallback(() => {
-		setAuthFormOpen(false);
-	}, []);
 
 	useEffect(() => {
 		if (authData) {
-			setAuthFormOpen(false);
+			setAuthClose();
 		}
-	}, [authData, setAuthFormOpen]);
+	}, [authData, setAuthClose]);
 
 	const createArticleHandler = useCallback(() => {
 		navigate('/articles/new');

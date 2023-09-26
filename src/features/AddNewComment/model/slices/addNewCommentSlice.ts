@@ -12,7 +12,6 @@ export const addNewCommentSlice = createSlice({
 			state.text = action.payload;
 		},
 	},
-	extraReducers: (builder) => {},
 });
 
 export const { reducer: addNewCommentReducer } = addNewCommentSlice;

@@ -1,6 +1,6 @@
 import { type FC, type ReactNode } from 'react';
 
-import { useModal } from '@/shared/hooks/useModal';
+import { useModal } from '@/shared/ui/Modal/useModal';
 import cn from '@/shared/lib/classNames/cn';
 
 import { Overlay } from '../Overlay/Overlay';
