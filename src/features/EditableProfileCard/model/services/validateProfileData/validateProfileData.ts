@@ -6,13 +6,13 @@ export const validateProfileData = (formData: Profile | null) => {
 	const errors: ValidateProfileError[] = [];
 
 	if (formData) {
-		const { first, lastname, age } = formData;
+		const { name, surname, age } = formData;
 
-		if (!first || !lastname) {
+		if (!name || !surname) {
 			errors.push(ValidateProfileError.INCORRECT_USER_DATA);
 		}
 
-		if (!age || age < 1) {
+		if (!age) {
 			errors.push(ValidateProfileError.INCORRECT_AGE);
 		}
 	}

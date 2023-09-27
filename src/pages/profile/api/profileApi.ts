@@ -1,16 +1,17 @@
 import { type Profile } from '@/entities/Profile';
+import type { User } from '@/entities/User';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 const profileApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
-		getProfile: build.query({
-			query: (id: string) => ({ url: '/profile/' + id }),
+		getProfile: build.query<User, { id: string }>({
+			query: ({ id }) => ({ url: '/user/' + id }),
 		}),
 		updateProfile: build.mutation({
-			query: ({ id, formData }: { id?: string; formData: Profile }) => ({
-				url: `/profile/${id}`,
+			query: ({ formData }: { formData: Profile }) => ({
+				url: `/user/profile`,
 				body: formData,
-				method: 'PUT',
+				method: 'PATCH',
 			}),
 		}),
 	}),

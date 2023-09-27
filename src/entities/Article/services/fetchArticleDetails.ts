@@ -14,11 +14,7 @@ export const fetchArticleDetails = createAsyncThunk<Article, string, AsyncThunkC
 		} = thunkAPI;
 
 		try {
-			const response: AxiosResponse = await api.get<Article>('/articles/' + id, {
-				params: {
-					_expand: 'user',
-				},
-			});
+			const response: AxiosResponse = await api.get<Article>('/articles/' + id);
 
 			if (!response.data) throw new Error();
 			return response.data;

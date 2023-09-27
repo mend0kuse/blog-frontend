@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
 import svgr from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
 	server: {
-		port: 3000,
+		port: 8000,
 		open: true,
 	},
 	plugins: [
@@ -13,18 +15,14 @@ export default defineConfig({
 			exportAsDefault: true,
 		}),
 		react(),
+		tsconfigPaths(),
+		checker({
+			typescript: true,
+		}),
 	],
-	resolve: {
-		alias: [
-			{
-				find: '@',
-				replacement: '/src',
-			},
-		],
-	},
 	define: {
 		_IS_DEV_: JSON.stringify(true),
-		_API_: JSON.stringify('http://localhost:8000'),
+		_API_: JSON.stringify('http://localhost:3000'),
 		_PROJECT_: JSON.stringify('frontend'),
 	},
 });

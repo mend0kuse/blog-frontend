@@ -19,11 +19,11 @@ export const profileSlice = createSlice({
 			state.readonly = true;
 			state.validateError = undefined;
 		},
-		setFirstName(state, action: PayloadAction<Profile['first']>) {
-			state.formData = { ...state.formData, first: action.payload };
+		setFirstName(state, action: PayloadAction<Profile['name']>) {
+			state.formData = { ...state.formData, name: action.payload };
 		},
-		setLastName(state, action: PayloadAction<Profile['lastname']>) {
-			state.formData = { ...state.formData, lastname: action.payload };
+		setLastName(state, action: PayloadAction<Profile['surname']>) {
+			state.formData = { ...state.formData, surname: action.payload };
 		},
 		setAge(state, action: PayloadAction<Profile['age']>) {
 			state.formData = { ...state.formData, age: action.payload };
@@ -33,9 +33,6 @@ export const profileSlice = createSlice({
 		},
 		setAvatar(state, action: PayloadAction<Profile['avatar']>) {
 			state.formData = { ...state.formData, avatar: action.payload };
-		},
-		setCity(state, action: PayloadAction<Profile['city']>) {
-			state.formData = { ...state.formData, city: action.payload };
 		},
 		setCurrency(state, action: PayloadAction<Profile['currency']>) {
 			state.formData = { ...state.formData, currency: action.payload };

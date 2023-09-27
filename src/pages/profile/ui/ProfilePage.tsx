@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { type Profile } from '@/entities/Profile';
@@ -7,24 +7,29 @@ import { Page } from '@/widgets/Page';
 
 import { useGetProfileQuery, useUpdateProfileMutation } from '../api/profileApi';
 
-const ProfilePage: FC = () => {
+const ProfilePage = () => {
 	const { id } = useParams<{ id: string }>();
 
-	const { error, isLoading, data: profile, refetch: refetchProfile } = useGetProfileQuery(id || '');
+	const { error, isLoading, data: user, refetch: refetchProfile } = useGetProfileQuery({ id: id ?? '' });
 
 	const [updateProfile] = useUpdateProfileMutation();
 
 	const updateHandler = useCallback(
 		(formData: Profile) => {
-			updateProfile({ id, formData });
+			updateProfile({ formData });
 			refetchProfile();
 		},
-		[id, refetchProfile, updateProfile],
+		[refetchProfile, updateProfile],
 	);
 
 	return (
 		<Page>
-			<EditableProfileCard updateHandler={updateHandler} error={error} isLoading={isLoading} profile={profile} />
+			<EditableProfileCard
+				updateHandler={updateHandler}
+				error={error}
+				isLoading={isLoading}
+				profile={user?.profile}
+			/>
 		</Page>
 	);
 };

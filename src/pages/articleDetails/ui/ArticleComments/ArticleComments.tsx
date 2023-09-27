@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/app/providers/StoreProvider';
 import { CommentList } from '@/entities/Comment';
 import { AddNewCommentForm } from '@/features/AddNewComment';
-import { useInititalEffect } from '@/shared/hooks/useInititalEffect';
 import cn from '@/shared/lib/classNames/cn';
+import { useInititalEffect } from '@/shared/lib/useInititalEffect';
 
 import {
 	getArticleCommentsError,
@@ -18,7 +18,7 @@ import styles from './ArticleComments.module.scss';
 
 interface ArticleCommentsProps {
 	className?: string;
-	id: string;
+	id: number;
 }
 
 export const ArticleComments: FC<ArticleCommentsProps> = memo((props) => {

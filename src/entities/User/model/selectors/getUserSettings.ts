@@ -5,6 +5,4 @@ import type { UserSettings } from '../types/user';
 
 const defaultSettings: UserSettings = {};
 
-export const [getUserSettings] = buildSelector(
-	(state: StateSchema) => state.user.authData?.userSettings ?? defaultSettings,
-);
+export const [getUserSettings] = buildSelector((state: StateSchema) => defaultSettings);

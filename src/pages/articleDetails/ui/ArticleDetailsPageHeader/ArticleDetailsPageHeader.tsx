@@ -30,7 +30,7 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 
 	const editArticleHandler = useCallback(() => {
 		if (article?.id) {
-			navigate(getEditPageRoute(article.id));
+			navigate(getEditPageRoute(article.id.toString()));
 		}
 	}, [article?.id, navigate]);
 

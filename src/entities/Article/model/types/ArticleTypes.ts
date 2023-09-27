@@ -1,34 +1,23 @@
 import { type User } from '@/entities/User';
 
-export enum AricleBlockType {
-	IMAGE = 'IMAGE',
-	TEXT = 'TEXT',
-	CODE = 'CODE',
-}
-
-export interface ArticleBlockBasis {
-	id: string;
-	type: AricleBlockType;
-}
-
-export interface ArticleBlockCode extends ArticleBlockBasis {
-	type: AricleBlockType.CODE;
+export interface ArticleBlockCode {
+	id: number;
 	code: string;
 }
 
-export interface ArticleBlockText extends ArticleBlockBasis {
-	type: AricleBlockType.TEXT;
-	title?: string;
-	paragraphs: string[];
+export interface ArticleBlockText {
+	id: number;
+	title: string;
+	paragraphs: Array<{ id: number; text: string }>;
 }
 
-export interface ArticleBlockImage extends ArticleBlockBasis {
-	type: AricleBlockType.IMAGE;
+export interface ArticleBlockImage {
+	id: number;
 	title: string;
 	src: string;
 }
 
-export type ArticleBlock = ArticleBlockCode | ArticleBlockImage | ArticleBlockText;
+export type ArticleBlockType = 'IMAGE' | 'TEXT' | 'CODE';
 
 export enum ArticleType {
 	IT = 'IT',
@@ -41,14 +30,29 @@ export enum ArticleView {
 	TILE = 'tile',
 }
 
+interface ArticleTypeWithName {
+	name: ArticleType;
+	id: number;
+	articleId: number;
+}
+
+interface ArticleStats {
+	likes: number;
+	dislikes: number;
+}
+
 export interface Article {
-	id: string;
+	id: number;
 	title: string;
 	subtitle: string;
-	img: string;
+	preview: string;
 	views: number;
-	user: User;
+	User: User;
 	createdAt: string;
-	type: ArticleType[];
-	blocks: ArticleBlock[];
+
+	ArticleStats: ArticleStats;
+	types: ArticleTypeWithName[];
+	textBlocks: ArticleBlockText[];
+	codeBlocks: ArticleBlockCode[];
+	imageBlocks: ArticleBlockImage[];
 }

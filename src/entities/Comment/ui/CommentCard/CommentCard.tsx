@@ -27,7 +27,7 @@ export const CommentCard: FC<CommentCardProps> = memo((props) => {
 			<AppLink to={getProfilePageRoute(comment.user.id)} className={styles.header}>
 				<HStack gap='8' align='center'>
 					<Avatar size={30} src={comment.user.avatar} />
-					<Text title={comment.user.username} />
+					<Text title={comment.user.profile.username ?? comment.user.email} />
 				</HStack>
 			</AppLink>
 			<Text text={comment.text} />

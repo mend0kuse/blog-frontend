@@ -1,4 +1,4 @@
-import { type FC, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +11,7 @@ import { Text, ThemeText } from '@/shared/ui/Text';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginLoading';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import { getLoginEmail } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { loginActions, loginReducer } from '../../model/slices/loginSlice';
 import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
 import styles from './LoginForm.module.scss';
@@ -20,12 +20,12 @@ const reducers: ReducersList = {
 	login: loginReducer,
 };
 
-const LoginForm: FC = () => {
+const LoginForm = () => {
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
 
 	const password = useSelector(getLoginPassword);
-	const username = useSelector(getLoginUsername);
+	const email = useSelector(getLoginEmail);
 	const isLoading = useSelector(getLoginLoading);
 	const error = useSelector(getLoginError);
 
@@ -46,14 +46,14 @@ const LoginForm: FC = () => {
 	);
 
 	const onLoginClick = useCallback(() => {
-		dispatch(loginByUserName({ username, password }));
-	}, [dispatch, username, password]);
+		dispatch(loginByUserName({ email, password }));
+	}, [dispatch, email, password]);
 
 	return (
 		<div className={cn(styles.LoginForm)}>
 			<Text title={t('Auth form')} />
 			{error && <Text text={t(error)} theme={ThemeText.ERROR} />}
-			<Input value={username} onChange={onUsernameChange} autoFocus placeholder='Username' />
+			<Input value={email} onChange={onUsernameChange} autoFocus placeholder='Email' />
 			<Input value={password} onChange={onPasswordChange} placeholder='Password' />
 			<Button theme={ThemeButton.OUTLINE} className={styles.logBtn} onClick={onLoginClick} disabled={isLoading}>
 				{t('Sign in')}

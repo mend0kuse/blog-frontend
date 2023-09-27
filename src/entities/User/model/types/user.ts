@@ -1,7 +1,8 @@
+import type { Notification } from '@/entities/Notification';
+import type { Profile } from '@/entities/Profile';
 import type { Theme } from '@/shared/config/themes/ThemeContext';
-import type { FeatureFlags } from '@/shared/features';
 
-export type UserRole = 'User' | 'Admin' | 'Manager';
+export type UserRole = 'user' | 'admin';
 
 export interface UserSettings {
 	theme?: Theme;
@@ -9,11 +10,11 @@ export interface UserSettings {
 
 export interface User {
 	id: string;
-	username: string;
+	email: string;
 	avatar?: string;
-	role: UserRole[];
-	features: FeatureFlags;
-	userSettings?: UserSettings;
+	role: UserRole;
+	profile: Profile;
+	notifications?: Notification[];
 }
 
 export interface UserSchema {

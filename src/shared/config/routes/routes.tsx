@@ -16,5 +16,5 @@ export enum AppRoutes {
 }
 
 export const getProfilePageRoute = (id: string) => AppRoutes.PROFILE + id;
-export const getArticlePageRoute = (id: string) => AppRoutes.ARTICLE_DETAILS + id;
-export const getEditPageRoute = (id: string) => AppRoutes.ARTICLE_EDIT + id;
+export const getArticlePageRoute = (id: string) => `${AppRoutes.ARTICLE_DETAILS}/${id}`;
+export const getEditPageRoute = (id: string) => `${AppRoutes.ARTICLE_EDIT}/${id}`;

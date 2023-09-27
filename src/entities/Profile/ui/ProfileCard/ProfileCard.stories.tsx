@@ -15,12 +15,11 @@ export const Card = Template.bind({});
 Card.args = {
 	readOnly: true,
 	data: {
-		first: 'Семён',
-		lastname: 'Васильев',
-		age: 1,
+		name: 'Семён',
+		surname: 'Васильев',
+		age: '1',
 		currency: Currency.RUB,
 		country: Country.Russia,
-		city: 'Irkutsk',
 		username: 'admin',
 		avatar: 'https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg',
 	},

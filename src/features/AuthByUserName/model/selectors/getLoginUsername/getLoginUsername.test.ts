@@ -1,17 +1,17 @@
 import { type StateSchema } from '@/app/providers/StoreProvider';
 
-import { getLoginUsername } from './getLoginUsername';
+import { getLoginEmail } from './getLoginUsername';
 
 describe('getLoginLoading', () => {
 	test('shold return login username', () => {
 		const state: DeepPartial<StateSchema> = {
-			login: { username: 'asd' },
+			login: { email: 'asd' },
 		};
-		expect(getLoginUsername(state as StateSchema)).toEqual('asd');
+		expect(getLoginEmail(state as StateSchema)).toEqual('asd');
 	});
 
 	test('without login state', () => {
 		const state: DeepPartial<StateSchema> = {};
-		expect(getLoginUsername(state as StateSchema)).toEqual('');
+		expect(getLoginEmail(state as StateSchema)).toEqual('');
 	});
 });

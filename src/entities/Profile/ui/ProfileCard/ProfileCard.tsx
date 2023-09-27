@@ -87,33 +87,27 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 				<div className={styles.ProfileData}>
 					<Avatar className={styles.avatar} alt='avatar' src={data?.avatar} size={100} />
 					<Input
-						value={data?.first}
+						value={data?.name ?? ''}
 						readOnly={readOnly}
 						onChange={onChangeFirstName}
 						placeholder={t('Your name')}
 						data-testid='ProfileCard.first'
 					/>
 					<Input
-						value={data?.lastname}
+						value={data?.surname ?? ''}
 						readOnly={readOnly}
 						onChange={onChangeLastName}
 						placeholder={t('Your surname')}
 					/>
+					<Input value={data?.age} readOnly={readOnly} onChange={onChangeAge} placeholder={t('Your age')} />
 					<Input
-						type='number'
-						value={data?.age}
-						readOnly={readOnly}
-						onChange={onChangeAge}
-						placeholder={t('Your age')}
-					/>
-					<Input
-						value={data?.username}
+						value={data?.username ?? ''}
 						readOnly={readOnly}
 						onChange={onChangeUsername}
 						placeholder={t('Your username')}
 					/>
 					<Input
-						value={data?.avatar}
+						value={data?.avatar ?? ''}
 						readOnly={readOnly}
 						onChange={onChangeAvatar}
 						placeholder={t('Your avatar')}

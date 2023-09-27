@@ -11,20 +11,19 @@ const options: componentRenderOptions = {
 	initialState: {
 		user: {
 			authData: {
-				username: 'admin',
+				email: 'admin@mail.ru',
 				avatar: 'https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg',
 				id: '1',
 			},
 		},
 		profile: {
 			formData: {
-				id: '1',
-				first: 'Семён',
-				lastname: 'Васильев',
-				age: 1,
+				id: 1,
+				name: 'Семён',
+				surname: 'Васильев',
+				age: '1',
 				currency: Currency.RUB,
 				country: Country.Russia,
-				city: 'Irkutsk',
 				username: 'admin',
 				avatar: 'https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg',
 			},
@@ -64,7 +63,7 @@ describe('EditableProfileCard', () => {
 		expect(input).toHaveValue('asdsadsadsa');
 
 		await userEvent.click(screen.getByTestId('EditableProfileCard.Cancel'));
-		expect(input).toHaveValue(options.initialState?.profile?.formData?.first);
+		expect(input).toHaveValue(options.initialState?.profile?.formData?.name);
 	});
 
 	test('validation empty firstName', async () => {

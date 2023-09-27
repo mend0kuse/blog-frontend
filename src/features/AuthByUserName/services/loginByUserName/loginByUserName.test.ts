@@ -7,12 +7,12 @@ describe('loginByUserName', () => {
 	test('succes', async () => {
 		const asyncThunk = new TestAsyncThunk(loginByUserName);
 
-		const userValue: User = { features: {}, username: '123', id: '1', role: ['Admin'] };
+		const userValue: User = { email: '123', id: '1', role: 'admin', profile: {} };
 		asyncThunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
 
 		const result = await asyncThunk.callThunk({
 			password: 'sdf',
-			username: 'adsf',
+			email: 'adsf',
 		});
 
 		expect(asyncThunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
@@ -29,7 +29,7 @@ describe('loginByUserName', () => {
 
 		const result = await asyncThunk.callThunk({
 			password: 'sdf',
-			username: 'adsf',
+			email: 'adsf',
 		});
 
 		expect(asyncThunk.dispatch).toHaveBeenCalledTimes(2);

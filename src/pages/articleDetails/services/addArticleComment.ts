@@ -2,7 +2,6 @@ import { type AxiosResponse } from 'axios';
 
 import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type Comment } from '@/entities/Comment';
-import { getUserAuthData } from '@/entities/User';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getArticleData } from './../../../entities/Article/model/selectors/articleSelectors';
@@ -19,13 +18,10 @@ export const addArticleComment = createAsyncThunk<Comment, string, AsyncThunkCon
 		} = thunkAPI;
 
 		const article = getArticleData(getState());
-		const user = getUserAuthData(getState());
 
 		try {
-			const response: AxiosResponse = await api.post<Comment>('/comments', {
+			const response: AxiosResponse = await api.post<Comment>(`/comments/article/${article?.id}`, {
 				text,
-				articleId: article?.id,
-				userId: user?.id,
 			});
 
 			if (!response.data) throw new Error();

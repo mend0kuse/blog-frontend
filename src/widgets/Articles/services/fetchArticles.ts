@@ -1,4 +1,5 @@
-import { type AxiosResponse } from 'axios';
+import type { AxiosResponse } from 'axios';
+import { isAxiosError } from 'axios';
 
 import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type Article } from '@/entities/Article';
@@ -38,12 +39,11 @@ export const fetchArticles = createAsyncThunk<Article[], Props, AsyncThunkConfig
 
 			const response: AxiosResponse = await api.get<Article[]>('/articles', {
 				params: {
-					_expand: 'user',
-					_page: page,
-					_limit: limit,
-					_sort: sort,
-					_order: order,
-					type_like: category === 'all' ? undefined : category,
+					page,
+					limit,
+					sort,
+					order,
+					...(category !== 'all' && { category }),
 					q: search,
 				},
 			});
@@ -52,7 +52,10 @@ export const fetchArticles = createAsyncThunk<Article[], Props, AsyncThunkConfig
 
 			return response.data;
 		} catch (error) {
-			console.log(error);
+			if (isAxiosError(error)) {
+				return rejectWithValue(error.response?.data.message);
+			}
+
 			return rejectWithValue('Article Fetch Error');
 		}
 	},

@@ -40,7 +40,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = (props) => {
 				<ArticleDetailsPageHeader />
 				<ArticleDetails id={id} />
 				<ArticleDetailsRecomendations />
-				<ArticleComments id={id} />
+				<ArticleComments id={Number(id)} />
 			</div>
 		</Page>
 	);

@@ -7,5 +7,5 @@ export const getArticleCommentsError = (state: StateSchema) => state.articleDeta
 export const getArticleCommentsisLoading = (state: StateSchema) => state.articleDetailsPage?.comments?.isLoading;
 
 export const getCanEditArticle = createSelector(getUserAuthData, getArticleData, (user, article) => {
-	return user?.id === article?.user.id;
+	return user?.id === article?.User.id;
 });

@@ -15,10 +15,10 @@ Normal.args = {
 		id: '1',
 		text: '123123',
 		user: {
-			features: {},
 			id: '1',
-			role: ['Admin'],
-			username: 'admin',
+			role: 'admin',
+			profile: {},
+			email: 'admin',
 			avatar: 'https://i.pinimg.com/564x/70/5b/bb/705bbb820c7332b04d619f7536645753.jpg',
 		},
 	},

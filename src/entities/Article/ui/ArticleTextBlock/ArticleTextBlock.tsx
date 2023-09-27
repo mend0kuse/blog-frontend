@@ -23,7 +23,7 @@ export const ArticleTextBlock: FC<ArticleTextBlockProps> = memo((props) => {
 			{title && <Text title={title} />}
 			<div className={styles.inner}>
 				{paragraphs?.map((i) => (
-					<Text key={i} text={i} />
+					<Text key={i.id} text={i.text} />
 				))}
 			</div>
 		</VStack>

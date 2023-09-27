@@ -13,7 +13,7 @@ import { SizeText, Text, ThemeText } from '@/shared/ui/Text';
 
 import { useGetArticleData, useGetArticleError, useGetArticleisLoading } from '../../model/selectors/articleSelectors';
 import { articleReducer } from '../../model/slices/articleSlice';
-import { AricleBlockType, type ArticleBlock } from '../../model/types/ArticleTypes';
+import type { Article, ArticleBlockType } from '../../model/types/ArticleTypes';
 import { fetchArticleDetails } from '../../services/fetchArticleDetails';
 import { ArticleCodeBlock } from '../ArticleCodeBlock/ArticleCodeBlock';
 import { ArticleImageBlock } from '../ArticleImageBlock/ArticleImageBlock';
@@ -30,16 +30,34 @@ const reducers: ReducersList = {
 	articleDetails: articleReducer,
 };
 
-const renderBlock = (block: ArticleBlock) => {
-	switch (block.type) {
-		case AricleBlockType.CODE:
-			return <ArticleCodeBlock key={block.id} block={block} />;
+const renderBlocks = (article: Article | undefined, typeBlock: ArticleBlockType) => {
+	switch (typeBlock) {
+		case 'CODE':
+			return (
+				<>
+					{article?.codeBlocks.map((block) => (
+						<ArticleCodeBlock key={block.id} block={block} />
+					))}
+				</>
+			);
 
-		case AricleBlockType.IMAGE:
-			return <ArticleImageBlock key={block.id} block={block} />;
+		case 'IMAGE':
+			return (
+				<>
+					{article?.imageBlocks.map((block) => (
+						<ArticleImageBlock key={block.id} block={block} />
+					))}
+				</>
+			);
 
-		case AricleBlockType.TEXT:
-			return <ArticleTextBlock key={block.id} block={block} />;
+		case 'TEXT':
+			return (
+				<>
+					{article?.textBlocks.map((block) => (
+						<ArticleTextBlock key={block.id} block={block} />
+					))}
+				</>
+			);
 
 		default:
 			return null;
@@ -71,7 +89,7 @@ export const ArticleDetails: FC<ArticleProps> = memo((props) => {
 
 	return (
 		<VStack max className={cn(styles.article, {}, className)}>
-			<Avatar size={200} className={styles.avatar} src={data?.img} />
+			<Avatar size={200} className={styles.avatar} src={data?.preview} />
 			<Text title={data?.title} size={SizeText.l} text={data?.subtitle} />
 
 			{/* views */}
@@ -87,7 +105,9 @@ export const ArticleDetails: FC<ArticleProps> = memo((props) => {
 			</HStack>
 
 			<VStack gap='16' max className={styles.blocksInner}>
-				{data?.blocks.map(renderBlock)}
+				{renderBlocks(data, 'CODE')}
+				{renderBlocks(data, 'IMAGE')}
+				{renderBlocks(data, 'TEXT')}
 			</VStack>
 		</VStack>
 	);

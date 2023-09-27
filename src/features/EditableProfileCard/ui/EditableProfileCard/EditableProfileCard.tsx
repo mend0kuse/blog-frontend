@@ -75,7 +75,7 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
 
 	const onChangeAge = useCallback(
 		(value: string) => {
-			dispatch(profileActions.setAge(Number(value)));
+			dispatch(profileActions.setAge(value));
 		},
 		[dispatch],
 	);

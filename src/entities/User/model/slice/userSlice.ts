@@ -1,5 +1,4 @@
 import { USER_KEY } from '@/shared/browser-storage/localStorage';
-import { setFeatureFlags } from '@/shared/features';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { userApi } from '../../api/userApi';
@@ -15,7 +14,6 @@ export const userSlice = createSlice({
 	reducers: {
 		setAuthData(state, action: PayloadAction<User>) {
 			state.authData = action.payload;
-			setFeatureFlags(action.payload.features);
 		},
 		setInited(state) {
 			state._init = true;
@@ -32,5 +30,4 @@ export const userSlice = createSlice({
 	},
 });
 
-export const { reducer: userReducer } = userSlice;
-export const { actions: userActions } = userSlice;
+export const { reducer: userReducer, actions: userActions } = userSlice;

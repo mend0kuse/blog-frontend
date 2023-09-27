@@ -21,7 +21,7 @@ const userApi = rtkApi.injectEndpoints({
 
 		getUserById: build.query<User, string>({
 			query: (id) => ({
-				url: `/users/${id}`,
+				url: `/user/${id}`,
 			}),
 		}),
 	}),

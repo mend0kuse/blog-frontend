@@ -1,9 +1,10 @@
-import { memo, useCallback, useState } from 'react';
+import { memo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import { NotificationList } from '@/entities/Notification';
 import NotificationIcon from '@/shared/assets/icons/notif.svg';
 import cn from '@/shared/lib/classNames/cn';
+import { useToggler } from '@/shared/lib/useToggler';
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { Drawer } from '@/shared/ui/Drawer';
 import { Icon } from '@/shared/ui/Icon';
@@ -20,15 +21,7 @@ export const UserNotifications = memo((props: UserNotificationsProps) => {
 	const { className } = props;
 	const isMobile = useMediaQuery({ query: mobileBreakpoint });
 
-	const [drawerOpen, setDrawerOpen] = useState(false);
-
-	const closeDrawerHandler = useCallback(() => {
-		setDrawerOpen(false);
-	}, []);
-
-	const openDrawerHandler = useCallback(() => {
-		setDrawerOpen(true);
-	}, []);
+	const { value: drawerOpen, setTrue: openDrawerHandler, setFalse: closeDrawerHandler } = useToggler();
 
 	return (
 		<div className={cn(styles.UserNotifications, {}, className)}>

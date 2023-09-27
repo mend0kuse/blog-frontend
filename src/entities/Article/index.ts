@@ -5,5 +5,6 @@ export { ArticleList } from './ui/ArticleList/ArticleList';
 export { ArticleView } from './model/types/ArticleTypes';
 export { ArticleType } from './model/types/ArticleTypes';
 export { useGetArticleData, getArticleData } from './model/selectors/articleSelectors';
-export { AricleBlockType } from './model/types/ArticleTypes';
+export type { ArticleBlockType } from './model/types/ArticleTypes';
 export { articleReducer } from './model/slices/articleSlice';
+export { mockArticle } from './ui/Article/mockArticle';

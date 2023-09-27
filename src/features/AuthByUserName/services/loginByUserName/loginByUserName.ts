@@ -1,4 +1,6 @@
 import type { AxiosResponse } from 'axios';
+import { isAxiosError } from 'axios';
+import jwt from 'jwt-decode';
 
 import { type AsyncThunkConfig } from '@/app/providers/StoreProvider';
 import { type User, userActions } from '@/entities/User';
@@ -6,7 +8,7 @@ import { USER_KEY } from '@/shared/browser-storage/localStorage';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface LoginByUserNameProps {
-	username: string;
+	email: string;
 	password: string;
 }
 
@@ -20,18 +22,18 @@ export const loginByUserName = createAsyncThunk<User, LoginByUserNameProps, Asyn
 		} = thunkAPI;
 
 		try {
-			const response: AxiosResponse<User> = await api.post('/login', authData);
+			const response: AxiosResponse = await api.post('/auth/signin', authData);
 
 			if (!response.data) throw new Error();
 
-			dispatch(userActions.setAuthData(response.data));
+			dispatch(userActions.setAuthData(jwt(response.data.access_token)));
 
-			localStorage.setItem(USER_KEY, JSON.stringify(response.data.id));
+			localStorage.setItem(USER_KEY, `Bearer ${response.data.access_token}`);
 
 			return response.data;
 		} catch (error) {
-			console.log(error);
-			return rejectWithValue('Auth error');
+			if (isAxiosError(error)) return rejectWithValue(error.response?.data.message);
+			return rejectWithValue('Uncaught error');
 		}
 	},
 );
