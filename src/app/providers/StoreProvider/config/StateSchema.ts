@@ -5,6 +5,7 @@ import { type UserSchema } from '@/entities/User';
 import { type AddNewCommentSchema } from '@/features/AddNewComment';
 import { type LoginSchema } from '@/features/AuthByUserName';
 import { type ProfileSchema } from '@/features/EditableProfileCard';
+import type { RegisterSchema } from '@/features/Registration';
 import { type SavePageScrollSchema } from '@/features/SavePageScroll';
 import { type ArticleDetailsPageSchema } from '@/pages/articleDetails';
 import { type rtkApi } from '@/shared/api/rtkApi';
@@ -20,6 +21,7 @@ export interface StateSchema {
 	// Async
 	profile?: ProfileSchema;
 	login?: LoginSchema;
+	register?: RegisterSchema;
 	/* ARTICLE Details */
 	articleDetails?: ArticleSchema;
 	articleDetailsPage?: ArticleDetailsPageSchema;

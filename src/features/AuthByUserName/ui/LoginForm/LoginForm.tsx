@@ -20,7 +20,13 @@ const reducers: ReducersList = {
 	login: loginReducer,
 };
 
-const LoginForm = () => {
+interface Props {
+	openRegister?: () => void;
+}
+
+const LoginForm = (props: Props) => {
+	const { openRegister } = props;
+
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
 
@@ -29,7 +35,7 @@ const LoginForm = () => {
 	const isLoading = useSelector(getLoginLoading);
 	const error = useSelector(getLoginError);
 
-	useDinamycModuleLoader(reducers);
+	useDinamycModuleLoader(reducers, false);
 
 	const onPasswordChange = useCallback(
 		(value: string) => {
@@ -57,6 +63,9 @@ const LoginForm = () => {
 			<Input value={password} onChange={onPasswordChange} placeholder='Password' />
 			<Button theme={ThemeButton.OUTLINE} className={styles.logBtn} onClick={onLoginClick} disabled={isLoading}>
 				{t('Sign in')}
+			</Button>
+			<Button theme={ThemeButton.CLEAR} onClick={openRegister}>
+				{t('No account?')}
 			</Button>
 		</div>
 	);
