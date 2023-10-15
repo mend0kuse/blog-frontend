@@ -1,36 +1,27 @@
 .Sidebar {
 	position: relative;
-
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-
 	width: var(--sidebar-width);
 	height: calc(100vh - var(--navbar-height));
 	padding: 0 30px;
-
 	transition: all 0.3s ease-in-out;
-
 	background: var(--inverted-bg-color);
 }
 
 .swithers {
 	position: absolute;
 	bottom: 20px;
-
 	display: flex;
-
 	justify-content: center;
-
 	width: 100%;
-
 	gap: 10px;
 }
 
 .links {
 	display: flex;
 	flex-direction: column;
-
 	width: 100%;
 	margin-top: 30px;
 	gap: 15px;

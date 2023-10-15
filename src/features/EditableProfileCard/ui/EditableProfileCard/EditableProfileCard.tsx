@@ -1,5 +1,4 @@
 import { type FC, memo, useCallback, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { useAppDispatch } from '@/app/providers/StoreProvider';
@@ -9,14 +8,10 @@ import { type Profile, ProfileCard } from '@/entities/Profile';
 import cn from '@/shared/lib/classNames/cn';
 import { type ReducersList, useDinamycModuleLoader } from '@/shared/store/useDinamycModuleLoader';
 import { Text, ThemeText } from '@/shared/ui/Text';
-import { type SerializedError } from '@reduxjs/toolkit';
-import { type FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
-import { ValidateProfileError } from '../../model/types/editableProfile';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
 import styles from './EditableProfileCard.module.scss';
 
@@ -24,7 +19,7 @@ interface EditableProfileCardProps {
 	className?: string;
 	profile?: Profile;
 	isLoading?: boolean;
-	error?: FetchBaseQueryError | SerializedError;
+	validateError?: string;
 	updateHandler: (formData: Profile) => void;
 }
 
@@ -33,9 +28,7 @@ const reducers: ReducersList = {
 };
 
 export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) => {
-	const { profile, updateHandler, isLoading, error } = props;
-
-	const { t } = useTranslation('profile');
+	const { profile, updateHandler, isLoading, validateError, className } = props;
 
 	const dispatch = useAppDispatch();
 
@@ -50,13 +43,6 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
 	const formData = useSelector(getProfileFormData);
 
 	const readOnly = useSelector(getProfileReadonly);
-	const validateErrors = useSelector(getProfileValidateErrors);
-
-	const ValidateErrorsTranslated = {
-		[ValidateProfileError.INCORRECT_AGE]: t('Incorrect age'),
-		[ValidateProfileError.INCORRECT_USER_DATA]: t('Incorrect user data'),
-		[ValidateProfileError.SERVER_ERROR]: t('Server error'),
-	};
 
 	/* Input handlers */
 	const onChangeFirstName = useCallback(
@@ -109,20 +95,9 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
 	);
 
 	return (
-		<div className={cn(styles.EditableProfileCard)} data-testid='EditableProfileCard'>
+		<div className={cn(styles.card, className)} data-testid='EditableProfileCard'>
 			<EditableProfileCardHeader profile={profile} updateHandler={updateHandler} />
-
-			{validateErrors &&
-				validateErrors.length > 0 &&
-				validateErrors.map((err) => (
-					<Text
-						data-testid='EditableProfileCard.ValidationError'
-						key={err}
-						theme={ThemeText.ERROR}
-						text={ValidateErrorsTranslated[err]}
-					/>
-				))}
-
+			<Text theme={ThemeText.ERROR} title={validateError} />
 			<ProfileCard
 				onChangeFirstName={onChangeFirstName}
 				onChangeLastName={onChangeLastName}
@@ -133,7 +108,6 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = memo((props) =>
 				onChangeCountry={onChangeCountry}
 				data={formData}
 				isLoading={isLoading}
-				error={error}
 				readOnly={readOnly}
 			/>
 		</div>

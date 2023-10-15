@@ -4,10 +4,8 @@
 
 .Input {
 	display: block;
-
 	width: 100%;
 	padding: 10px 0;
-
 	color: inherit;
 	border: none;
 	border-bottom: 1px solid var(--primary-color);
@@ -23,17 +21,14 @@
 	position: absolute;
 	top: 7px;
 	left: 16px;
-
 	transition: 0.2s ease all;
 	pointer-events: none;
-
 	color: var(--secondary-color);
 }
 
 .upper {
 	top: -50%;
 	left: 0;
-
 	font-size: 12px;
 }
 

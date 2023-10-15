@@ -1,5 +1,4 @@
 import type { Article } from '../../model/types/ArticleTypes';
-import { ArticleType } from '../../model/types/ArticleTypes';
 
 export const mockArticle: Article = {
 	User: {
@@ -18,7 +17,7 @@ export const mockArticle: Article = {
 	preview: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
 	views: 1022,
 	createdAt: '26.02.2022',
-	types: [{ id: 1, articleId: 1, name: ArticleType.IT }],
+	types: [{ id: 1, articleId: 1, name: 'IT' }],
 	textBlocks: [
 		{
 			id: 1,

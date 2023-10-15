@@ -34,6 +34,7 @@ export const Input: FC<InputProps> = memo((props) => {
 				className={cn(styles.Input, {})}
 				type={type}
 				value={value}
+				disabled={readOnly}
 				readOnly={readOnly}
 				placeholder={withoutUpper && placeholder ? placeholder : ''}
 				onFocus={onUpper}

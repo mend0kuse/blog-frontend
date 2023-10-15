@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import checker from 'vite-plugin-checker';
 import svgr from 'vite-plugin-svgr';
@@ -20,6 +21,10 @@ export default defineConfig({
 			typescript: true,
 		}),
 	],
+	test: {
+		globals: true,
+		environment: 'jsdom',
+	},
 	define: {
 		_IS_DEV_: JSON.stringify(true),
 		_API_: JSON.stringify('http://localhost:3000'),

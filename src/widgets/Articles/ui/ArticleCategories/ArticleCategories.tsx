@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import { ArticleType } from '@/entities/Article';
+import type { ArticleType } from '@/entities/Article';
 import cn from '@/shared/lib/classNames/cn';
 import { setQueryParamInUrl } from '@/shared/lib/url/setQueryParamInUrl';
 import { Card, CardTheme } from '@/shared/ui/Card';
@@ -14,11 +14,11 @@ import type { ArticleCategory } from '../../model/articlesTypes';
 import styles from './ArticleCategories.module.scss';
 
 interface ArticleCategoriesProps {
-	className?: string;
+	types: ArticleType[];
 }
 
 export const ArticleCategories = memo((props: ArticleCategoriesProps) => {
-	const { className } = props;
+	const { types } = props;
 	const { t } = useTranslation();
 
 	const { setChosenCategory } = useArticleActions();
@@ -36,12 +36,11 @@ export const ArticleCategories = memo((props: ArticleCategoriesProps) => {
 	);
 
 	const categories = useMemo<ArticleCategory[]>(() => {
-		const result: ArticleCategory[] = ['all'];
-		return result.concat(Object.values(ArticleType));
-	}, []);
+		return (['all'] as ArticleCategory[]).concat(types);
+	}, [types]);
 
 	return (
-		<HStack gap='16' className={cn(styles.articleCategories, {}, className)}>
+		<HStack gap='16' className={cn(styles.articleCategories, {})}>
 			{categories.map((category) => (
 				<Card
 					className={styles.category}

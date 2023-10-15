@@ -17,12 +17,12 @@ const reducers: ReducersList = {
 };
 
 export interface AddNewCommentFormProps {
-	className?: string;
 	onSend: (text: string) => void;
+	disabled: boolean;
 }
 
 const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
-	const { className, onSend } = props;
+	const { onSend, disabled } = props;
 	const { t } = useTranslation('');
 
 	const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
 	}, [dispatch, onSend, text]);
 
 	return (
-		<HStack align='center' justify='between' className={cn(styles.addNewCommentForm, {}, className)}>
+		<HStack align='center' justify='between' className={cn(styles.addNewCommentForm)}>
 			<Input
 				withoutUpper
 				className={styles.field}
@@ -56,7 +56,7 @@ const AddNewCommentForm: FC<AddNewCommentFormProps> = (props) => {
 				data-testid='AddComment.Input'
 				placeholder={t('Enter text')}
 			/>
-			<Button data-testid='AddComment.Send' onClick={onSendHandler}>
+			<Button disabled={disabled} data-testid='AddComment.Send' onClick={onSendHandler}>
 				{t('Send')}
 			</Button>
 		</HStack>

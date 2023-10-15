@@ -10,10 +10,11 @@ import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkele
 
 interface ArticleListProps {
 	className?: string;
-	articles?: Article[];
+	articles?: Array<Partial<Article>>;
 	view?: ArticleView;
 	isLoading: boolean;
 	target?: HTMLAttributeAnchorTarget;
+	isNextPageFetching?: boolean;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -22,11 +23,28 @@ const getSkeletons = (view: ArticleView) =>
 		.map((item, index) => <ArticleListItemSkeleton key={index} view={view} />);
 
 export const ArticleList: FC<ArticleListProps> = memo((props) => {
-	const { className, isLoading, articles, target, view = ArticleView.TILE } = props;
+	const { className, isLoading, articles, target, view = ArticleView.TILE, isNextPageFetching } = props;
 
 	const { t } = useTranslation();
 
 	const isList = view === ArticleView.LIST;
+
+	const skeletons = getSkeletons(view);
+
+	if (isLoading && !isNextPageFetching) {
+		return (
+			<Flex
+				className={className}
+				direction={isList ? 'column' : 'row'}
+				wrap={isList ? undefined : 'wrap'}
+				gap='32'
+				max
+				data-testid='ArticleList'
+			>
+				{skeletons}
+			</Flex>
+		);
+	}
 
 	return (
 		<Flex

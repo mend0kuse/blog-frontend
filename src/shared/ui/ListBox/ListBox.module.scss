@@ -1,6 +1,5 @@
 .btn {
 	column-gap: 20px;
-
 	display: flex;
 	align-items: center;
 }
@@ -18,15 +17,12 @@
 
 .options {
 	z-index: 100000;
-
 	overflow-y: auto;
-
 	background: var(--listbox-bg);
 }
 
 .item {
 	padding: 5px;
-
 	cursor: pointer;
 }
 
@@ -37,6 +33,5 @@
 
 .disabled {
 	cursor: default;
-
 	opacity: 0.8;
 }

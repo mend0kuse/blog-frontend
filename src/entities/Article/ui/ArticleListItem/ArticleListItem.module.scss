@@ -4,12 +4,10 @@
 
 .tile {
 	width: 230px;
-
 	cursor: pointer;
 
 	.imgBlock {
 		position: relative;
-
 		width: 200px;
 		height: 200px;
 	}
@@ -24,7 +22,6 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-
 		display: none;
 	}
 
@@ -34,25 +31,20 @@
 
 	.types {
 		overflow: hidden;
-
 		width: 130px;
-
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
 
 	.title p {
 		overflow: hidden;
-
 		width: 180px;
-
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
 
 	&:hover {
 		transform: scale(1.01);
-
 		opacity: 0.9;
 
 		.created {

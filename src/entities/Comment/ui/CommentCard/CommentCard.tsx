@@ -1,6 +1,7 @@
 import { type FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { getProfilePageRoute } from '@/shared/config/routes/routes';
+import { getArticlePageRoute, getProfilePageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
@@ -9,28 +10,30 @@ import { Text } from '@/shared/ui/Text';
 
 import { type Comment } from '../../model/types/comment';
 import styles from './CommentCard.module.scss';
-import { CommentSkeleton } from './CommentSkeleton';
 
 interface CommentCardProps {
 	className?: string;
 	comment: Comment;
-	isLoading?: boolean;
+	withArticleLink?: boolean;
 }
 
 export const CommentCard: FC<CommentCardProps> = memo((props) => {
-	const { className, isLoading, comment } = props;
+	const { className, comment, withArticleLink } = props;
 
-	if (isLoading) return <CommentSkeleton />;
+	const { t } = useTranslation('');
 
 	return (
-		<VStack data-testid='CommentCard' max gap='16' className={cn(styles.commentCard, {}, className)}>
+		<VStack data-testid='CommentCard' max gap='16' className={cn(styles.card, className)}>
 			<AppLink to={getProfilePageRoute(comment.user.id)} className={styles.header}>
 				<HStack gap='8' align='center'>
 					<Avatar size={30} src={comment.user.avatar} />
-					<Text title={comment.user.profile.username ?? comment.user.email} />
+					<Text title={comment.user.profile?.username ?? comment.user.email} />
 				</HStack>
 			</AppLink>
 			<Text text={comment.text} />
+			{withArticleLink && (
+				<AppLink to={getArticlePageRoute(comment.articleId.toString())}>{t('Go to article')}</AppLink>
+			)}
 		</VStack>
 	);
 });

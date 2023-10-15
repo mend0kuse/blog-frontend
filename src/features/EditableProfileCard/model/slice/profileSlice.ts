@@ -1,7 +1,7 @@
 import { type Profile } from '@/entities/Profile';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { type ProfileSchema, type ValidateProfileError } from '../types/editableProfile';
+import { type ProfileSchema } from '../types/editableProfile';
 
 const initialState: ProfileSchema = {
 	readonly: true,
@@ -17,7 +17,6 @@ export const profileSlice = createSlice({
 		cancelEdit(state, action: PayloadAction<Profile>) {
 			state.formData = action.payload;
 			state.readonly = true;
-			state.validateError = undefined;
 		},
 		setFirstName(state, action: PayloadAction<Profile['name']>) {
 			state.formData = { ...state.formData, name: action.payload };
@@ -42,9 +41,6 @@ export const profileSlice = createSlice({
 		},
 		setFormData(state, action: PayloadAction<Profile>) {
 			state.formData = action.payload;
-		},
-		setValidateErrors(state, action: PayloadAction<ValidateProfileError[]>) {
-			state.validateError = action.payload;
 		},
 	},
 });

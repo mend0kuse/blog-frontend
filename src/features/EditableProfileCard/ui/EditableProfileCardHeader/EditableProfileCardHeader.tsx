@@ -11,7 +11,6 @@ import { Text } from '@/shared/ui/Text';
 
 import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
-import { validateProfileData } from '../../model/services/validateProfileData/validateProfileData';
 import { profileActions } from '../../model/slice/profileSlice';
 import styles from './EditableProfileCardHeader.module.scss';
 
@@ -44,10 +43,7 @@ export const EditableProfileCardHeader: FC<EditableProfileCardHeaderProps> = mem
 	}, [dispatch, profile]);
 
 	const onSaveEdit = useCallback(() => {
-		const errors = validateProfileData(formData);
-		dispatch(profileActions.setValidateErrors(errors));
-
-		if (errors.length === 0 && formData) {
+		if (formData) {
 			updateHandler(formData);
 			dispatch(profileActions.setReadonly(true));
 		}

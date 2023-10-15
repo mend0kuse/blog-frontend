@@ -5,17 +5,17 @@ import {
 	getArticleSortOrder,
 	getArticlesHasMore,
 	getArticlesInited,
-	getArticlesLoading,
+	getArticlesLimit,
 	getArticlesPage,
 	getArticlesSearchQ,
 	getArticlesView,
 	getChosenCategory,
 } from './articleSelectors';
-import { getArticles } from './articlesSlice';
+
+export type ArticlesData = ReturnType<typeof useArticlesData>;
 
 export const useArticlesData = () => ({
-	articles: useSelector(getArticles.selectAll),
-	isLoading: useSelector(getArticlesLoading),
+	limit: useSelector(getArticlesLimit),
 	view: useSelector(getArticlesView),
 	page: useSelector(getArticlesPage),
 	hasMore: useSelector(getArticlesHasMore),

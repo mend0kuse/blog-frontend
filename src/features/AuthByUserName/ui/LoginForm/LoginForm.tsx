@@ -13,7 +13,7 @@ import { getLoginLoading } from '../../model/selectors/getLoginLoading/getLoginL
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginEmail } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { loginActions, loginReducer } from '../../model/slices/loginSlice';
-import { loginByUserName } from '../../services/loginByUserName/loginByUserName';
+import { loginByUserName } from '../../services/loginByUserName';
 import styles from './LoginForm.module.scss';
 
 const reducers: ReducersList = {

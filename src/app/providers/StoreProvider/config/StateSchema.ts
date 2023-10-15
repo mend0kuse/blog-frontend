@@ -1,13 +1,11 @@
 import { type AxiosInstance } from 'axios';
 
-import { type ArticleSchema } from '@/entities/Article';
 import { type UserSchema } from '@/entities/User';
 import { type AddNewCommentSchema } from '@/features/AddNewComment';
 import { type LoginSchema } from '@/features/AuthByUserName';
 import { type ProfileSchema } from '@/features/EditableProfileCard';
 import type { RegisterSchema } from '@/features/Registration';
 import { type SavePageScrollSchema } from '@/features/SavePageScroll';
-import { type ArticleDetailsPageSchema } from '@/pages/articleDetails';
 import { type rtkApi } from '@/shared/api/rtkApi';
 import type { ArticlesSchema } from '@/widgets/Articles';
 import { type AnyAction, type CombinedState, type Reducer, type ReducersMapObject } from '@reduxjs/toolkit';
@@ -23,8 +21,6 @@ export interface StateSchema {
 	login?: LoginSchema;
 	register?: RegisterSchema;
 	/* ARTICLE Details */
-	articleDetails?: ArticleSchema;
-	articleDetailsPage?: ArticleDetailsPageSchema;
 	addNewComment?: AddNewCommentSchema;
 	/* ARTICLES */
 	articles?: ArticlesSchema;

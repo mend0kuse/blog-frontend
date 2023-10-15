@@ -8,8 +8,6 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Input } from '@/shared/ui/Input';
 import { Loader } from '@/shared/ui/Loader';
 import { Text, ThemeText } from '@/shared/ui/Text';
-import { type SerializedError } from '@reduxjs/toolkit';
-import { type FetchBaseQueryError } from '@reduxjs/toolkit/dist/query';
 
 import { type Profile } from '../../model/types/profile';
 import styles from './ProfileCard.module.scss';
@@ -18,7 +16,7 @@ interface ProfileCardProps {
 	className?: string;
 	data?: Profile | null;
 	isLoading?: boolean;
-	error?: FetchBaseQueryError | SerializedError;
+	error?: string;
 	readOnly?: boolean;
 
 	// handlers
@@ -58,23 +56,7 @@ export const ProfileCard: FC<ProfileCardProps> = (props) => {
 	}
 
 	if (error) {
-		if ('status' in error) {
-			// you can access all properties of `FetchBaseQueryError` here
-			const errMsg = 'error' in error ? error.error : JSON.stringify(error.data);
-
-			return (
-				<div className={cn(styles.ProfileCard, {}, className)}>
-					<Text title={t(errMsg)} theme={ThemeText.ERROR} />
-				</div>
-			);
-		} else {
-			// you can access all properties of `SerializedError` here
-			return (
-				<div className={cn(styles.ProfileCard, {}, className)}>
-					<Text title={t(error.message || 'Error happend')} theme={ThemeText.ERROR} />
-				</div>
-			);
-		}
+		return <Text title={t(error)} theme={ThemeText.ERROR} />;
 	}
 
 	const mods: Mods = {

@@ -10,7 +10,7 @@ export const registerApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
 		register: build.mutation({
 			query: ({ formData }: { formData: RegisterProps }) => ({
-				url: `/auth/singup`,
+				url: `/auth/signup`,
 				body: formData,
 				method: 'POST',
 			}),

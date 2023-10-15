@@ -22,20 +22,25 @@ export const Articles = memo(() => {
 
 	const { setView } = useArticleActions();
 
-	const { articles, view, isLoading } = useGetArticles();
+	const { articles, view, isLoading, isNextPageFetching, types } = useGetArticles();
 
 	const viewClickHandler = (view: ArticleView) => setView(view);
 
 	return (
-		<div>
+		<>
 			<HStack align='center' justify='between'>
 				<ArticleSortFields />
 				<ToggleArticlesView onClick={viewClickHandler} selected={view} />
 			</HStack>
 			<ArticlesSearch />
-			<ArticleCategories />
-			<ArticleList articles={articles} view={view} isLoading={isLoading} />
-		</div>
+			<ArticleCategories types={types ?? []} />
+			<ArticleList
+				articles={articles}
+				view={view}
+				isLoading={isLoading}
+				isNextPageFetching={isNextPageFetching}
+			/>
+		</>
 	);
 });
 

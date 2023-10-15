@@ -1,15 +1,12 @@
 .link {
 	position: relative;
-
 	width: 100%;
 
 	span {
 		position: absolute;
 		top: 0;
 		left: 30px;
-
 		display: block;
-
 		transition: all 0.3s ease-in-out;
 	}
 }
@@ -21,9 +18,7 @@
 .collapsed {
 	span {
 		visibility: hidden;
-
 		transform: translate(0);
-
 		opacity: 0;
 	}
 }

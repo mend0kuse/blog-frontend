@@ -1,7 +1,6 @@
 import { USER_KEY } from '@/shared/browser-storage/localStorage';
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { userApi } from '../../api/userApi';
 import { type User, type UserSchema } from './../types/user';
 
 const initialState: UserSchema = {
@@ -12,7 +11,7 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		setAuthData(state, action: PayloadAction<User>) {
+		setAuthData(state, action: PayloadAction<User | undefined>) {
 			state.authData = action.payload;
 		},
 		setInited(state) {
@@ -22,11 +21,6 @@ export const userSlice = createSlice({
 			state.authData = undefined;
 			localStorage.removeItem(USER_KEY);
 		},
-	},
-	extraReducers(builder) {
-		builder.addMatcher(userApi.endpoints.getUserById.matchFulfilled, (state, { payload }) => {
-			state.authData = payload;
-		});
 	},
 });
 

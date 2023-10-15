@@ -4,8 +4,6 @@ import { memo, useEffect, useState } from 'react';
 import cn from '@/shared/lib/classNames/cn';
 import type { TestProps } from '@/shared/lib/tests/testProps';
 
-import styles from './AppImage.module.scss';
-
 interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement>, TestProps {
 	className?: string;
 	loader?: ReactElement;
@@ -38,15 +36,7 @@ export const AppImage: FC<AppImageProps> = memo((props) => {
 		return error;
 	}
 
-	return (
-		<img
-			data-testid={dataTestId}
-			alt={alt}
-			src={src}
-			className={cn(styles.appImage, {}, className)}
-			{...otherProps}
-		/>
-	);
+	return <img data-testid={dataTestId} alt={alt} src={src} className={cn('', className)} {...otherProps} />;
 });
 
 AppImage.displayName = 'AppImage';

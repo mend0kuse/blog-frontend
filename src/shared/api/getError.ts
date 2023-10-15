@@ -7,7 +7,8 @@ export const getErrorString = (error: FetchBaseQueryError | SerializedError | un
 	}
 
 	if ('status' in error) {
-		const errMsg = 'error' in error ? error.error : JSON.stringify(error.data);
+		// @ts-expect-error
+		const errMsg = 'error' in error ? error.error : error.data.message;
 
 		return errMsg;
 	}

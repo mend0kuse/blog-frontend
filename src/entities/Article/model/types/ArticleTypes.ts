@@ -19,15 +19,12 @@ export interface ArticleBlockImage {
 
 export type ArticleBlockType = 'IMAGE' | 'TEXT' | 'CODE';
 
-export enum ArticleType {
-	IT = 'IT',
-	SCIENCE = 'SCIENCE',
-	ECONOMICS = 'ECONOMICS',
-}
+export type ArticleType = 'IT' | 'Science' | 'Ecology';
 
 export enum ArticleView {
 	LIST = 'list',
 	TILE = 'tile',
+	PREVIEW = 'PREVIEW',
 }
 
 interface ArticleTypeWithName {

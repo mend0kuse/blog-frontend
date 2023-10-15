@@ -1,5 +1,4 @@
-import type { Article, ArticleType, ArticleView } from '@/entities/Article';
-import type { EntityState } from '@reduxjs/toolkit';
+import type { ArticleType, ArticleView } from '@/entities/Article';
 
 export type ArticleCategory = 'all' | ArticleType;
 
@@ -11,9 +10,7 @@ export enum ArticleSortKey {
 
 export type ArticleSortOrder = 'asc' | 'desc';
 
-export interface ArticlesSchema extends EntityState<Article> {
-	isLoading?: boolean;
-	error?: string;
+export interface ArticlesSchema {
 	view: ArticleView;
 	limit: number;
 	page: number;

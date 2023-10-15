@@ -20,7 +20,7 @@ import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
 	className?: string;
-	article: Article;
+	article: Partial<Article>;
 	view: ArticleView;
 	target?: HTMLAttributeAnchorTarget;
 }
@@ -29,12 +29,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 	const { className, article, view, target } = props;
 	const { t } = useTranslation();
 
-	const types = article.types.map((el) => el.name).join(', ');
+	const types = article.types?.map((el) => el?.name).join(', ');
+	const articleRoute = getArticlePageRoute(article.id?.toString());
 
 	if (view === ArticleView.TILE) {
 		return (
-			<AppLink data-testid='ArticleListItem' to={getArticlePageRoute(article.id.toString())} target={target}>
-				<Card className={cn(styles.articleListItem, {}, className, styles.tile)}>
+			<AppLink data-testid='ArticleListItem' to={articleRoute} target={target}>
+				<Card className={cn(styles.articleListItem, className, styles.tile)}>
 					<div className={styles.imgBlock}>
 						<AppImage
 							loader={<Skeleton height={300} width={'100%'} />}
@@ -58,17 +59,20 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 	}
 
 	return (
-		<Card data-testid='ArticleListItem' className={cn(styles.articleListItem, {}, className, styles.list)}>
+		<Card data-testid='ArticleListItem' className={cn(styles.articleListItem, className, styles.list)}>
 			<HStack justify='between'>
-				<AppLink to={getProfilePageRoute(article.User.id)}>
+				<AppLink to={getProfilePageRoute(article.User?.id ?? '')}>
 					<HStack gap='16' align='center'>
 						<Avatar
 							size={50}
-							src={article.User.avatar}
-							alt={article.User.email}
+							src={article.User?.avatar}
+							alt={article.User?.email}
 							className={styles.avatar}
 						/>
-						<Text text={article.User.profile.username ?? article.User.email} className={styles.username} />
+						<Text
+							text={article.User?.profile?.username ?? article.User?.email}
+							className={styles.username}
+						/>
 					</HStack>
 				</AppLink>
 				<Text text={article.createdAt} className={styles.created} />
@@ -86,12 +90,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 				/>
 			</div>
 
-			{article.textBlocks.length > 0 && (
-				<ArticleTextBlock block={article.textBlocks[0]} className={styles.text} />
+			{article.textBlocks && article.textBlocks.length > 0 && (
+				<ArticleTextBlock block={article.textBlocks?.[0]} className={styles.text} />
 			)}
 
 			<HStack align='center' justify='between' className={styles.footer}>
-				<AppLink target={target} to={getArticlePageRoute(article.id.toString())}>
+				<AppLink target={target} to={articleRoute}>
 					<Button theme={ThemeButton.OUTLINE}>{t('Read More')}</Button>
 				</AppLink>
 				<HStack gap='8' align='center' className={styles.views}>

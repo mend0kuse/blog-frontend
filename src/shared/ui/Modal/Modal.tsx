@@ -1,11 +1,11 @@
 import { type FC, type ReactNode } from 'react';
 
 import cn from '@/shared/lib/classNames/cn';
-import { useModal } from '@/shared/ui/Modal/useModal';
 
 import { Overlay } from '../Overlay/Overlay';
 import { Portal } from '../Portal/Portal';
 import styles from './Modal.module.scss';
+import { useModal } from './useModal';
 
 interface ModalProps {
 	children: ReactNode;

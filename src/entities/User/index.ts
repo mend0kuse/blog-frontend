@@ -6,4 +6,11 @@ export { getUserSettings } from './model/selectors/getUserSettings';
 export { getUserIsAdmin, getUserIsManager, getUserRoles } from './model/selectors/getUserRole';
 
 export type { User, UserSchema, UserRole } from './model/types/user';
-export { useAddSettingsMutation, useLazyGetUserByIdQuery } from './api/userApi';
+export {
+	useAddSettingsMutation,
+	useLazyGetUserByIdQuery,
+	useGetUserByIdQuery,
+	useUpdateProfileMutation,
+	useGetNotifsQuery,
+	useReadNotifsMutation,
+} from './api/userApi';

@@ -1,51 +1,35 @@
 import { type FC, memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 
-import { useAppDispatch } from '@/app/providers/StoreProvider';
+import { useAddArticleCommentMutation, useGetCommentsByArticleIdQuery } from '@/entities/Article';
 import { CommentList } from '@/entities/Comment';
 import { AddNewCommentForm } from '@/features/AddNewComment';
-import cn from '@/shared/lib/classNames/cn';
-import { useInititalEffect } from '@/shared/lib/useInititalEffect';
-
-import {
-	getArticleCommentsError,
-	getArticleCommentsisLoading,
-} from '../../model/selectors/articleDetailsPageSelectors';
-import { getArticleComments } from '../../model/slice/articleCommentsSlice';
-import { addArticleComment } from '../../services/addArticleComment';
-import { fetchCommentsByArticleId } from '../../services/fetchArticleComments';
-import styles from './ArticleComments.module.scss';
+import { getErrorString } from '@/shared/api/getError';
 
 interface ArticleCommentsProps {
-	className?: string;
-	id: number;
+	id: string;
 }
 
 export const ArticleComments: FC<ArticleCommentsProps> = memo((props) => {
-	const { className, id } = props;
+	const { id } = props;
 
-	const dispatch = useAppDispatch();
+	const { data: comments, isFetching, error: fetchingError } = useGetCommentsByArticleIdQuery(id);
 
-	useInititalEffect(() => {
-		dispatch(fetchCommentsByArticleId(id));
-	});
-
-	const comments = useSelector(getArticleComments.selectAll);
-	const isLoading = useSelector(getArticleCommentsisLoading);
-	const error = useSelector(getArticleCommentsError);
+	const [addComment, { isLoading: sendingComment, error: sendingError }] = useAddArticleCommentMutation();
 
 	const sendComment = useCallback(
 		(value: string) => {
-			dispatch(addArticleComment(value));
+			addComment({ text: value, id });
 		},
-		[dispatch],
+		[addComment, id],
 	);
 
+	const error = fetchingError ?? sendingError;
+
 	return (
-		<div className={cn(styles.articleComments, {}, className)}>
-			<AddNewCommentForm onSend={sendComment} />
-			<CommentList error={error} isLoading={isLoading} comments={comments} />
-		</div>
+		<>
+			<AddNewCommentForm disabled={sendingComment} onSend={sendComment} />
+			<CommentList error={getErrorString(error)} isLoading={isFetching || sendingComment} comments={comments} />
+		</>
 	);
 });
 

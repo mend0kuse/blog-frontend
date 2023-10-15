@@ -1,28 +1,21 @@
 .btn {
 	width: 100%;
-
 	margin: 0;
 	padding: 0;
-
 	cursor: pointer;
 	text-align: left;
-
 	color: inherit;
 	border: none;
 	outline: none;
 	background: none;
-
 	font: inherit;
 }
 
 .menu {
 	display: flex;
 	flex-direction: column;
-
 	min-width: 200px;
-
 	padding: 5px;
-
 	border: 1px solid var(--primary-color);
 	border-radius: 8px;
 	background: var(--dropdown-bg);
@@ -30,11 +23,8 @@
 
 .item {
 	display: block;
-
 	padding: 5px 10px;
-
 	transition: 0.2s linear all;
-
 	border-radius: 8px;
 }
 
