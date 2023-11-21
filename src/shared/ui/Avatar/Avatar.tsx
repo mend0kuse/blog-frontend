@@ -14,7 +14,7 @@ interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement>, TestProps {
 }
 
 export const Avatar: FC<AvatarProps> = (props) => {
-	const { className, size = 50, 'data-testId': dataTestId, ...otherProps } = props;
+	const { className, size = 50, 'data-testId': dataTestId, src, ...otherProps } = props;
 
 	const style: CSSProperties = useMemo(() => {
 		return {
@@ -26,9 +26,10 @@ export const Avatar: FC<AvatarProps> = (props) => {
 	return (
 		<AppImage
 			data-testId={dataTestId}
+			src={src}
 			loader={<Skeleton height={size} width={size} borderRadius={'50%'} />}
-			error={<Icon inverted SVG={UserIcon} className={cn(styles.Avatar, {}, className)} />}
-			className={cn(styles.Avatar, {}, className)}
+			error={<Icon inverted SVG={UserIcon} className={cn(styles.Avatar, className)} />}
+			className={cn(styles.Avatar, className)}
 			style={style}
 			{...otherProps}
 		/>

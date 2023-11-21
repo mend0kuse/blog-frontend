@@ -14,13 +14,13 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack } from '@/shared/ui/Stack';
 import { SizeText, Text } from '@/shared/ui/Text';
 
-import { type Article, ArticleView } from '../../model/types/ArticleTypes';
+import { type ArticleDto, ArticleView } from '../../model/types/ArticleTypes';
 import { ArticleTextBlock } from '../ArticleTextBlock/ArticleTextBlock';
 import styles from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
 	className?: string;
-	article: Partial<Article>;
+	article: Partial<ArticleDto>;
 	view: ArticleView;
 	target?: HTMLAttributeAnchorTarget;
 }

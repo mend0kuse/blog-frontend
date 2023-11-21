@@ -1,5 +1,5 @@
 import type { StateSchema } from '@/app/providers/StoreProvider';
-import type { Article, ArticleType } from '@/entities/Article';
+import type { ArticleDto, ArticleType } from '@/entities/Article';
 import { $api } from '@/shared/api/api';
 import { rtkApi } from '@/shared/api/rtkApi';
 import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
@@ -14,7 +14,7 @@ import {
 } from '../model/articleSelectors';
 
 interface Response {
-	articles: Article[];
+	articles: ArticleDto[];
 	types: ArticleType[];
 }
 
@@ -36,8 +36,6 @@ export const articlesApi = rtkApi.injectEndpoints({
 				try {
 					const response = await $api.get('/articles', {
 						params: {
-							page,
-							limit,
 							sort: sortKey,
 							order,
 							...(category !== 'all' && { category }),

@@ -51,6 +51,8 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-misused-promises': 'off',
 		'@typescript-eslint/no-floating-promises': 'off',
+		'@typescript-eslint/consistent-type-definitions': 'off',
+		'@typescript-eslint/no-redeclare': 'off',
 		'@typescript-eslint/no-invalid-void-type': 'off',
 		'@typescript-eslint/restrict-template-expressions': 'off',
 		'@typescript-eslint/consistent-type-imports': [

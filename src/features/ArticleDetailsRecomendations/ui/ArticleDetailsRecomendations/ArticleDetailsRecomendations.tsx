@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import type { Article } from '@/entities/Article';
+import type { ArticleDto } from '@/entities/Article';
 import { ArticleList } from '@/entities/Article';
 import cn from '@/shared/lib/classNames/cn';
 import { VStack } from '@/shared/ui/Stack';
@@ -11,7 +11,7 @@ import styles from './ArticleDetailsRecomendations.module.scss';
 
 interface ArticleDetailsRecomendationsProps {
 	className?: string;
-	articles: Article[];
+	articles: ArticleDto[];
 	error?: string;
 	isLoading: boolean;
 }

@@ -11,12 +11,13 @@ interface ModalProps {
 	children: ReactNode;
 	open: boolean;
 	className?: string;
+	contentClassName?: string;
 	onClose: () => void;
 	lazy?: boolean;
 }
 
 export const Modal: FC<ModalProps> = (props) => {
-	const { children, className, onClose, open, lazy } = props;
+	const { children, className, contentClassName, onClose, open, lazy } = props;
 
 	const { isClosing, closeHandler, isMounted } = useModal({
 		animationDelay: 300,
@@ -37,7 +38,7 @@ export const Modal: FC<ModalProps> = (props) => {
 		<Portal>
 			<div className={cn(styles.Modal, mods, className)}>
 				<Overlay onClick={closeHandler} />
-				<div className={styles.content}>{children}</div>
+				<div className={cn(styles.content, contentClassName)}>{children}</div>
 			</div>
 		</Portal>
 	);

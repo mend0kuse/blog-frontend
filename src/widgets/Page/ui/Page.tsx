@@ -6,7 +6,7 @@ import { type StateSchema, useAppDispatch } from '@/app/providers/StoreProvider'
 import { getPageScrollByPathname, savePageScrollActions } from '@/features/SavePageScroll';
 import cn from '@/shared/lib/classNames/cn';
 import type { TestProps } from '@/shared/lib/tests/testProps';
-import { useInititalEffect } from '@/shared/lib/useInititalEffect';
+import { useInitialEffect } from '@/shared/lib/useInitialEffect';
 import { useThrottle } from '@/shared/lib/useThrottle';
 import { useInViewport } from '@/shared/ui/useInViewport';
 
@@ -20,7 +20,7 @@ interface PageProps extends TestProps {
 
 export const Page = (props: PageProps) => {
 	const { className, children, onScrollEnd, 'data-testId': dataTestID } = props;
-	const dispath = useAppDispatch();
+	const dispatch = useAppDispatch();
 
 	const wrapperRef = useRef<HTMLDivElement | null>(null);
 	const targetRef = useRef<HTMLDivElement | null>(null);
@@ -30,14 +30,14 @@ export const Page = (props: PageProps) => {
 
 	useInViewport(wrapperRef, targetRef, onScrollEnd);
 
-	useInititalEffect(() => {
+	useInitialEffect(() => {
 		if (wrapperRef.current) {
 			wrapperRef.current.scrollTop = scroll;
 		}
 	});
 
 	const scrollHandler = useThrottle((e: UIEvent) => {
-		dispath(savePageScrollActions.setPageScroll({ path: pathname, scroll: e.currentTarget.scrollTop }));
+		dispatch(savePageScrollActions.setPageScroll({ path: pathname, scroll: e.currentTarget.scrollTop }));
 	}, 1000);
 
 	return (

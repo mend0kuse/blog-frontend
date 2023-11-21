@@ -21,7 +21,6 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 
 	const store = configureStore({
 		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
-		devTools: _IS_DEV_,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) =>
 			getDefaultMiddleware({

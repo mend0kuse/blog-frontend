@@ -1,30 +1,55 @@
 import { type User } from '@/entities/User';
+import type { OneOfProperty } from '@/shared/lib/ts/oneOfProperty';
+import { createEnumsMixin } from '@/shared/lib/ts/oneOfProperty';
 
-export interface ArticleBlockCode {
-	id: number;
+export const IMAGE_TYPE = {
+	IMAGE: 'image',
+} as const;
+export type ImageType = OneOfProperty<typeof IMAGE_TYPE>;
+
+export const TEXT_TYPE = {
+	TEXT: 'text',
+} as const;
+export type TextType = OneOfProperty<typeof TEXT_TYPE>;
+
+export const CODE_TYPE = {
+	CODE: 'code',
+} as const;
+export type CodeType = OneOfProperty<typeof CODE_TYPE>;
+
+export const ARTICLE_BLOCK_TYPE = createEnumsMixin(IMAGE_TYPE, TEXT_TYPE, CODE_TYPE);
+
+export type ArticleBlockType = OneOfProperty<typeof ARTICLE_BLOCK_TYPE>;
+
+export interface WithOrder {
+	order?: number;
+}
+
+export interface ArticleBlockCode extends WithOrder {
 	code: string;
 }
 
-export interface ArticleBlockText {
-	id: number;
+export interface ArticleBlockText extends WithOrder {
 	title: string;
-	paragraphs: Array<{ id: number; text: string }>;
+	paragraphs: Array<{ text: string }>;
 }
 
-export interface ArticleBlockImage {
-	id: number;
+export interface ArticleBlockImage extends WithOrder {
 	title: string;
 	src: string;
 }
 
-export type ArticleBlockType = 'IMAGE' | 'TEXT' | 'CODE';
+export type ArticleBlockByType = {
+	[ARTICLE_BLOCK_TYPE.IMAGE]: ArticleBlockImage;
+	[ARTICLE_BLOCK_TYPE.TEXT]: ArticleBlockText;
+	[ARTICLE_BLOCK_TYPE.CODE]: ArticleBlockCode;
+};
 
 export type ArticleType = 'IT' | 'Science' | 'Ecology';
 
 export enum ArticleView {
 	LIST = 'list',
 	TILE = 'tile',
-	PREVIEW = 'PREVIEW',
 }
 
 interface ArticleTypeWithName {
@@ -38,16 +63,19 @@ interface ArticleStats {
 	dislikes: number;
 }
 
-export interface Article {
+export interface ArticleDto extends Article {
 	id: number;
-	title: string;
-	subtitle: string;
-	preview: string;
 	views: number;
 	User: User;
 	createdAt: string;
 
 	ArticleStats: ArticleStats;
+}
+
+export interface Article {
+	title: string;
+	subtitle: string;
+	preview: string;
 	types: ArticleTypeWithName[];
 	textBlocks: ArticleBlockText[];
 	codeBlocks: ArticleBlockCode[];

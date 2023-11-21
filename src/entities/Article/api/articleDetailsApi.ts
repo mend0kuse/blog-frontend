@@ -1,11 +1,11 @@
 import type { Comment } from '@/entities/Comment';
 import { rtkApi } from '@/shared/api/rtkApi';
 
-import type { Article } from '../model/types/ArticleTypes';
+import type { Article, ArticleDto } from '../model/types/ArticleTypes';
 
 export const articleDetailsApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
-		getArticleById: build.query<Article, string>({
+		getArticleById: build.query<ArticleDto, string>({
 			query: (id) => ({
 				url: '/articles/' + id,
 			}),
@@ -47,10 +47,19 @@ export const articleDetailsApi = rtkApi.injectEndpoints({
 			invalidatesTags: ['Article'],
 		}),
 
-		deleteArticle: build.mutation<any, number>({
+		deleteArticle: build.mutation<ArticleDto, number>({
 			query: (id) => ({
 				url: `/articles/${id}`,
 				method: 'DELETE',
+			}),
+			invalidatesTags: ['Article'],
+		}),
+
+		createArticle: build.mutation<ArticleDto, Article>({
+			query: (dto) => ({
+				url: `/articles`,
+				method: 'POST',
+				body: dto,
 			}),
 			invalidatesTags: ['Article'],
 		}),
@@ -64,4 +73,5 @@ export const {
 	useDislikeMutation,
 	useLikeMutation,
 	useDeleteArticleMutation,
+	useCreateArticleMutation,
 } = articleDetailsApi;

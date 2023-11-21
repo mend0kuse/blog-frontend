@@ -13,6 +13,9 @@
 }
 
 .content {
+	height: 50%;
+	overflow: hidden;
+	min-width: 500px;
 	max-width: 60%;
 	padding: 30px;
 	transition: 0.3s all linear;

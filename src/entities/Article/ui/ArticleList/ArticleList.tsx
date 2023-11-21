@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Flex } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text';
 
-import { type Article, ArticleView } from '../../model/types/ArticleTypes';
+import { type ArticleDto, ArticleView } from '../../model/types/ArticleTypes';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 
 interface ArticleListProps {
 	className?: string;
-	articles?: Array<Partial<Article>>;
+	articles?: Array<Partial<ArticleDto>>;
 	view?: ArticleView;
 	isLoading: boolean;
 	target?: HTMLAttributeAnchorTarget;

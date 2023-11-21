@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { type Article, useDislikeMutation, useLikeMutation } from '@/entities/Article';
+import { type ArticleDto, useDislikeMutation, useLikeMutation } from '@/entities/Article';
 import { getErrorString } from '@/shared/api/getError';
 import { Button } from '@/shared/ui/Button';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -10,7 +10,7 @@ import { Text, ThemeText } from '@/shared/ui/Text';
 import styles from './ArticleStats.module.scss';
 
 interface Props {
-	article: Article;
+	article: ArticleDto;
 	isLoading: boolean;
 }
 

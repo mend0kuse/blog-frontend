@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { type Article, useDeleteArticleMutation } from '@/entities/Article';
+import { type ArticleDto, useDeleteArticleMutation } from '@/entities/Article';
 import { getUserAuthData } from '@/entities/User';
 import { AppRoutes, getEditPageRoute } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
@@ -12,7 +12,7 @@ import { HStack } from '@/shared/ui/Stack';
 
 interface ArticleDetailsPageHeaderProps {
 	className?: string;
-	article: Article | undefined;
+	article: ArticleDto | undefined;
 }
 
 export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo((props) => {

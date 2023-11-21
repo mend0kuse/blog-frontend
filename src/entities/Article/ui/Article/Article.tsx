@@ -9,14 +9,14 @@ import { Icon } from '@/shared/ui/Icon';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { SizeText, Text, ThemeText } from '@/shared/ui/Text';
 
-import { renderBlocks } from '../../lib/renderBlocks';
-import type { Article } from '../../model/types/ArticleTypes';
+import { mapBlocks } from '../../lib/mapBlocks';
+import type { ArticleDto } from '../../model/types/ArticleTypes';
 import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton';
 import styles from './Article.module.scss';
 
 interface ArticleProps {
 	className?: string;
-	article: Article | undefined;
+	article: ArticleDto | undefined;
 	error?: string;
 	isLoading: boolean;
 }
@@ -30,27 +30,26 @@ export const ArticleDetails = memo((props: ArticleProps) => {
 
 	if (isLoading) return <ArticleSkeleton />;
 
+	const types = article?.types?.map((el) => el?.name).join(', ');
+
 	return (
 		<VStack max className={cn(styles.article, className)}>
 			<Avatar size={200} className={styles.avatar} src={article?.preview} />
 			<Text title={article?.title} size={SizeText.l} text={article?.subtitle} />
+			<Text title={types} size={SizeText.l} text={article?.subtitle} />
 
-			{/* views */}
 			<HStack align='center' gap='8' className={styles.views}>
 				<Icon SVG={EyeIcon} />
 				<Text text={article?.views} />
 			</HStack>
 
-			{/* date */}
 			<HStack align='center' gap='8' className={styles.date}>
 				<Icon SVG={CalendarIcon} />
 				<Text text={article?.createdAt} />
 			</HStack>
 
 			<VStack gap='16' max className={styles.blocksInner}>
-				{renderBlocks(article, 'CODE')}
-				{renderBlocks(article, 'IMAGE')}
-				{renderBlocks(article, 'TEXT')}
+				{mapBlocks(article)}
 			</VStack>
 		</VStack>
 	);

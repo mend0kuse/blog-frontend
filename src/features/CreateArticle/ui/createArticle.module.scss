@@ -1,0 +1,21 @@
+.blocks {
+  overflow: auto;
+  max-height: 100%;
+}
+
+.code {
+  resize: none;
+  height: 200px;
+  margin-bottom: 20px;
+  outline: transparent;
+}
+
+.img {
+  height: 300px;
+  object-fit: cover;
+  width: 300px;
+}
+
+.content {
+  width: 1000px;
+}

@@ -10,7 +10,6 @@ import { type ReducersList, useDinamycModuleLoader } from '@/shared/store/useDin
 import { Button, ThemeButton } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Text, ThemeText } from '@/shared/ui/Text';
-import { QueryStatus } from '@reduxjs/toolkit/query';
 
 import { useRegisterMutation } from '../api/registerApi';
 import { getRegisterEmail, getRegisterName, getRegisterPassword } from '../model/selectors';
@@ -28,7 +27,7 @@ const reducers: ReducersList = {
 export const Registration = (props: Props) => {
 	const { closeRegister } = props;
 
-	const [register, { isLoading, error, status }] = useRegisterMutation();
+	const [register, { isLoading, error, isSuccess }] = useRegisterMutation();
 
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
@@ -61,9 +60,11 @@ export const Registration = (props: Props) => {
 	);
 
 	const handleRegister = async () => {
-		await register({ formData: { email, password } });
+		const result = await register({ formData: { email, password } });
 
-		if (status !== QueryStatus.fulfilled) {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		if (!result.data) {
 			return;
 		}
 

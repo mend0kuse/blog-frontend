@@ -7,12 +7,12 @@ import { useArticleActions } from './articlesSlice';
 import { useArticlesData } from './useArticlesData';
 
 export const useGetArticles = () => {
-	const { init, setPage } = useArticleActions();
+	const { init } = useArticleActions();
 
 	init();
 
 	const articlesData = useArticlesData();
-	const { category, hasMore, order, page, search, sortKey, view } = articlesData;
+	const { category, hasMore, order, search, sortKey, view } = articlesData;
 
 	const [isNextPageFetching, setIsNextPageFetching] = useState(false);
 
@@ -23,24 +23,21 @@ export const useGetArticles = () => {
 
 	const nextPageFetch = useCallback(() => {
 		if (!isFetching && hasMore) {
-			setPage(page + 1);
 			setIsNextPageFetching(true);
 			fetch();
 			setIsNextPageFetching(false);
 		}
-	}, [isFetching, hasMore, setPage, page, fetch]);
+	}, [isFetching, hasMore, fetch]);
 
 	/* Observe filters change */
 	useEffect(() => {
-		setPage(1);
 		fetch();
-	}, [order, sortKey, category, fetch, setPage]);
+	}, [order, sortKey, category, fetch]);
 
 	/* Observe search */
 	useEffect(() => {
-		setPage(1);
 		debouncedFetch();
-	}, [debouncedFetch, search, setPage]);
+	}, [debouncedFetch, search]);
 
 	return {
 		articles: data?.articles,

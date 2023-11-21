@@ -14,12 +14,12 @@ interface CodeProps {
 export const Code: FC<CodeProps> = memo((props) => {
 	const { className, text } = props;
 
-	const onCopy = useCallback(() => {
-		navigator.clipboard.writeText(text);
+	const onCopy = useCallback(async () => {
+		await navigator.clipboard.writeText(text);
 	}, [text]);
 
 	return (
-		<pre className={cn(styles.Code, {}, className)}>
+		<pre className={cn(styles.Code, className)}>
 			<Button className={styles.btn} onClick={onCopy}>
 				<CopyIcon />
 			</Button>

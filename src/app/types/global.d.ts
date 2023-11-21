@@ -12,9 +12,7 @@ declare module '*.svg' {
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
-declare const _IS_DEV_: boolean;
 declare const _API_: string;
-declare const _PROJECT_: 'frontend' | 'jest' | 'storybook';
 
 type DeepPartial<T> = T extends object
 	? {

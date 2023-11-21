@@ -6,7 +6,7 @@ export enum AppRoutes {
 	ADMIN_PANEL = '/admin',
 	FORBIDDEN = '/forbidden',
 
-	// dinamyc
+	// dynamic
 	PROFILE = '/profile/',
 	ARTICLE_DETAILS = '/articles/',
 	ARTICLE_EDIT = '/articles/edit',

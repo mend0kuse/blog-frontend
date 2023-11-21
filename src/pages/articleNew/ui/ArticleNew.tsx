@@ -1,9 +1,7 @@
-import { type FC } from 'react';
-
 import { CreateArticle } from '@/features/CreateArticle';
 import { Page } from '@/widgets/Page';
 
-const ArticleNew: FC = () => {
+const ArticleNew = () => {
 	return (
 		<Page>
 			<CreateArticle />

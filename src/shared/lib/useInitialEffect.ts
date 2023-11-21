@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 
-export const useInititalEffect = (callback: () => void) => {
+export const useInitialEffect = (callback: () => void) => {
 	useEffect(() => {
-		if (_PROJECT_ !== 'storybook') {
-			callback();
-		}
+		callback();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 };

@@ -17,8 +17,12 @@ export const AppImage: FC<AppImageProps> = memo((props) => {
 	const [isError, setIsError] = useState(false);
 
 	useEffect(() => {
+		setIsError(false);
+		setIsLoading(true);
+
 		const img = new Image();
 		img.src = src;
+
 		img.onload = () => {
 			setIsLoading(false);
 		};

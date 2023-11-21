@@ -1,4 +1,4 @@
-import type { Article } from '@/entities/Article';
+import type { ArticleDto } from '@/entities/Article';
 import type { Comment } from '@/entities/Comment';
 import type { Notification } from '@/entities/Notification';
 import type { Profile } from '@/entities/Profile';
@@ -18,7 +18,7 @@ export interface User {
 	profile: Profile;
 	notifications?: Notification[];
 	Comment?: Comment[];
-	Article?: Array<Partial<Article>>;
+	Article?: Array<Partial<ArticleDto>>;
 }
 
 export interface UserSchema {
