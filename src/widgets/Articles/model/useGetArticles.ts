@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import type { ArticleType } from '@/entities/Article';
 import { useDebounce } from '@/shared/lib/useDebounce';
 
 import { useLazyGetArticlesQuery } from '../api/articlesApi';
@@ -8,6 +9,9 @@ import { useArticlesData } from './useArticlesData';
 
 export const useGetArticles = () => {
 	const { init } = useArticleActions();
+
+	const [firstTypes, setFirstTypes] = useState<ArticleType[]>([]);
+	const isFirstRequest = useRef(true);
 
 	init();
 
@@ -31,7 +35,16 @@ export const useGetArticles = () => {
 
 	/* Observe filters change */
 	useEffect(() => {
-		fetch();
+		const refetch = async () => {
+			const response = await fetch();
+
+			if (isFirstRequest.current && response.data) {
+				setFirstTypes(response.data.types);
+				isFirstRequest.current = false;
+			}
+		};
+
+		refetch();
 	}, [order, sortKey, category, fetch]);
 
 	/* Observe search */
@@ -45,6 +58,6 @@ export const useGetArticles = () => {
 		isLoading: isFetching,
 		nextPageFetch,
 		isNextPageFetching,
-		types: data?.types,
+		types: firstTypes,
 	};
 };

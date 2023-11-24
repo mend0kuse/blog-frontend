@@ -12,7 +12,7 @@ import { Input } from '@/shared/ui/Input';
 import { Text, ThemeText } from '@/shared/ui/Text';
 
 import { useRegisterMutation } from '../api/registerApi';
-import { getRegisterEmail, getRegisterName, getRegisterPassword } from '../model/selectors';
+import { getRegisterEmail, getRegisterPassword } from '../model/selectors';
 import { registerActions, registerReducer } from '../model/slice';
 import styles from './Registration.module.scss';
 
@@ -34,7 +34,6 @@ export const Registration = (props: Props) => {
 
 	const password = useSelector(getRegisterPassword);
 	const email = useSelector(getRegisterEmail);
-	const name = useSelector(getRegisterName);
 
 	useDinamycModuleLoader(reducers);
 
@@ -48,13 +47,6 @@ export const Registration = (props: Props) => {
 	const onEmailChange = useCallback(
 		(value: string) => {
 			dispatch(registerActions.setEmail(value));
-		},
-		[dispatch],
-	);
-
-	const onNameChange = useCallback(
-		(value: string) => {
-			dispatch(registerActions.setName(value));
 		},
 		[dispatch],
 	);
@@ -78,7 +70,6 @@ export const Registration = (props: Props) => {
 			<Text title={t('Register form')} />
 			{error && <Text text={t(getErrorString(error))} theme={ThemeText.ERROR} />}
 			<Input value={email} onChange={onEmailChange} autoFocus placeholder='Email' />
-			<Input value={name} onChange={onNameChange} placeholder='Name' />
 			<Input value={password} onChange={onPasswordChange} placeholder='Password' />
 			<Button
 				theme={ThemeButton.OUTLINE}

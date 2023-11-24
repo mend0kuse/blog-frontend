@@ -36,7 +36,7 @@ export const ArticleDetails = memo((props: ArticleProps) => {
 		<VStack max className={cn(styles.article, className)}>
 			<Avatar size={200} className={styles.avatar} src={article?.preview} />
 			<Text title={article?.title} size={SizeText.l} text={article?.subtitle} />
-			<Text title={types} size={SizeText.l} text={article?.subtitle} />
+			<Text text={types} size={SizeText.l} />
 
 			<HStack align='center' gap='8' className={styles.views}>
 				<Icon SVG={EyeIcon} />

@@ -31,7 +31,7 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 
 	const skeletons = getSkeletons(view);
 
-	if (isLoading && !isNextPageFetching) {
+	if (isLoading) {
 		return (
 			<Flex
 				className={className}
@@ -46,6 +46,10 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 		);
 	}
 
+	if (!articles || articles.length < 1) {
+		return <Text text={t('Articles not found')} />;
+	}
+
 	return (
 		<Flex
 			className={className}
@@ -55,11 +59,9 @@ export const ArticleList: FC<ArticleListProps> = memo((props) => {
 			max
 			data-testid='ArticleList'
 		>
-			{!isLoading && articles?.length === 0 && <Text text={t('Articles not found')} />}
 			{articles?.map((article) => (
 				<ArticleListItem target={target} article={article} view={view} key={article.id} />
 			))}
-			{isLoading && getSkeletons(view)}
 		</Flex>
 	);
 });

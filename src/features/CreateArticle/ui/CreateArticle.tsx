@@ -116,7 +116,7 @@ export const CreateArticle = memo((props: CreateArticleProps) => {
 
 	const newArticle: Article = {
 		title,
-		suptitle: subtitle,
+		subtitle,
 		preview: previewUrl,
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-expect-error
@@ -127,7 +127,9 @@ export const CreateArticle = memo((props: CreateArticleProps) => {
 	};
 
 	const onCreate = async () => {
-		const result = await createArticle(newArticle);
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		const result = await createArticle({ ...newArticle, suptitle: subtitle });
 
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-expect-error

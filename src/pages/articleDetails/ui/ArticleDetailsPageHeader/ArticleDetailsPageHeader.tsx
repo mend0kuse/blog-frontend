@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { type ArticleDto, useDeleteArticleMutation } from '@/entities/Article';
 import { getUserAuthData } from '@/entities/User';
-import { AppRoutes, getEditPageRoute } from '@/shared/config/routes/routes';
+import { AppRoutes } from '@/shared/config/routes/routes';
 import cn from '@/shared/lib/classNames/cn';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
@@ -26,29 +26,25 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 	const canEdit = auth?.id === article?.User.id;
 	const canDelete = canEdit || auth?.role === 'admin';
 
-	const [deleteArticle, { isSuccess, isLoading }] = useDeleteArticleMutation();
+	const [deleteArticle, { isLoading }] = useDeleteArticleMutation();
 
 	const backToAllHandler = useCallback(() => {
-		navigate(AppRoutes.ARTICLES);
+		navigate(AppRoutes.MAIN);
 	}, [navigate]);
-
-	const editArticleHandler = useCallback(() => {
-		if (article?.id) {
-			navigate(getEditPageRoute(article.id.toString()));
-		}
-	}, [article?.id, navigate]);
 
 	const deleteArticleHandler = useCallback(async () => {
 		if (!article) {
 			return;
 		}
 
-		await deleteArticle(article.id);
+		const result = await deleteArticle(article.id);
 
-		if (isSuccess) {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		if (result.data) {
 			backToAllHandler();
 		}
-	}, [article, backToAllHandler, deleteArticle, isSuccess]);
+	}, [article, backToAllHandler, deleteArticle]);
 
 	return (
 		<HStack justify='between' className={cn('', className)}>
@@ -56,11 +52,6 @@ export const ArticleDetailsPageHeader: FC<ArticleDetailsPageHeaderProps> = memo(
 				{t('Back to all')}
 			</Button>
 			<HStack gap='8'>
-				{canEdit && (
-					<Button disabled={isLoading} onClick={editArticleHandler}>
-						{t('Edit article')}
-					</Button>
-				)}
 				{canDelete && (
 					<Button disabled={isLoading} onClick={deleteArticleHandler}>
 						{t('Delete article')}
